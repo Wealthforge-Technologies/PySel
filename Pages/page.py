@@ -47,7 +47,7 @@ class MainPage(BasePage):
   """Home page action methods come here. I.e. Python.org"""
 
 
-class QALoginPage(BasePage):
+class LoginPage(BasePage):
   """QA login page action methods come here. I.e. https://qa1.wealthforge.org/login/#/"""
   url = "https://qa1.wealthforge.org/login/#/"
   email = PageElement(id_='username')

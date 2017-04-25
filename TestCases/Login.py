@@ -29,7 +29,7 @@ class Login(unittest.TestCase):
         desired_capabilities=DesiredCapabilities.CHROME)
 
   def test_login(self):
-    login_page = page.QALoginPage(self.driver)
+    login_page = page.LoginPage(self.driver)
     self.driver.get(login_page.url)
     login_page.is_title_matches()
     login_page.email = "oquelland@wealthforge.com"
