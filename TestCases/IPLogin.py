@@ -6,7 +6,7 @@ import sys
 import os
 import time
 sys.path.append(os.path.abspath('../Pages'))
-from page import QALoginPage
+import page
 
 
 class IPLogin(unittest.TestCase):
@@ -17,12 +17,15 @@ class IPLogin(unittest.TestCase):
     self.driver.get("https://qa1.wealthforge.org/login/#/")
 
   def test_login(self):
-    login_page = QALoginPage(self.driver)
+    login_page = page.QALoginPage(self.driver)
     login_page.is_title_matches()
-    # Verbs
-    login_page.email = "wealthforgedev1@gmail.com"
-    login_page.password = "Testing123!"
-    login_page.submit(self.driver)
+    login_page.email = "oquelland@wealthforge.com"
+    print(login_page.email)
+    login_page.password = "Test123!"
+    print(login_page.password)
+    # login_page.btnsubmit.click()
+    login_page.submit()
+    time.sleep(10)
 
   def tearDown(self):
     self.driver.close()
