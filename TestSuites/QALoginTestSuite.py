@@ -2,13 +2,13 @@ import unittest
 import sys
 import os
 sys.path.append(os.path.abspath('../TestCases'))
-import IPLogin
+import QALogin
 
 def main():
   loader = unittest.TestLoader()
   suite  = unittest.TestSuite()
 
-  suite.addTests(loader.loadTestsFromModule(IPLogin))
+  suite.addTests(loader.loadTestsFromModule(QALogin))
 
   runner = unittest.TextTestRunner(verbosity=3)
   result = runner.run(suite)
