@@ -12,10 +12,6 @@ import page
 
 
 class Login(unittest.TestCase):
-  # locators = {}
-  # locators["login.email"] = "username"
-  # locators["login.password"] = "password"
-  # locators["login.submit"] = "btnLogin"
 
   def wait_for_angular(self, selenium):
     self.selenium.set_script_timeout(10)
@@ -36,16 +32,10 @@ class Login(unittest.TestCase):
     login_page.password = "Test123!"
     login_page.submit()
     try:
-      wait = WebDriverWait(self.driver, 5).until(EC.title_contains("WF: Broker Dealer"))
+      wait = WebDriverWait(self.driver, 5).until(
+          EC.title_contains("WF: Broker Dealer"))
     finally:
       assert "WF: Broker Dealer" in self.driver.title
-    # self.wait_for_angular(self.driver)
-    # self.driver.set_script_timeout(10)
-    # self.driver.execute_async_script("""
-    #   callback = arguments[arguments.length - 1];
-    #   angular.element('wfApp').injector().get('$browser').notifyWhenNoOutstandingRequests(callback);""")
-    # # self.driver.find_element_by_id("menuDashboardAdmin").click()
-    # time.sleep(10)
 
   def tearDown(self):
     self.driver.close()
