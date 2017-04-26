@@ -9,7 +9,7 @@ import os
 import time
 sys.path.append(os.path.abspath('../Pages'))
 import page
-
+from Utilities.Utit import Utit
 
 class Login(unittest.TestCase):
 
@@ -31,11 +31,12 @@ class Login(unittest.TestCase):
     login_page.email = "oquelland@wealthforge.com"
     login_page.password = "Test123!"
     login_page.submit()
-    try:
-      wait = WebDriverWait(self.driver, 5).until(
-          EC.title_contains("WF: Broker Dealer"))
-    finally:
-      assert "WF: Broker Dealer" in self.driver.title
+    Utit.waitForAngular(self.driver);
+    # try:
+    #   wait = WebDriverWait(self.driver, 5).until(
+    #       EC.title_contains("WF: Broker Dealer"))
+    # finally:
+    assert "WF: Broker Dealer" in self.driver.title
 
   def tearDown(self):
     self.driver.close()

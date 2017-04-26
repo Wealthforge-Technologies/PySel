@@ -1,0 +1,6 @@
+
+.idea/
+py36/
+__pycache__/
+*.py[cod]
+*$py.class
