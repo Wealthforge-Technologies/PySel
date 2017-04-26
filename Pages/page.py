@@ -37,40 +37,41 @@ from selenium.webdriver.support import expected_conditions as EC
 
 
 class BasePage(object):
-  """Base class to initialize the base page that will be called from all pages"""
+    """Base class to initialize the base page that will be called from all pages"""
 
-  def __init__(self, driver):
-    self.driver = driver
+    def __init__(self, driver):
+        self.driver = driver
 
 
 class MainPage(BasePage):
-  """Home page action methods come here. I.e. Python.org"""
+    """Home page action methods come here. I.e. Python.org"""
 
 
 class LoginPage(BasePage):
-  """QA login page action methods come here. I.e. https://qa1.wealthforge.org/login/#/"""
-  url = "https://qa1.wealthforge.org/login/#/"
-  email = PageElement(id_='username')
-  password = PageElement(id_='password')
+    """QA login page action methods come here. I.e. https://qa1.wealthforge.org/login/#/"""
+    url = "https://qa1.wealthforge.org/login/#/"
+    email = PageElement(id_='username')
+    password = PageElement(id_='password')
 
-  def __init__(self, driver):
-    self.driver = driver
+    def __init__(self, driver):
+        self.driver = driver
 
-  def is_title_matches(self):
-    """Verifies that the hardcoded text "WF: Login" appears in page title"""
-    assert "WF: Login" in self.driver.title
+    def is_title_matches(self):
+        """Verifies that the hardcoded text "WF: Login" appears in page title"""
+        assert "WF: Login" in self.driver.title
 
-  def submit(self):
-    try:
-      wait = WebDriverWait(self.driver, 10).until(lambda driver: self.driver.find_element_by_id('btnLogin'))
-    finally:
-      self.driver.find_element_by_id('btnLogin').click()
+    def submit(self):
+        try:
+            wait = WebDriverWait(self.driver, 10).until(
+                lambda driver: self.driver.find_element_by_id('btnLogin'))
+        finally:
+            self.driver.find_element_by_id('btnLogin').click()
 
 
 class SearchResultsPage(BasePage):
-  """Search results page action methods come here"""
+    """Search results page action methods come here"""
 
-  def is_results_found(self):
-    # Probably should search for this text in the specific page
-    # element, but as for now it works fine
-    return "No results found." not in self.driver.page_source
+    def is_results_found(self):
+        # Probably should search for this text in the specific page
+        # element, but as for now it works fine
+        return "No results found." not in self.driver.page_source
