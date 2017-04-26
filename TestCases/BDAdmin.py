@@ -21,12 +21,15 @@ class Login(unittest.TestCase):
 
     def test_BD_admin(self):
         login_page = page.LoginPage(self.driver)
+        bd_page = page.BDPage(self.driver)
+
+        #start login_page
         self.driver.get(login_page.url)
         login_page.is_title_matches()
         login_page.email = "oquelland@wealthforge.com"
-        print(login_page.email)
         login_page.password = "Test123!"
-        login_page.submit()
+        #login_page.submit()
+        login_page.btnLogin.click()
 
         try:
             wait = WebDriverWait(self.driver, 5).until(
@@ -34,14 +37,21 @@ class Login(unittest.TestCase):
         finally:
             assert "WF: Broker Dealer" in self.driver.title
 
-        bd_page = page.BDPage(self.driver)
-        bd_page.menuDashboardAdmin
+        #Start bd_page
+        try:
+            wait = WebDriverWait(self.driver, 5).until(
+                lambda driver: bd_page.menuDashboardAdmin is not None)
+        finally:
+            #self.driver.find_element_by_id('menuDashboardAdmin').click()
+            bd_page.menuDashboardAdmin.click()
+
+        #bd_page.menuDashboardAdmin.click()
 
         try:
             wait = WebDriverWait(self.driver, 10).until(
                 lambda driver: self.driver.current_url == 'https://qa1.wealthforge.org/BD/#/rad')
         finally:
-            assert "WF: Broker Dealer" in self.driver.title
+            assert "https://qa1.wealthforge.org/BD/#/rad" in self.driver.current_url
 
     def tearDown(self):
         self.driver.close()
