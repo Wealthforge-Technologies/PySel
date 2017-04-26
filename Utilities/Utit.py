@@ -3,7 +3,7 @@ from selenium import webdriver
 
 
 class Utit:
-
+    
     def waitForAngular(driver):
         # driver = webdriver.Chrome()
 

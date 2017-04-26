@@ -1,39 +1,8 @@
 from selenium.webdriver.support.ui import WebDriverWait
 from element import PageElement
-from locators import MainPageLocators, QALoginPageLocators
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
-
-# class LoginEmailElement(PageElement):
-#   def __init__(self, context=False, **kwargs):
-#         if not kwargs:
-#             raise ValueError("Please specify a locator")
-#         if len(kwargs) > 1:
-#             raise ValueError("Please specify only one locator")
-#         k, v = next(iter(kwargs.items()))
-#         self.locator = (_LOCATOR_MAP[k], v)
-#         self.has_context = bool(context)
-#
-# class LoginPasswordElement(PageElement):
-#   def __init__(self, context=False, **kwargs):
-#         if not kwargs:
-#             raise ValueError("Please specify a locator")
-#         if len(kwargs) > 1:
-#             raise ValueError("Please specify only one locator")
-#         k, v = next(iter(kwargs.items()))
-#         self.locator = (_LOCATOR_MAP[k], v)
-#         self.has_context = bool(context)
-#
-# class LoginSubmitElement(PageElement):
-#   def __init__(self, context=False, **kwargs):
-#         if not kwargs:
-#             raise ValueError("Please specify a locator")
-#         if len(kwargs) > 1:
-#             raise ValueError("Please specify only one locator")
-#         k, v = next(iter(kwargs.items()))
-#         self.locator = (_LOCATOR_MAP[k], v)
-#         self.has_context = bool(context)
 
 
 class BasePage(object):
@@ -41,10 +10,6 @@ class BasePage(object):
 
     def __init__(self, driver):
         self.driver = driver
-
-
-class MainPage(BasePage):
-    """Home page action methods come here. I.e. Python.org"""
 
 
 class LoginPage(BasePage):
@@ -68,10 +33,34 @@ class LoginPage(BasePage):
             self.driver.find_element_by_id('btnLogin').click()
 
 
-class SearchResultsPage(BasePage):
-    """Search results page action methods come here"""
+class BDPage(BasePage):
+    # https://qa1.wealthforge.org/BD/#/
+    menuDashboardAdmin = PageElement(id_='menuDashboardAdmin')  # BD/#/
+    menuDashboardBankSetup = PageElement(id_='menuDashboardBankSetup')  # BD/#/
+    menuDashboardOffering = PageElement(id_='menuDashboardOffering')  # BD/#/
+    menuDashboardInvestor = PageElement(id_='menuDashboardInvestor')  # BD/#/
+    menuDashboardInvestment = PageElement(id_='menuDashboardInvestment')  # BD/#/
+    menuDashboardInvestor = PageElement(id_='menuDashboardInvestor')  # BD/#/
+    menuDashboardFinance = PageElement(id_='menuDashboardFinance')  # BD/#/
+    menuDashboardIssuerDashboard = PageElement(id_='menuDashboardIssuerDashboard')  # BD/#/
 
-    def is_results_found(self):
-        # Probably should search for this text in the specific page
-        # element, but as for now it works fine
-        return "No results found." not in self.driver.page_source
+    def __init__(self, driver):
+        self.driver = driver
+
+    def is_title_matches(self):
+        """Verifies that the hardcoded text "WF: Login" appears in page title"""
+        assert "WF: Login" in self.driver.title
+
+
+class BDRadPage(BasePage):
+    # https://qa1.wealthforge.org/BD/#/rad
+    search = PageElement(id_='search')
+    hamburger = PageElement(id_='appDrawerToggle')
+    topRightDropdown = PageElement(css='#bs-example-navbar-collapse-1 > ul > li > a')
+
+    def __init__(self, driver):
+        self.driver = driver
+
+    def is_title_matches(self):
+        """Verifies that the hardcoded text "WF: Login" appears in page title"""
+        assert "WF: Login" in self.driver.title

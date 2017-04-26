@@ -10,7 +10,7 @@ import time
 sys.path.append(os.path.abspath('../Pages'))
 sys.path.append(os.path.abspath('../Utilities'))
 import page
-import Utit
+from Utit import *
 
 
 class Login(unittest.TestCase):
