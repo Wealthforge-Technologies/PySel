@@ -17,6 +17,7 @@ class LoginPage(BasePage):
     url = "https://qa1.wealthforge.org/login/#/"
     email = PageElement(id_='username')
     password = PageElement(id_='password')
+    btnLogin = PageElement(id_='btnLogin')
 
     def __init__(self, driver):
         self.driver = driver

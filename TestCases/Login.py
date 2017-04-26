@@ -15,12 +15,6 @@ from Utit import *
 
 class Login(unittest.TestCase):
 
-    def wait_for_angular(self, selenium):
-        self.selenium.set_script_timeout(10)
-        self.selenium.execute_async_script("""
-      callback = arguments[arguments.length - 1];
-      angular.element('wfApp').injector().get('$browser').notifyWhenNoOutstandingRequests(callback);""")
-
     def setUp(self):
         self.driver = webdriver.Remote(
             command_executor='http://127.0.0.1:4445/wd/hub',

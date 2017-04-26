@@ -98,11 +98,11 @@ class PageElement(object):
             raise ValueError("Can't set value, element not found")
         elem.send_keys(value)
 
-    def __click__(self, instance):
+    def click(self, instance):
         if self.has_context:
             raise ValueError(
                 "Sorry, the set descriptor doesn't support elements with context.")
         elem = self.__get__(instance, instance.__class__)
         if not elem:
-            raise ValueError("Can't set value, element not found")
+            raise ValueError("Can't click element, element not found")
         elem.click()
