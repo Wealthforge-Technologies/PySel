@@ -21,10 +21,16 @@ class LoginPage(BasePage):
 
     def __init__(self, driver):
         self.driver = driver
+        self.expected_landing_url = "https://qa1.wealthforge.org/login/#/"
+        self.expected_title = "WF: Login"
 
-    def is_title_matches(self):
+    def is_expected_title(self):
         """Verifies that the hardcoded text "WF: Login" appears in page title"""
-        assert "WF: Login" in self.driver.title
+        assert self.expected_title in self.driver.title
+
+    def is_expected_landing_url(self):
+        """Verifies that the hardcoded text "WF: Login" appears in page title"""
+        assert self.expected_landing_url in self.driver.current_url
 
     def submit(self):
         try:
@@ -47,11 +53,16 @@ class BDPage(BasePage):
 
     def __init__(self, driver):
         self.driver = driver
+        self.expected_landing_url = "https://qa1.wealthforge.org/BD/#/"
+        self.expected_title = "WF: Broker Dealer"
 
-    def is_title_matches(self):
+    def is_expected_title(self):
         """Verifies that the hardcoded text "WF: Login" appears in page title"""
-        assert "WF: Login" in self.driver.title
+        assert self.expected_title in self.driver.title
 
+    def is_expected_landing_url(self):
+        """Verifies that the hardcoded text "WF: Login" appears in page title"""
+        assert self.expected_landing_url in self.driver.current_url
 
 class BDRadPage(BasePage):
     # https://qa1.wealthforge.org/BD/#/rad
@@ -61,7 +72,13 @@ class BDRadPage(BasePage):
 
     def __init__(self, driver):
         self.driver = driver
+        self.expected_landing_url = "https://qa1.wealthforge.org/BD/#/rad"
+        self.expected_title = "WF: Broker Dealer"
 
-    def is_title_matches(self):
+    def is_expected_title(self):
         """Verifies that the hardcoded text "WF: Login" appears in page title"""
-        assert "WF: Login" in self.driver.title
+        assert self.expected_title in self.driver.title
+
+    def is_expected_landing_url(self):
+        """Verifies that the hardcoded text "WF: Login" appears in page title"""
+        assert self.expected_landing_url in self.driver.current_url
