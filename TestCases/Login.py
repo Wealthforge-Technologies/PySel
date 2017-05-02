@@ -14,7 +14,7 @@ from Utit import *
 from Users import *
 
 
-class Login(unittest.TestCase):
+class TestLogin(unittest.TestCase):
 
     def setUp(self):
         self.driver = webdriver.Remote(
