@@ -1,8 +1,9 @@
 import unittest
 import sys
 import os
-sys.path.append(os.path.abspath('../TestCases'))
+sys.path.append(os.path.abspath('../TestCases/BD'))
 import Login
+from __init__ import driver
 
 
 def main():
@@ -13,6 +14,8 @@ def main():
 
     runner = unittest.TextTestRunner(verbosity=3)
     result = runner.run(suite)
+    driver().close()
+
 
 
 main()

@@ -2,8 +2,8 @@ import unittest
 import sys
 import os
 sys.path.append(os.path.abspath('../TestCases/BD'))
-import BDAdmin
 import Login
+import BDAdmin
 from __init__ import driver
 
 
@@ -17,6 +17,5 @@ def main():
     runner = unittest.TextTestRunner(verbosity=3)
     result = runner.run(suite)
     driver().close()
-
 
 main()
