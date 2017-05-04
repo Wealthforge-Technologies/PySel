@@ -12,7 +12,6 @@ def main():
 
     runner = unittest.TextTestRunner(verbosity=3)
     result = runner.run(suite)
-    driver().close()
 
 
 main()

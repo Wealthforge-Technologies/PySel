@@ -1,10 +1,7 @@
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.by import By
-import sys
-import os
-sys.path.append(os.path.abspath('../Utilities'))
-from Utit import *
+from .testpageutilities import waitforangular
 
 # class BasePageElement(object):
 #     """Base page class that is initialized on every page object class."""
