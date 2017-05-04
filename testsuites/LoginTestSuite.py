@@ -1,7 +1,7 @@
 import unittest
 import sys
 import os
-from testcases.bd import Login
+from testcases import Login
 
 
 def main():

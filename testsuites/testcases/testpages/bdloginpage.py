@@ -1,10 +1,9 @@
 from selenium.webdriver.support.ui import WebDriverWait
-from element import PageElement
+from .element import PageElement
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
-sys.path.append(os.path.abspath('../Utilities'))
-from Utit import *
+from testpageutilities import Utit
 
 class BDLoginPage(BasePage):
     """QA login page action methods come here. I.e. https://qa1.wealthforge.org/login/#/"""
