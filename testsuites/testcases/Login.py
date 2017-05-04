@@ -3,8 +3,8 @@ from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
-from .testpages import bdloginpage
-from .testpages.testpageutilities import waitforangular
+from .testpages.bdloginpage import BDLoginPage
+from .testcaseutilities.testinfo import TestInfo
 
 
 class TestLogin(unittest.TestCase):
@@ -12,15 +12,15 @@ class TestLogin(unittest.TestCase):
         self.driver = webdriver.Remote(
              command_executor='http://127.0.0.1:4445/wd/hub',
              desired_capabilities=DesiredCapabilities.CHROME)
-        self.testinfo = TestInfo()
-        self.testinfo.load_defaults()
+        self.lookup = TestInfo()
+        self.lookup.load_defaults()
 
     def test_login(self):
         login_page = BDLoginPage(self.driver)
 
         login_page.land()
         login_page.is_expected_landing_url()
-        login_page.login(self.testinfo["CCO.email"],self.testinfo["CCO.password"])
+        login_page.login(self.lookup.testinfo["CCO.email"],self.lookup.testinfo["CCO.password"])
 
     def tearDown(self):
         self.driver.close()

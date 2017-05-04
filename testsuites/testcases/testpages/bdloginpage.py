@@ -3,7 +3,7 @@ from .element import PageElement
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
-from .testpageutilities import waitforangular
+from .testpageutilities.waitforangular import waitForAngular
 from .basepage import *
 
 class BDLoginPage(BasePage):
@@ -29,14 +29,14 @@ class BDLoginPage(BasePage):
     def is_expected_landing_url(self):
         """Verifies that the hardcoded text "WF: Login" appears in page title"""
         try:
-            wait = WebDriverWait(self.driver(), 5).until(
-                lambda wait: self.driver().current_url == self.expected_landing_url)
+            wait = WebDriverWait(self.driver, 5).until(
+                lambda wait: self.driver.current_url == self.expected_landing_url)
         finally:
             assert self.expected_landing_url in self.driver.current_url
 
     def land(self):
         self.driver.get(self.expected_landing_url)
-        Utit.waitForAngular(self.driver)
+        waitForAngular(self.driver)
 
     def login(self, username, password):
         self.email.send_keys(username)
@@ -46,4 +46,4 @@ class BDLoginPage(BasePage):
         assert password in self.password.get_attribute("value")
 
         self.btnLogin.click()
-        Utit.waitForAngular(self.driver)
+        waitForAngular(self.driver)
