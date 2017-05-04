@@ -1,7 +1,5 @@
 import unittest
 from selenium import webdriver
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 from .testpages.bdloginpage import BDLoginPage
 from .testcaseutilities.testinfo import TestInfo
@@ -16,11 +14,11 @@ class TestLogin(unittest.TestCase):
         self.lookup.load_defaults()
 
     def test_login(self):
-        login_page = BDLoginPage(self.driver)
+        bd_login_page = BDLoginPage(self.driver)
 
-        login_page.land()
-        login_page.is_expected_landing_url()
-        login_page.login(self.lookup.testinfo["CCO.email"],self.lookup.testinfo["CCO.password"])
+        bd_login_page.land()
+        bd_login_page.is_expected_landing_url()
+        bd_login_page.login(self.lookup.testinfo["CCO.email"],self.lookup.testinfo["CCO.password"])
 
     def tearDown(self):
         self.driver.close()

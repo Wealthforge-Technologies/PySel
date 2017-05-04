@@ -4,47 +4,39 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
-import sys
-import os
-import time
-# This lets us import modules from sibling directories
-sys.path.append(os.path.abspath('../Pages'))
-import page
-sys.path.append(os.path.abspath('../Utilities'))
-from __init__ import driver
-from Utit import *
-from Users import *
+from .testpages.bdloginpage import BDLoginPage
+from .testpages.bdhomepage import BDHomePage
+from .testcaseutilities.testinfo import TestInfo
 
 
 class TestBDAdmin(unittest.TestCase):
 
     def setUp(self):
-        self.users = Users()
-        self.users.load_defaults()
+        self.driver = webdriver.Remote(
+             command_executor='http://127.0.0.1:4445/wd/hub',
+             desired_capabilities=DesiredCapabilities.CHROME)
+        self.lookup = TestInfo()
+        self.lookup.load_defaults()
 
     def test_BD_admin(self):
-        bd_page = page.BDPage(driver())
-        bd_rad_page = page.BDRadPage(driver())
+        bd_login_page = BDLoginPage(self.driver)
 
-        try:
-            wait = WebDriverWait(driver(), 5).until(
-                EC.title_contains(bd_page.expected_title))
-        finally:
-            bd_page.is_expected_title()
 
-        #This should send us to BDRadPage
-        bd_page.menuDashboardAdmin.click()
-        Utit.waitForAngular(driver())
+        bd_login_page.land()
+        bd_login_page.is_expected_landing_url()
+        bd_login_page.login(self.lookup.testinfo["CCO.email"],self.lookup.testinfo["CCO.password"])
 
-        try:
-            wait = WebDriverWait(driver(), 5).until(
-                lambda wait: driver().current_url == bd_rad_page.expected_landing_url)
-        finally:
-            bd_rad_page.is_expected_landing_url()
+        bd_home_page = BDHomePage(self.driver)
+        bd_home_page.is_expected_landing_url()
+        bd_home_page.menuDashboardAdmin.click()
+
+        
+
+
 
     def tearDown(self):
-        # driver().close()
-        pass
+        self.driver.close()
+
 
 
 if __name__ == "__main__":

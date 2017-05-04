@@ -1,10 +1,10 @@
 from selenium.webdriver.support.ui import WebDriverWait
-from .element import PageElement
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
+from .element import PageElement
 from .testpageutilities.waitforangular import waitForAngular
-from .basepage import *
+from .basepage import BasePage
 
 class BDLoginPage(BasePage):
     """QA login page action methods come here. I.e. https://qa1.wealthforge.org/login/#/"""
@@ -20,11 +20,13 @@ class BDLoginPage(BasePage):
 
     def is_expected_title(self):
         """Verifies that the hardcoded text "WF: Login" appears in page title"""
+        waitForAngular(self.driver)
         try:
             wait = WebDriverWait(self.driver, 5).until(
                 EC.title_contains(self.expected_title))
         finally:
             assert self.expected_title in self.driver.title
+        waitForAngular(self.driver)
 
     def is_expected_landing_url(self):
         """Verifies that the hardcoded text "WF: Login" appears in page title"""
@@ -33,11 +35,13 @@ class BDLoginPage(BasePage):
                 lambda wait: self.driver.current_url == self.expected_landing_url)
         finally:
             assert self.expected_landing_url in self.driver.current_url
+        waitForAngular(self.driver)
 
     def land(self):
         self.driver.get(self.expected_landing_url)
         waitForAngular(self.driver)
 
+    #This method is a form submit for the BD login screen which leads to bdhomepage
     def login(self, username, password):
         self.email.send_keys(username)
         assert username in self.email.get_attribute("value")

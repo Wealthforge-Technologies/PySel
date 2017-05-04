@@ -1,6 +1,4 @@
 import unittest
-import sys
-import os
 from testcases import bd_login_testcase
 
 

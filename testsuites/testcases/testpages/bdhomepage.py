@@ -1,7 +1,9 @@
 from selenium.webdriver.support.ui import WebDriverWait
-from element import PageElement
 from selenium import webdriver
 from selenium.webdriver.common.by import By
+from .element import PageElement
+from .testpageutilities.waitforangular import waitForAngular
+from .basepage import BasePage
 
 class BDHomePage(BasePage):
     # https://qa1.wealthforge.org/BD/#/
@@ -20,12 +22,23 @@ class BDHomePage(BasePage):
         self.expected_title = "WF: Broker Dealer"
 
     def is_expected_title(self):
-        """Verifies that the hardcoded text "WF: Login" appears in page title"""
-        assert self.expected_title in self.driver.title
+        try:
+            wait = WebDriverWait(self.driver, 5).until(
+                EC.title_contains(self.expected_title))
+        finally:
+            assert self.expected_title in self.driver.title
+        waitForAngular(self.driver)
+
 
     def is_expected_landing_url(self):
-        """Verifies that the hardcoded text "WF: Login" appears in page title"""
-        assert self.expected_landing_url in self.driver.current_url
+        try:
+            wait = WebDriverWait(self.driver, 5).until(
+                lambda wait: self.driver.current_url == self.expected_landing_url)
+        finally:
+            assert self.expected_landing_url in self.driver.current_url
+        waitForAngular(self.driver)
+
 
     def land(self):
         self.driver.get(self.expected_landing_url)
+        waitForAngular(self.driver)
