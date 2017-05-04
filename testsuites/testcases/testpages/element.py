@@ -1,10 +1,7 @@
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.by import By
-import sys
-import os
-sys.path.append(os.path.abspath('../Utilities'))
-from Utit import *
+from .testpageutilities.waitforangular import waitForAngular
 
 # class BasePageElement(object):
 #     """Base page class that is initialized on every page object class."""
@@ -77,7 +74,7 @@ class PageElement(object):
 
     def find(self, context):
         try:
-            Utit.waitForAngular(context)
+            waitForAngular(context)
             return context.find_element(*self.locator)
         except NoSuchElementException:
             return None
@@ -103,12 +100,3 @@ class PageElement(object):
             raise ValueError("Can't set value, element not found")
         elem.send_keys(value)
         assert elem.get_attribute("value") == value
-
-    def __click__(self, instance):
-        if self.has_context:
-            raise ValueError(
-                "Sorry, the set descriptor doesn't support elements with context.")
-        elem = self.__get__(instance, instance.__class__)
-        if not elem:
-            raise ValueError("Can't click element, element not found")
-        elem.click()
