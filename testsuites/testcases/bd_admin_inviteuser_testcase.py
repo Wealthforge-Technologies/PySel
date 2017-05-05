@@ -6,8 +6,8 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 from .testpages.bdloginpage import BDLoginPage
 from .testpages.bdhomepage import BDHomePage
+from .testpages.bdadmintab_page import BDAdminTabPage
 from .testcaseutilities.testinfo import TestInfo
-
 
 class TestBDAdmin(unittest.TestCase):
 
@@ -30,7 +30,13 @@ class TestBDAdmin(unittest.TestCase):
         bd_home_page.is_expected_landing_url()
         bd_home_page.menuDashboardAdmin.click()
 
-        
+        bd_admintab_page = BDAdminTabPage(self.driver)
+        bd_admintab_page.is_expected_landing_url()
+        bd_admintab_page.loadtreespace()
+
+
+
+
 
 
 

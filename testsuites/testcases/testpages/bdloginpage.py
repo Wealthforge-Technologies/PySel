@@ -20,13 +20,13 @@ class BDLoginPage(BasePage):
 
     def is_expected_title(self):
         """Verifies that the hardcoded text "WF: Login" appears in page title"""
-        waitForAngular(self.driver)
         try:
             wait = WebDriverWait(self.driver, 5).until(
                 EC.title_contains(self.expected_title))
         finally:
             assert self.expected_title in self.driver.title
         waitForAngular(self.driver)
+
 
     def is_expected_landing_url(self):
         """Verifies that the hardcoded text "WF: Login" appears in page title"""
@@ -39,7 +39,6 @@ class BDLoginPage(BasePage):
 
     def land(self):
         self.driver.get(self.expected_landing_url)
-        waitForAngular(self.driver)
 
     #This method is a form submit for the BD login screen which leads to bdhomepage
     def login(self, username, password):
