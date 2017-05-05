@@ -43,11 +43,9 @@ class BDAdminTabPage(BasePage):
         # elements = self.driver.find_elements_by_xpath("//*[contains(@href,'#/rad/editOrg?id=')]")
         # //div[@id = 'content']/descendant::text()[not(ancestor::div/@class='infobox')]
         elements = self.driver.find_elements_by_xpath("//*[contains(@href,'#/rad/editOrg?id=')]")
-        #elements = self.driver.find_elements_by_xpath("//*[contains(@href,'#/rad/edit')]")
-        for element in self.driver.find_elements_by_xpath("//div[contains(@href,'#/rad/editUser?id=')]"):
-            elements.append(element)
         for element in elements:
-            self.treespace[element.get_attribute("textContent").lstrip()] = element
-        print("..." + str(len(self.treespace)) + "...\n")
-        for thing in self.treespace:
-            print(thing+"..\n")
+            self.treespace[element.get_attribute("textContent").lstrip().split('\n')[1].lstrip()] = element
+        #elements = self.driver.find_elements_by_xpath("//*[contains(@href,'#/rad/edit')]")
+        elements = self.driver.find_elements_by_xpath("//div[contains(@href,'#/rad/editUser?id=')]")
+        for element in elements:
+            self.treespace[element.get_attribute("textContent").lstrip().split('\n')[0]] = element

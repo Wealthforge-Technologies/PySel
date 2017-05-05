@@ -34,6 +34,11 @@ class TestBDAdmin(unittest.TestCase):
         bd_admintab_page.is_expected_landing_url()
         bd_admintab_page.loadtreespace()
 
+        bd_admintab_page.treespace[self.lookup.testinfo["BD.WealthForge Securities.Display Name"]].click()
+
+        while True:
+            pass
+
 
 
 
