@@ -39,13 +39,25 @@ class BDAdminTabPage(BasePage):
         self.driver.get(self.expected_landing_url)
         waitForAngular(self.driver)
 
-    def loadtreespace(self):
+    def load_treenodes(self):
         # elements = self.driver.find_elements_by_xpath("//*[contains(@href,'#/rad/editOrg?id=')]")
         # //div[@id = 'content']/descendant::text()[not(ancestor::div/@class='infobox')]
-        elements = self.driver.find_elements_by_xpath("//*[contains(@href,'#/rad/editOrg?id=')]")
-        for element in elements:
-            self.treespace[element.get_attribute("textContent").lstrip().split('\n')[1].lstrip()] = element
+        orgs = self.driver.find_elements_by_xpath("//*[contains(@href,'#/rad/editOrg?id=')]")
+        orgsoptions = []
+        for org in orgs:
+            idstring = str(org.get_attribute("href")).split("?id=")[1]
+            print(idstring)
+            containsidstring = "//a[contains(@href,'" + idstring + "')]"
+            orgsoptions.append(self.driver.find_elements_by_xpath(containsidstring))
+        orgsdots = self.driver.find_elements_by_xpath("//div[contains(@href,'#/rad/editOrg?id=')]/../../a")
+
+        assert len(orgs) == len(orgsdots) == len(orgsoptions)
+        print("\n Lengths good.\n")
+
+        for treenode in zip(orgs, orgsdots, orgsoptions):
+            self.treespace[treenode[0].get_attribute("textContent").lstrip().split('\n')[1].lstrip()] = treenode
         #elements = self.driver.find_elements_by_xpath("//*[contains(@href,'#/rad/edit')]")
-        elements = self.driver.find_elements_by_xpath("//div[contains(@href,'#/rad/editUser?id=')]")
-        for element in elements:
-            self.treespace[element.get_attribute("textContent").lstrip().split('\n')[0]] = element
+        users = self.driver.find_elements_by_xpath("//div[contains(@href,'#/rad/editUser?id=')]")
+        for user in users:
+            self.treespace[user.get_attribute("textContent").lstrip().split('\n')[0]] = user
+        print(self.treespace)

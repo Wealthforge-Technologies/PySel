@@ -18,7 +18,7 @@ class TestBDAdmin(unittest.TestCase):
         self.lookup = TestInfo()
         self.lookup.load_defaults()
 
-    def test_BD_admin(self):
+    def test_bd_admin(self):
         bd_login_page = BDLoginPage(self.driver)
 
 
@@ -32,9 +32,13 @@ class TestBDAdmin(unittest.TestCase):
 
         bd_admintab_page = BDAdminTabPage(self.driver)
         bd_admintab_page.is_expected_landing_url()
-        bd_admintab_page.loadtreespace()
+        bd_admintab_page.load_treenodes()
 
-        bd_admintab_page.treespace[self.lookup.testinfo["BD.WealthForge Securities.Display Name"]].click()
+        #click on dots
+        bd_admintab_page.treespace[self.lookup.testinfo["BD.WealthForge Securities.Display Name"]][1].click()
+
+        #click on create user under WealthForgeSecurities BD
+        bd_admintab_page.treespace[self.lookup.testinfo["BD.WealthForge Securities.Display Name"]][2][2].click()
 
         while True:
             pass
