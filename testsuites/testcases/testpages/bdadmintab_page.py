@@ -39,6 +39,13 @@ class BDAdminTabPage(BasePage):
         self.driver.get(self.expected_landing_url)
         waitForAngular(self.driver)
 
+    #This function populates the treespace variable.
+    #The treespace variable is a dictionary where the keys are the display names of the 'nodes' in
+    #the tree on the left on the admin tab and the values are lists
+    #The lists look like: (node_div, dots_anchor_element, (dots_option_1, dots_option_2, ...))
+    #So the list actually contains an inner list for each option under the dots dropdown menu
+    #If you wanted to touch dots_option_2 you would do:
+    #treespace["node_display_name"][2][1].click()
     def load_treenodes(self):
         # elements = self.driver.find_elements_by_xpath("//*[contains(@href,'#/rad/editOrg?id=')]")
         # //div[@id = 'content']/descendant::text()[not(ancestor::div/@class='infobox')]
