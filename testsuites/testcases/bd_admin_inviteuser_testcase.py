@@ -7,6 +7,8 @@ from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 from .testpages.bdloginpage import BDLoginPage
 from .testpages.bdhomepage import BDHomePage
 from .testpages.bdadmintab_page import BDAdminTabPage
+from .testpages.bdadmintab_user_page import BDAdminTabUserPage
+
 from .testcaseutilities.testinfo import TestInfo
 
 class TestBDAdmin(unittest.TestCase):
@@ -39,6 +41,11 @@ class TestBDAdmin(unittest.TestCase):
 
         #click on create user under WealthForgeSecurities BD
         bd_admintab_page.treespace[self.lookup.testinfo["BD.WealthForge Securities.Display Name"]][2][2].click()
+
+        bd_admintab_user_page = BDAdminTabUserPage(self.driver)
+        bd_admintab_user_page.enter_info("ding", "dong", "dkoslow+qa+20170509@wealthforge.com")
+        bd_admintab_user_page.add_role("Fingerprinted Person")
+        bd_admintab_user_page.submit()
 
         while True:
             pass
