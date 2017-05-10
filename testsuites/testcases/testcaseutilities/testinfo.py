@@ -33,3 +33,8 @@ class TestInfo:
         self.testinfo["ISS.TestISS+" + str(quirk) + ".Point of Contact Email Address"] = "test.emails@wealthforge.com"
         self.testinfo["ISS.TestISS+" + str(quirk) + ".Default Bank"] = "TestISS+"+str(quirk)
         self.testinfo["ISS.TestISS+" + str(quirk) + ".Employer Identification Number (EIN) / Tax ID"] = "TestISS+"+str(quirk)
+        self.testinfo["NewBDUser.First Name"] = "F" + str(randint(1,999))
+        self.testinfo["NewBDUser.Last Name"] = "L" + str(randint(1,999))
+        self.testinfo["NewBDUser.Full Name"] = self.testinfo["NewBDUser.First Name"] + " " + self.testinfo["NewBDUser.Last Name"]
+        self.testinfo["NewBDUser.Email"] = "wealthforgedev1+"+str(quirk)+"@gmail.com"
+        self.testinfo["NewBDUser.Role1"] = "Fingerprinted Person"

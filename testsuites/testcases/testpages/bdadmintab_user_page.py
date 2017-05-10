@@ -49,6 +49,8 @@ class BDAdminTabUserPage(BasePage):
     def add_role(self, role):
         Select(self.rolesDropdown).select_by_visible_text(role)
         self.rolesAdd.click()
+        waitForAngular(self.driver)
+
 
 
     def enter_info(self, first, last, email):
@@ -61,8 +63,28 @@ class BDAdminTabUserPage(BasePage):
         self.email.send_keys(email)
         assert email in self.email.get_attribute("value")
 
+
     def submit(self):
         self.submitButton.click()
+        waitForAngular(self.driver)
+
+
+    def first_name_should_be(self, expected_firstname):
+        waitForAngular(self.driver)
+        assert expected_firstname in self.firstName.get_attribute("value")
+
+    def last_name_should_be(self, expected_lastname):
+        waitForAngular(self.driver)
+        assert expected_lastname in self.lastName.get_attribute("value")
+
+    def email_should_be(self, expected_email):
+        waitForAngular(self.driver)
+        assert expected_email in self.email.get_attribute("value")
+
+
+    def roles_should_contain(self, role):
+        pass
+
 
 
 

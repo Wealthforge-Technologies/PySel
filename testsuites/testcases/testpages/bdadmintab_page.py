@@ -47,6 +47,7 @@ class BDAdminTabPage(BasePage):
     #If you wanted to touch dots_option_2 you would do:
     #treespace["node_display_name"][2][1].click()
     def load_treenodes(self):
+        self.treespace = {}
         # elements = self.driver.find_elements_by_xpath("//*[contains(@href,'#/rad/editOrg?id=')]")
         # //div[@id = 'content']/descendant::text()[not(ancestor::div/@class='infobox')]
         orgs = self.driver.find_elements_by_xpath("//*[contains(@href,'#/rad/editOrg?id=')]")
