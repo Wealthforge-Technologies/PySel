@@ -5,6 +5,7 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import Select
 from .testpageutilities.waitforangular import waitForAngular
+import time
 
 
 class BDAdminTabUserPage(BasePage):
@@ -25,7 +26,7 @@ class BDAdminTabUserPage(BasePage):
         self.driver = driver
         # self.expected_landing_url = "https://qa1.wealthforge.org/BD/#/rad"
         self.expected_title = "WF: Broker Dealer"
-        roles_repeater = {}
+        roles_repeater = []
 
     def is_expected_title(self):
         try:
@@ -85,8 +86,12 @@ class BDAdminTabUserPage(BasePage):
 
 
     def roles_should_contain(self, role):
-        for role in self.driver.find_elements_by_xpath("//li[contains(@ng-repeat,'roles')]"):
-            print role.get_attribute("value")
+        waitForAngular(self.driver)
+        for eachrole in self.driver.find_elements_by_xpath("//li[contains(@ng-repeat,'roles')]"):
+            if role in eachrole.get_attribute("textContent"):
+                assert True
+                return
+        assert False
 
 
 

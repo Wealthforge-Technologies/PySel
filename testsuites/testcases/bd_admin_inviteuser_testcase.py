@@ -37,29 +37,35 @@ class TestBDAdmin(unittest.TestCase):
         bd_admintab_page.load_treenodes()
 
         #click on dots
-        bd_admintab_page.treespace[self.lookup.testinfo["BD.WealthForge Securities.Display Name"]][1].click()
+        # bd_admintab_page.treespace[self.lookup.testinfo["BD.WealthForge Securities.Display Name"]][1].click()
+        #
+        # #click on create user under WealthForgeSecurities BD
+        # bd_admintab_page.treespace[self.lookup.testinfo["BD.WealthForge Securities.Display Name"]][2][2].click()
+        #
+        # bd_admintab_user_page = BDAdminTabUserPage(self.driver)
+        # bd_admintab_user_page.enter_info(self.lookup.testinfo["NewBDUser.First Name"], self.lookup.testinfo["NewBDUser.Last Name"], self.lookup.testinfo["NewBDUser.Email"])
+        # bd_admintab_user_page.add_role(self.lookup.testinfo["NewBDUser.Role1"])
+        # bd_admintab_user_page.submit()
+        #
+        #
+        # bd_admintab_page.load_treenodes()
+        # bd_admintab_page.treespace[self.lookup.testinfo["NewBDUser.Full Name"]].click()
+        #
+        # bd_admintab_user_page.first_name_should_be(self.lookup.testinfo["NewBDUser.First Name"])
+        # bd_admintab_user_page.last_name_should_be(self.lookup.testinfo["NewBDUser.Last Name"])
+        # bd_admintab_user_page.email_should_be(self.lookup.testinfo["NewBDUser.Email"])
 
-        #click on create user under WealthForgeSecurities BD
-        bd_admintab_page.treespace[self.lookup.testinfo["BD.WealthForge Securities.Display Name"]][2][2].click()
-
+        bd_admintab_page.treespace["F767 L82"].click()
         bd_admintab_user_page = BDAdminTabUserPage(self.driver)
-        bd_admintab_user_page.enter_info(self.lookup.testinfo["NewBDUser.First Name"], self.lookup.testinfo["NewBDUser.Last Name"], self.lookup.testinfo["NewBDUser.Email"])
-        bd_admintab_user_page.add_role(self.lookup.testinfo["NewBDUser.Role1"])
-        bd_admintab_user_page.submit()
-
-
-        bd_admintab_page.load_treenodes()
-        bd_admintab_page.treespace[self.lookup.testinfo["NewBDUser.Full Name"]].click()
-
-        bd_admintab_user_page.first_name_should_be(self.lookup.testinfo["NewBDUser.First Name"])
-        bd_admintab_user_page.last_name_should_be(self.lookup.testinfo["NewBDUser.Last Name"])
-        bd_admintab_user_page.email_should_be(self.lookup.testinfo["NewBDUser.Email"])
+        bd_admintab_user_page.first_name_should_be("F767")
+        bd_admintab_user_page.last_name_should_be("L82")
+        bd_admintab_user_page.email_should_be("wealthforgedev1+989928@gmail.com")
+        bd_admintab_user_page.roles_should_contain("Fingerprinted Person")
+        bd_admintab_user_page.roles_should_contain("Chief Compliance Officer")
 
 
 
 
-        while True:
-            pass
 
 
 

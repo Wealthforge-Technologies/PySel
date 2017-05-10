@@ -54,13 +54,11 @@ class BDAdminTabPage(BasePage):
         orgsoptions = []
         for org in orgs:
             idstring = str(org.get_attribute("href")).split("?id=")[1]
-            print(idstring)
             containsidstring = "//a[contains(@href,'" + idstring + "')]"
             orgsoptions.append(self.driver.find_elements_by_xpath(containsidstring))
         orgsdots = self.driver.find_elements_by_xpath("//div[contains(@href,'#/rad/editOrg?id=')]/../../a")
 
         assert len(orgs) == len(orgsdots) == len(orgsoptions)
-        print("\n Lengths good.\n")
 
         for treenode in zip(orgs, orgsdots, orgsoptions):
             self.treespace[treenode[0].get_attribute("textContent").lstrip().split('\n')[1].lstrip()] = treenode
@@ -68,4 +66,3 @@ class BDAdminTabPage(BasePage):
         users = self.driver.find_elements_by_xpath("//div[contains(@href,'#/rad/editUser?id=')]")
         for user in users:
             self.treespace[user.get_attribute("textContent").lstrip().split('\n')[0]] = user
-        print(self.treespace)
