@@ -11,6 +11,7 @@ class TestInfo:
 
     def load_defaults(self):
         quirk = randint(100000, 999999)
+        self.testinfo["environment"] = "qa1.wealthforge.org"
         self.testinfo["CCO.email"] = "oquelland@wealthforge.com"
         self.testinfo["CCO.password"] = "Test123!"
         self.testinfo["BD.WealthForge Securities.Display Name"] = "WealthForge Securities"
@@ -38,3 +39,4 @@ class TestInfo:
         self.testinfo["NewBDUser.Full Name"] = self.testinfo["NewBDUser.First Name"] + " " + self.testinfo["NewBDUser.Last Name"]
         self.testinfo["NewBDUser.Email"] = "wealthforgedev1+"+str(quirk)+"@gmail.com"
         self.testinfo["NewBDUser.Role1"] = "Fingerprinted Person"
+        self.testinfo["NewBDUser.Password"] = "Test123!"
