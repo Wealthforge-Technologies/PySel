@@ -8,8 +8,8 @@ from .testpages.bdloginpage import BDLoginPage
 from .testpages.bdhomepage import BDHomePage
 from .testpages.bdadmintab_page import BDAdminTabPage
 from .testpages.bdadmintab_user_page import BDAdminTabUserPage
-
 from .testcaseutilities.testinfo import TestInfo
+from .testcaseutilities.gmail import ListMessagesMatchingQuery
 
 class TestBDAdmin(unittest.TestCase):
 
@@ -36,27 +36,32 @@ class TestBDAdmin(unittest.TestCase):
         bd_admintab_page.is_expected_landing_url()
         bd_admintab_page.load_treenodes()
 
-        # click on dots
-        bd_admintab_page.treespace[self.lookup.testinfo["BD.WealthForge Securities.Display Name"]][1].click()
+        # # click on dots
+        # assert bd_admintab_page.treespace[self.lookup.testinfo["BD.WealthForge Securities.Display Name"]] is not None
+        # bd_admintab_page.treespace[self.lookup.testinfo["BD.WealthForge Securities.Display Name"]][1].click()
+        #
+        # #click on create user under WealthForgeSecurities BD
+        # bd_admintab_page.treespace[self.lookup.testinfo["BD.WealthForge Securities.Display Name"]][2][2].click()
+        #
+        # bd_admintab_user_page = BDAdminTabUserPage(self.driver)
+        # bd_admintab_user_page.enter_info(self.lookup.testinfo["NewBDUser.First Name"], self.lookup.testinfo["NewBDUser.Last Name"], self.lookup.testinfo["NewBDUser.Email"])
+        # bd_admintab_user_page.add_role(self.lookup.testinfo["NewBDUser.Role1"])
+        # bd_admintab_user_page.submit()
+        #
+        #
+        # bd_admintab_page.load_treenodes()
+        #
+        # #click on newly created user's tree node
+        # bd_admintab_page.treespace[self.lookup.testinfo["NewBDUser.Full Name"]].click()
+        #
+        # bd_admintab_user_page.first_name_should_be(self.lookup.testinfo["NewBDUser.First Name"])
+        # bd_admintab_user_page.last_name_should_be(self.lookup.testinfo["NewBDUser.Last Name"])
+        # bd_admintab_user_page.email_should_be(self.lookup.testinfo["NewBDUser.Email"])
+        # bd_admintab_user_page.roles_should_contain(self.lookup.testinfo["NewBDUser.Role1"])
 
-        #click on create user under WealthForgeSecurities BD
-        bd_admintab_page.treespace[self.lookup.testinfo["BD.WealthForge Securities.Display Name"]][2][2].click()
-
-        bd_admintab_user_page = BDAdminTabUserPage(self.driver)
-        bd_admintab_user_page.enter_info(self.lookup.testinfo["NewBDUser.First Name"], self.lookup.testinfo["NewBDUser.Last Name"], self.lookup.testinfo["NewBDUser.Email"])
-        bd_admintab_user_page.add_role(self.lookup.testinfo["NewBDUser.Role1"])
-        bd_admintab_user_page.submit()
+        print(ListMessagesMatchingQuery('me',''))
 
 
-        bd_admintab_page.load_treenodes()
-
-        #click on newly created user's tree node
-        bd_admintab_page.treespace[self.lookup.testinfo["NewBDUser.Full Name"]].click()
-
-        bd_admintab_user_page.first_name_should_be(self.lookup.testinfo["NewBDUser.First Name"])
-        bd_admintab_user_page.last_name_should_be(self.lookup.testinfo["NewBDUser.Last Name"])
-        bd_admintab_user_page.email_should_be(self.lookup.testinfo["NewBDUser.Email"])
-        bd_admintab_user_page.email_should_be(self.lookup.testinfo["NewBDUser.Role1"])
 
     def tearDown(self):
         self.driver.close()

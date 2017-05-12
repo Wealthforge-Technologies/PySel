@@ -48,21 +48,20 @@ class BDAdminTabPage(BasePage):
     #treespace["node_display_name"][2][1].click()
     def load_treenodes(self):
         self.treespace = {}
-        # elements = self.driver.find_elements_by_xpath("//*[contains(@href,'#/rad/editOrg?id=')]")
-        # //div[@id = 'content']/descendant::text()[not(ancestor::div/@class='infobox')]
+        assert self.driver.find_elements_by_xpath("//*[contains(@href,'#/rad/editOrg?id=')]") is not None
         orgs = self.driver.find_elements_by_xpath("//*[contains(@href,'#/rad/editOrg?id=')]")
         orgsoptions = []
         for org in orgs:
             idstring = str(org.get_attribute("href")).split("?id=")[1]
             containsidstring = "//a[contains(@href,'" + idstring + "')]"
+            assert self.driver.find_elements_by_xpath(containsidstring) is not None
             orgsoptions.append(self.driver.find_elements_by_xpath(containsidstring))
+        assert self.driver.find_elements_by_xpath("//div[contains(@href,'#/rad/editOrg?id=')]/../../a") is not None
         orgsdots = self.driver.find_elements_by_xpath("//div[contains(@href,'#/rad/editOrg?id=')]/../../a")
-
         assert len(orgs) == len(orgsdots) == len(orgsoptions)
-
         for treenode in zip(orgs, orgsdots, orgsoptions):
             self.treespace[treenode[0].get_attribute("textContent").lstrip().split('\n')[1].lstrip()] = treenode
-        #elements = self.driver.find_elements_by_xpath("//*[contains(@href,'#/rad/edit')]")
+        assert self.driver.find_elements_by_xpath("//div[contains(@href,'#/rad/editUser?id=')]") is not None
         users = self.driver.find_elements_by_xpath("//div[contains(@href,'#/rad/editUser?id=')]")
         for user in users:
             self.treespace[user.get_attribute("textContent").lstrip().split('\n')[0]] = user
