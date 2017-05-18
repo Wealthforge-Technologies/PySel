@@ -6,6 +6,8 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import Select
 from .testpageutilities.waitforangular import waitForAngular
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.action_chains import ActionChains
+
 
 
 class BDAdminTabIssPage(BasePage):
@@ -31,37 +33,55 @@ class BDAdminTabIssPage(BasePage):
     elements["issBankSelect"] = PageElement(id_='issBankSelect')
     elements["taxInput"] = PageElement(id_='taxInput')
     btnCancel = PageElement(id_='btnCancel')
-    submitButton = PageElement(xpath="//button[contains(@ng-click,'submit()')]")
+    submitButton = PageElement(xpath="//button[contains(@ng-click,'save()')]")
+    brandingDetails = PageElement(xpath="//div[contains(@ng-if, 'ORG_TYPE_ISS')]")
 
 
 
     def __init__(self, driver):
         self.driver = driver
         waitForAngular(self.driver)
+        self.actions = ActionChains(self.driver)
 
 
     #WARNING: issjson must match order and length of elementlist
     def fill_elements(self,issjson):
+        waitForAngular(self.driver)
         assert len(self.elements) == len(issjson)
         for key, value in issjson.items():
-            try:
-                wait = WebDriverWait(self.driver, 5).until(
-                    EC.element_to_be_clickable((By.ID, key))
-                    )
-            finally:
-                assert self.driver.find_element_by_id(key).is_enabled()
-            if any(x in self.driver.find_element_by_id(key).get_attribute("id") for x in ["Drop","drop","BankSelect"]):
-                Select(self.driver.find_element_by_id(key)).select_by_visible_text(value)
-            elif "color" in self.driver.find_element_by_id(key).get_attribute("id"):
-                self.driver.find_element_by_id(key).clear()
-                self.driver.find_element_by_id(key).send_keys("#")
-                self.driver.find_element_by_id(key).send_keys(value)
-                assert value in self.driver.find_element_by_id(key).get_attribute("value")
+            #self.actions.move_to_element(self.driver.find_element_by_id(key))
+            elem = self.driver.find_element_by_id(key)
+            self.driver.execute_script("arguments[0].scrollIntoView();", elem)
+            wait = WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located((By.ID, key)))
+            if any(x in elem.get_attribute("id") for x in ["Drop","drop","BankSelect"]):
+                Select(elem).select_by_visible_text(value)
+                print ("...key:" + key + "\n...expected:" + value + "\n...value:" + Select(elem).all_selected_options[0].get_attribute("value"))
+                assert value in Select(elem).all_selected_options[0].get_attribute("textContent")
+            elif "color" in elem.get_attribute("id"):
+                elem.clear()
+                elem.send_keys("#")
+                elem.send_keys(value)
+                assert value in elem.get_attribute("value")
+                print ("...key:" + key + "\n...expected:" + value + "\n...value:" + elem.get_attribute("value"))
             else:
-                self.driver.find_element_by_id(key).click()
-                self.driver.find_element_by_id(key).send_keys(value)
-                #print ("...key:" + key + "\n...expected:" + value + "\n...value:" + self.driver.find_element_by_id(key).get_attribute("value"))
-                assert value in self.driver.find_element_by_id(key).get_attribute("value")
+                elem.send_keys(value)
+                print ("...key:" + key + "\n...expected:" + value + "\n...value:" + elem.get_attribute("value"))
+                assert value in elem.get_attribute("value")
+
+    def verify_elements(self, issjson):
+        waitForAngular(self.driver)
+        assert len(self.elements) == len(issjson)
+        print ("\n...Checking Issuer Data...\n\n")
+        for key, value in issjson.items():
+            elem = self.driver.find_element_by_id(key)
+            # self.driver.execute_script("arguments[0].scrollIntoView();", self.driver.find_element_by_id(key))
+            # wait = WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located((By.ID, key)))
+            if any(x in elem.get_attribute("id") for x in ["Drop","drop","BankSelect"]):
+                print ("...key:" + key + "\n...expected:" + value + "\n...value:" + Select(elem).all_selected_options[0].get_attribute("value"))
+                assert value in Select(elem).all_selected_options[0].get_attribute("textContent")
+            else:
+                print ("...key:" + key + "\n...expected:" + value + "\n...value:" + elem.get_attribute("value"))
+                assert value in elem.get_attribute("value")
 
     def submit(self):
         assert self.submitButton is not None

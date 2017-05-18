@@ -67,3 +67,11 @@ class BDAdminTabPage(BasePage):
         users = self.driver.find_elements_by_xpath("//div[contains(@href,'#/rad/editUser?id=')]")
         for user in users:
             self.treespace[user.get_attribute("textContent").lstrip().split('\n')[0]] = user
+
+    def get_treenode(self, displayNameInput):
+        print(displayNameInput)
+        print(self.treespace)
+        waitForAngular(self.driver)
+        elem = self.treespace[displayNameInput[0]][0]
+        self.driver.execute_script("arguments[0].scrollIntoView();", elem)
+        return elem

@@ -49,6 +49,14 @@ class TestBDAdminCreateIssuer(unittest.TestCase):
         bd_admintab_iss_page = BDAdminTabIssPage(self.driver)
         bd_admintab_iss_page.fill_elements(self.lookup.testinfo["testissinfo"])
 
+        bd_admintab_iss_page.submit()
+
+        bd_admintab_page.load_treenodes()
+
+        bd_admintab_page.get_treenode([self.lookup.testinfo["testissinfo"]["displayNameInput"]]).click()
+
+        bd_admintab_iss_page.verify_elements(self.lookup.testinfo["testissinfo"])
+
         while True:
             pass
 

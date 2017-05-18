@@ -31,7 +31,7 @@ class TestInfo:
         self.testissinfo["legalInput"] = "WealthForge Legal Name"
         self.testissinfo["corpTypeSelect"] = "LLC"
         self.testissinfo["incorpStateDrop"] = "Virginia"
-        self.testissinfo["pocInput"] = "Test Contanct"
+        self.testissinfo["pocInput"] = "Test Contact"
         self.testissinfo["poctInput"] = "Test Contact Title"
         self.testissinfo["pocEmailInput"] = "wealthforgedev1@gmail.com"
         self.testissinfo["issBankSelect"] = "Atlantic Capital Bank"
