@@ -13,14 +13,11 @@ class BDAdminTabUserPage(BasePage):
     firstName = PageElement(id_='fnameInput')
     lastName = PageElement(id_='lnameInput')
     email = PageElement(id_='emailInput')
-    # TODO: add hooks to current role list
     rolesDropdown = PageElement(id_='RoleSelect')
     rolesAdd = PageElement(xpath="//button[contains(@ng-click,'addRole')]")
     submitButton = PageElement(xpath="//button[contains(@ng-click,'submit()')]")
     rolesRepeater = PageElement(xpath="//li[contains(@ng-repeat,'roles')]")
 
-    # TODO: roles submit
-    # TODO: save button
 
     def __init__(self, driver):
         self.driver = driver
@@ -100,10 +97,3 @@ class BDAdminTabUserPage(BasePage):
                 assert True
                 return
         assert False
-
-
-
-
-
-
-        # TODO: test current role list

@@ -4,6 +4,7 @@ class TestInfo:
 
     def __init__(self):
         self.testinfo = {}
+        self.testissinfo = {}
 
     #TODO write the json object reader to use outside data in the test cases
     def load_json(self):
@@ -15,25 +16,29 @@ class TestInfo:
         self.testinfo["CCO.email"] = "oquelland@wealthforge.com"
         self.testinfo["CCO.password"] = "Test123!"
         self.testinfo["BD.WealthForge Securities.Display Name"] = "WealthForge Securities"
-        self.testinfo["ISS.TestISS+" + str(quirk) + ".Display Name"] = "TestISS+"+str(quirk)
-        self.testinfo["ISS.TestISS+" + str(quirk) + ".Address"] = "Test Avenue 123"
-        self.testinfo["ISS.TestISS+" + str(quirk) + ".Address Continued"] = "PO 222"
-        self.testinfo["ISS.TestISS+" + str(quirk) + ".City"] = "TestCity"
-        self.testinfo["ISS.TestISS+" + str(quirk) + ".State"] = "Virginia"
-        self.testinfo["ISS.TestISS+" + str(quirk) + ".Zip Code"] = "23220"
-        self.testinfo["ISS.TestISS+" + str(quirk) + ".Phone Number"] = "8041234567"
-        self.testinfo["ISS.TestISS+" + str(quirk) + ".Logo Url"] = "https://www.wealthforge.com/hs-fs/hubfs/WF_logo.png?t=1493926272979&width=636&name=WF_logo.png"
-        self.testinfo["ISS.TestISS+" + str(quirk) + ".Website"] = "https://www.wealthforge.com"
-        self.testinfo["ISS.TestISS+" + str(quirk) + ".Primary Color"] = "666666"
-        self.testinfo["ISS.TestISS+" + str(quirk) + ".Secondary Color"] = "333333"
-        self.testinfo["ISS.TestISS+" + str(quirk) + ".Legal Name"] = "WealthForge Legal Name"
-        self.testinfo["ISS.TestISS+" + str(quirk) + ".Incorporated As"] = "LLC"
-        self.testinfo["ISS.TestISS+" + str(quirk) + ".State of Incorporation"] = "Virginia"
-        self.testinfo["ISS.TestISS+" + str(quirk) + ".Point of Contact Name"] = "Test Contanct"
-        self.testinfo["ISS.TestISS+" + str(quirk) + ".Point of Contact Title"] = "Test Contact Title"
-        self.testinfo["ISS.TestISS+" + str(quirk) + ".Point of Contact Email Address"] = "test.emails@wealthforge.com"
-        self.testinfo["ISS.TestISS+" + str(quirk) + ".Default Bank"] = "TestISS+"+str(quirk)
-        self.testinfo["ISS.TestISS+" + str(quirk) + ".Employer Identification Number (EIN) / Tax ID"] = "TestISS+"+str(quirk)
+
+        self.testissinfo["displayNameInput"] = "TestISS+"+str(quirk)
+        self.testissinfo["address1Input"] = "Test Avenue 123"
+        self.testissinfo["address2Input"] = "PO 222"
+        self.testissinfo["cityInput"] = "TestCity"
+        self.testissinfo["stateDrop"] = "Virginia"
+        self.testissinfo["zipInput"] = "23220"
+        self.testissinfo["phoneInput"] = "(804) 123-4567"
+        self.testissinfo["logoUrlInput"] = "https://www.wealthforge.com/hs-fs/hubfs/WF_logo.png?t=1493926272979&width=636&name=WF_logo.png"
+        self.testissinfo["urlInput"] = "https://www.wealthforge.com"
+        self.testissinfo["colorPrimaryInput"] = "666666"
+        self.testissinfo["colorSecondaryInput"] = "333333"
+        self.testissinfo["legalInput"] = "WealthForge Legal Name"
+        self.testissinfo["corpTypeSelect"] = "LLC"
+        self.testissinfo["incorpStateDrop"] = "Virginia"
+        self.testissinfo["pocInput"] = "Test Contanct"
+        self.testissinfo["poctInput"] = "Test Contact Title"
+        self.testissinfo["pocEmailInput"] = "wealthforgedev1@gmail.com"
+        self.testissinfo["issBankSelect"] = "Atlantic Capital Bank"
+        self.testissinfo["taxInput"] = "12-3456789"
+
+        self.testinfo["testissinfo"] = self.testissinfo
+
         self.testinfo["NewBDUser.First Name"] = "F" + str(randint(1,999))
         self.testinfo["NewBDUser.Last Name"] = "L" + str(randint(1,999))
         self.testinfo["NewBDUser.Full Name"] = self.testinfo["NewBDUser.First Name"] + " " + self.testinfo["NewBDUser.Last Name"]
