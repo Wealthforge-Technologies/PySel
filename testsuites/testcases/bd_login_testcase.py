@@ -7,21 +7,19 @@ from .testcaseutilities.testinfo import TestInfo
 
 class TestLogin(unittest.TestCase):
     def setUp(self):
-        self.driver = webdriver.Remote(
-             command_executor='http://127.0.0.1:4445/wd/hub',
-             desired_capabilities=DesiredCapabilities.CHROME)
+        # self.driver = webdriver.Remote(
+        #      command_executor='http://127.0.0.1:4445/wd/hub',
+        #      desired_capabilities=DesiredCapabilities.CHROME)
         self.lookup = TestInfo()
         self.lookup.load_defaults()
 
     def test_login(self):
-        bd_login_page = BDLoginPage(self.driver)
+        bd_login_page = BDLoginPage()
 
         bd_login_page.land()
         bd_login_page.is_expected_landing_url()
         bd_login_page.login(self.lookup.testinfo["CCO.email"],self.lookup.testinfo["CCO.password"])
 
-    def tearDown(self):
-        self.driver.close()
 
 
 

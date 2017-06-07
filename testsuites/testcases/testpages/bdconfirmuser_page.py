@@ -6,6 +6,8 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import Select
 from .testpageutilities.waitforangular import waitForAngular
 import time
+from .basepage import BasePage
+from .testpageutilities import getOrCreateWebdriver
 
 
 class BDConfirmUserPage(BasePage):
@@ -14,8 +16,8 @@ class BDConfirmUserPage(BasePage):
     confirm = PageElement(id_='password')
     submit_button = PageElement(id_='btnSetPassword')
 
-    def __init__(self, driver, expected_reset_url):
-        self.driver = driver
+    def __init__(self, expected_reset_url):
+        self.driver = getOrCreateWebdriver()
         self.expected_title = "WF: Login"
         self.expected_landing_url = expected_reset_url
 

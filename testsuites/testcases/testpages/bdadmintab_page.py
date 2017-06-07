@@ -5,6 +5,8 @@ from .element import PageElement
 from .basepage import BasePage
 from .testpageutilities.waitforangular import waitForAngular
 from selenium.webdriver.support import expected_conditions as EC
+from .basepage import BasePage
+from .testpageutilities import getOrCreateWebdriver
 
 
 class BDAdminTabPage(BasePage):
@@ -15,8 +17,8 @@ class BDAdminTabPage(BasePage):
 
 
 
-    def __init__(self, driver):
-        self.driver = driver
+    def __init__(self):
+        self.driver = getOrCreateWebdriver()
         self.expected_landing_url = "https://qa1.wealthforge.org/BD/#/rad"
         self.expected_title = "WF: Broker Dealer"
         self.treespace = {}

@@ -6,14 +6,15 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import Select
 from .testpageutilities.waitforangular import waitForAngular
 import time
+from .testpageutilities import getOrCreateWebdriver
 
 
 class BDConfirmUserSuccessPage(BasePage):
     # https://qa1.wealthforge.org/BD/#/rad
     submit_button = PageElement(id_='btnReturnToLogin')
 
-    def __init__(self, driver):
-        self.driver = driver
+    def __init__(self):
+        self.driver = getOrCreateWebdriver()
         self.expected_title = "WF: Login"
 
     def is_expected_title(self):

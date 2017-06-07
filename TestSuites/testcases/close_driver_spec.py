@@ -7,19 +7,15 @@ from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 from .testpages.bdloginpage import BDLoginPage
 from .testpages.bdhomepage import BDHomePage
 from .testcaseutilities.testinfo import TestInfo
+from .testpages.testpageutilities import closeDriver
+
+class CloseDriver(unittest.TestCase):
 
 
-class TestBDAdmin(unittest.TestCase):
+    def test_close(self):
+        closeDriver()
 
-    def setUp(self):
-        self.lookup = TestInfo()
-        self.lookup.load_defaults()
 
-    def test_BD_admin(self):
-
-        bd_home_page = BDHomePage()
-        bd_home_page.is_expected_landing_url()
-        bd_home_page.menuDashboardAdmin.click()
 
 
 

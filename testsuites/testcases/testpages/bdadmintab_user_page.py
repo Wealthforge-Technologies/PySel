@@ -6,6 +6,8 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import Select
 from .testpageutilities.waitforangular import waitForAngular
 import time
+from .basepage import BasePage
+from .testpageutilities import getOrCreateWebdriver
 
 
 class BDAdminTabUserPage(BasePage):
@@ -19,8 +21,8 @@ class BDAdminTabUserPage(BasePage):
     rolesRepeater = PageElement(xpath="//li[contains(@ng-repeat,'roles')]")
 
 
-    def __init__(self, driver):
-        self.driver = driver
+    def __init__(self):
+        self.driver = getOrCreateWebdriver()
         self.expected_title = "WF: Broker Dealer"
         roles_repeater = []
 

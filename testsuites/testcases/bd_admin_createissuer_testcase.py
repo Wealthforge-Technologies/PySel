@@ -17,25 +17,25 @@ from .testcaseutilities.gmailaccessor import get_new_bd_user_password_reset_url
 class TestBDAdminCreateIssuer(unittest.TestCase):
 
     def setUp(self):
-        self.driver = webdriver.Remote(
-             command_executor='http://127.0.0.1:4445/wd/hub',
-             desired_capabilities=DesiredCapabilities.CHROME)
+        # self.driver = webdriver.Remote(
+        #      command_executor='http://127.0.0.1:4445/wd/hub',
+        #      desired_capabilities=DesiredCapabilities.CHROME)
         self.lookup = TestInfo()
         self.lookup.load_defaults()
 
     def test_bd_admin_create_issuer(self):
-        bd_login_page = BDLoginPage(self.driver)
-
-
-        bd_login_page.land()
-        bd_login_page.is_expected_landing_url()
-        bd_login_page.login(self.lookup.testinfo["CCO.email"],self.lookup.testinfo["CCO.password"])
-
-        bd_home_page = BDHomePage(self.driver)
-        bd_home_page.is_expected_landing_url()
-        bd_home_page.menuDashboardAdmin.click()
-
-        bd_admintab_page = BDAdminTabPage(self.driver)
+        # bd_login_page = BDLoginPage()
+        #
+        #
+        # bd_login_page.land()
+        # bd_login_page.is_expected_landing_url()
+        # bd_login_page.login(self.lookup.testinfo["CCO.email"],self.lookup.testinfo["CCO.password"])
+        #
+        # bd_home_page = BDHomePage()
+        # bd_home_page.is_expected_landing_url()
+        # bd_home_page.menuDashboardAdmin.click()
+        #
+        bd_admintab_page = BDAdminTabPage()
         bd_admintab_page.is_expected_landing_url()
         bd_admintab_page.load_treenodes()
 
@@ -46,7 +46,7 @@ class TestBDAdminCreateIssuer(unittest.TestCase):
         #click on create iss under WealthForgeSecurities BD
         bd_admintab_page.treespace[self.lookup.testinfo["BD.WealthForge Securities.Display Name"]][2][1].click()
 
-        bd_admintab_iss_page = BDAdminTabIssPage(self.driver)
+        bd_admintab_iss_page = BDAdminTabIssPage()
         bd_admintab_iss_page.fill_elements(self.lookup.testinfo["testissinfo"])
 
         bd_admintab_iss_page.submit()
@@ -57,8 +57,8 @@ class TestBDAdminCreateIssuer(unittest.TestCase):
 
         bd_admintab_iss_page.verify_elements(self.lookup.testinfo["testissinfo"])
 
-        while True:
-            pass
+        # while True:
+        #     pass
 
         # bd_admintab_user_page = BDAdminTabUserPage(self.driver)
         # bd_admintab_user_page.enter_info(self.lookup.testinfo["NewBDUser.First Name"], self.lookup.testinfo["NewBDUser.Last Name"], self.lookup.testinfo["NewBDUser.Email"])
@@ -88,13 +88,13 @@ class TestBDAdminCreateIssuer(unittest.TestCase):
         # bd_login_page.login(self.lookup.testinfo["NewBDUser.Email"],self.lookup.testinfo["NewBDUser.Password"])
 
 
-        while True:
-            pass
+        # while True:
+        #     pass
 
 
 
-    def tearDown(self):
-        self.driver.close()
+    # def tearDown(self):
+    #     self.driver.close()
 
 
 

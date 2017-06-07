@@ -7,6 +7,7 @@ from selenium.webdriver.support.ui import Select
 from .testpageutilities.waitforangular import waitForAngular
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.action_chains import ActionChains
+from .testpageutilities import getOrCreateWebdriver
 
 
 
@@ -38,8 +39,8 @@ class BDAdminTabIssPage(BasePage):
 
 
 
-    def __init__(self, driver):
-        self.driver = driver
+    def __init__(self):
+        self.driver = getOrCreateWebdriver()
         waitForAngular(self.driver)
         self.actions = ActionChains(self.driver)
 

@@ -4,6 +4,8 @@ from selenium.webdriver.common.by import By
 from .element import PageElement
 from .testpageutilities.waitforangular import waitForAngular
 from .basepage import BasePage
+from .testpageutilities import getOrCreateWebdriver
+
 
 class BDHomePage(BasePage):
     # https://qa1.wealthforge.org/BD/#/
@@ -12,12 +14,12 @@ class BDHomePage(BasePage):
     menuDashboardOffering = PageElement(id_='menuDashboardOffering')  # BD/#/
     menuDashboardInvestor = PageElement(id_='menuDashboardInvestor')  # BD/#/
     menuDashboardInvestment = PageElement(id_='menuDashboardInvestment')  # BD/#/
-    menuDashboardInvestor = PageElement(id_='menuDashboardInvestor')  # BD/#/
     menuDashboardFinance = PageElement(id_='menuDashboardFinance')  # BD/#/
     menuDashboardIssuerDashboard = PageElement(id_='menuDashboardIssuerDashboard')  # BD/#/
 
-    def __init__(self, driver):
-        self.driver = driver
+
+    def __init__(self):
+        self.driver = getOrCreateWebdriver()
         self.expected_landing_url = "https://qa1.wealthforge.org/BD/#/"
         self.expected_title = "WF: Broker Dealer"
 
@@ -28,7 +30,6 @@ class BDHomePage(BasePage):
         finally:
             assert self.expected_title in self.driver.title
         waitForAngular(self.driver)
-
 
     def is_expected_landing_url(self):
         try:
