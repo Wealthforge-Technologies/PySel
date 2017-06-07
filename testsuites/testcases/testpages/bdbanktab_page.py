@@ -4,14 +4,15 @@ from selenium.webdriver.common.by import By
 from .element import PageElement
 from .testpageutilities.waitforangular import waitForAngular
 from .basepage import BasePage
+from .testpageutilities import getOrCreateWebdriver
 
 class BDBankTabPage(BasePage):
     # https://qa1.wealthforge.org/BD/#/banks
     create_bank_btn = PageElement(xpath="//nav[contains(@label,'Create Bank')]")
 
 
-    def __init__(self, driver):
-        self.driver = driver
+    def __init__(self):
+        self.driver = getOrCreateWebdriver
         self.expected_landing_url = "https://qa1.wealthforge.org/BD/#/banks"
         self.expected_title = "WF: Broker Dealer"
 

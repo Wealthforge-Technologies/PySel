@@ -19,14 +19,14 @@ class TestBDAdmin(unittest.TestCase):
         self.lookup.load_defaults()
 
     def test_bd_admin(self):
-        bd_login_page = BDLoginPage(self.driver)
-
-
-        bd_login_page.land()
-        bd_login_page.is_expected_landing_url()
-        bd_login_page.login(self.lookup.testinfo["CCO.email"],self.lookup.testinfo["CCO.password"])
-
-        bd_home_page = BDHomePage(self.driver)
+        # bd_login_page = BDLoginPage(self.driver)
+        #
+        #
+        # bd_login_page.land()
+        # bd_login_page.is_expected_landing_url()
+        # bd_login_page.login(self.lookup.testinfo["CCO.email"],self.lookup.testinfo["CCO.password"])
+        #
+        bd_home_page = BDHomePage()
         bd_home_page.is_expected_landing_url()
         bd_home_page.menuDashboardBankSetup.click()
 
