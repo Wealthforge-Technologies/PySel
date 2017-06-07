@@ -5,6 +5,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from .element import PageElement
 from .testpageutilities.waitforangular import waitForAngular
 from .basepage import BasePage
+from .testpageutilities import getOrCreateWebdriver
 
 class NWHomePage(BasePage):
     # """QA login page action methods come here. I.e. https://qa1.wealthforge.org/login/#/"""
@@ -31,8 +32,8 @@ class NWHomePage(BasePage):
     # TODO define items for bottom section(s)
 
     # 'Typical' tests
-    def __init__(self, driver):
-        self.driver = driver
+    def __init__(self):
+        self.driver = getOrCreateWebdriver()
         self.expected_landing_url = "https://qa1.wealthforge.org/NW/#/showcase"
         self.expected_title = "WF: Network" #TODO 'wtf this won't test'
         # self.tsViewDetails = None
