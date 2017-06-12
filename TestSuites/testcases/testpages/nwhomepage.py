@@ -17,6 +17,7 @@ class NWHomePage(BasePage):
     "Head:"
     head_navSpace = PageElement(id_='navSpace') # NW/#/
     head_wfLogo = PageElement(id_='wfLogo')  # NW/#/
+    navbarCollapse_IP = PageElement(id_='bs-example-navbar-collapse-1') # NW/#/
     head_navMenu = PageElement(id_='navMenu') # NW/#/
     # hamburger = PageElement(id_='appDrawerToggle') # NW/#/ TODO (doublecheck/refactor)
     head_hamburger = PageElement(id_='dropdown1') # NW/#/
@@ -59,53 +60,44 @@ class NWHomePage(BasePage):
         self.driver.get(self.expected_landing_url)
         waitForAngular(self.driver)
 
-    # NW specific tests   IP = IsPresent: --------------------------------------
+    # NW specific tests   'IP' = 'if present' ----------------------------------
+
+    # Basic HTML elements as defined above:
     def head_navSpace_IP(self):
-        try:
-            self.driver.find_element(by=id, value='navSpace')
-            #print("hello found!")
-        except NoSuchElementException as e:
-            return False
-        return True
+        waitForAngular(self.driver)
+        assert self.driver.find_element_by_id('navSpace') is not None
+        #print("hello world")
 
     def head_wfLogo_IP(self):
-        try:
-            self.driver.find_element(by=id, value='wfLogo')
-        except NoSuchElementException as e:
-            return False
-        return True
+        waitForAngular(self.driver)
+        assert self.driver.find_element_by_id('wfLogo') is not None
+
+    def navbarCollapse_IP(self):
+        waitForAngular(self.driver)
+        assert self.driver.find_element_by_id('bs-example-navbar-collapse-1') is not None
 
     def head_navMenu_IP(self):
-        try:
-            self.driver.find_element(by=id, value='navMenu')
-        except NoSuchElementException as e:
-            return False
-        return True
+        waitForAngular(self.driver)
+        assert self.driver.find_element_by_id('navMenu') is not None
 
     def head_dropdown1_IP(self):
-        try:
-            self.driver.find_element(by=id, value='dropdown1')
-        except NoSuchElementException as e:
-            return False
-        return True
+        waitForAngular(self.driver)
+        assert self.driver.find_element_by_id('dropdown1') is not None
 
     def main_search_IP(self):
-        try:
-            self.driver.find_element(by=id, value='search')
-        except NoSuchElementException as e:
-            return False
-        return True
+        waitForAngular(self.driver)
+        assert self.driver.find_element_by_id('search') is not None
 
-    def main_industrySelect_IP(self):
-        try:
-            self.driver.find_element(by=id, value='select-options-74a040eb-a54e-a516-6cb5-464acc5e5e2d')
-        except NoSuchElementException as e:
-            return False
-        return True
+    # def main_industrySelect_IP(self):
+    #     waitForAngular(self.driver)
+    #     assert self.driver.find_element_by_id('select-options-74a040eb-a54e-a516-6cb5-464acc5e5e2d') is not None
 
     def main_itemsPerPage_IP(self):
-        try:
-            self.driver.find_element(by=id, value='pageSize')
-        except NoSuchElementException as e:
-            return False
-        return True
+        waitForAngular(self.driver)
+        assert self.driver.find_element_by_id('pageSize') is not None
+
+
+    # Tombstone & pagination testing?? TODO
+    # def tombstonetest(self):
+    #     waitForAngular(self.driver)
+    #     assert self.driver

@@ -31,6 +31,10 @@ class TestNWLogin(unittest.TestCase):
         nw_home_page.is_expected_title()
         # nw_home_page.menuDashboardAdmin.click() # TODO
 
+        # New for NW item testing:
+        nw_home_page.head_navSpace_IP()
+
+
     def tearDown(self):
         self.driver.close()
 
