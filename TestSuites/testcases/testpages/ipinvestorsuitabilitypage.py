@@ -5,6 +5,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from .element import PageElement
 from .testpageutilities.waitforangular import waitForAngular
 from .basepage import BasePage
+from .testpageutilities import getOrCreateWebdriver
 
 class IPInvestorSuitabilityPage(BasePage):
     """QA Get Started page. I.e. https://qa1.wealthforge.org/IP/#/ind/registration"""
@@ -27,8 +28,8 @@ class IPInvestorSuitabilityPage(BasePage):
     btnInvAmt = PageElement(id_='investAmount')
 
 
-    def __init__(self, driver):
-        self.driver = driver
+    def __init__(self):
+        self.driver = getOrCreateWebdriver()
         self.expected_landing_url = "https://qa1.wealthforge.org/IP/#/ind/registration"
         self.expected_title = "WF: Investor Platform"
 

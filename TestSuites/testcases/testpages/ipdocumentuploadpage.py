@@ -5,6 +5,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from .element import PageElement
 from .testpageutilities.waitforangular import waitForAngular
 from .basepage import BasePage
+from .testpageutilities import getOrCreateWebdriver
 
 class IPDocumentUploadPage(BasePage):
     """QA Get Started page. I.e. https://qa1.wealthforge.org/IP/#/document/upload"""
@@ -15,8 +16,8 @@ class IPDocumentUploadPage(BasePage):
     btnSaveForLater = PageElement(id_='btnSaveForLater')
 
 
-    def __init__(self, driver):
-        self.driver = driver
+    def __init__(self):
+        self.driver = getOrCreateWebdriver()
         self.expected_landing_url = "https://qa1.wealthforge.org/IP/#/document/upload"
         self.expected_title = "WF: Investor Platform"
 

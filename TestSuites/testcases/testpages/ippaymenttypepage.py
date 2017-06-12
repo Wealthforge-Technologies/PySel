@@ -5,6 +5,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from .element import PageElement
 from .testpageutilities.waitforangular import waitForAngular
 from .basepage import BasePage
+from .testpageutilities import getOrCreateWebdriver
 
 class IPPaymentTypePage(BasePage):
     """QA Get Started page. I.e. https://qa1.wealthforge.org/IP/#/payment"""
@@ -20,13 +21,13 @@ class IPPaymentTypePage(BasePage):
     ACHAcctName = PageElement(xpath='//button[contains(@ng-model="account.ACHAccountName"())]')
     ACHAcctRouting = PageElement(xpath='//button[contains(@ng-model="account.ACHAccountRouting"())]')
     ACHRoutingConf = PageElement(xpath='//button[contains(@ng-model="account.ACHAccountRoutingConfirm"())]')
-    ACHAcctNum = PageElement(xpath=“ // button[contains( @ ng - model = "account.ACHAccountNumber"())]“)
-    ACHAcctNumConf = PageElement(xpath=“ // button[contains( @ ng - model = "account.ACHAccountNumberConfirm"())]“)
+    ACHAcctNum = PageElement(xpath='//button[contains(@ ng-model="account.ACHAccountNumber"())]')
+    ACHAcctNumConf = PageElement(xpath='//button[contains(@ng-model="account.ACHAccountNumberConfirm"())]')
 
 
 
-    def __init__(self, driver):
-        self.driver = driver
+    def __init__(self):
+        self.driver = getOrCreateWebdriver()
         self.expected_landing_url = "https://qa1.wealthforge.org/IP/#/payment"
         self.expected_title = "WF: Investor Platform"
 

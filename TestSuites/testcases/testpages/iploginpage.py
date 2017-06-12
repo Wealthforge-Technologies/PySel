@@ -5,6 +5,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from .element import PageElement
 from .testpageutilities.waitforangular import waitForAngular
 from .basepage import BasePage
+from .testpageutilities import getOrCreateWebdriver
 
 class IPLoginPage(BasePage):
     """QA login page action methods come here. I.e. https://qa1.wealthforge.org/login/#/"""
@@ -15,8 +16,8 @@ class IPLoginPage(BasePage):
     btnSignUp = PageElement(id_='btnSignUp')
     lnkForgotPassword = PageElement(id_='linkForgotPassword')
 
-    def __init__(self, driver):
-        self.driver = driver
+    def __init__(self):
+        self.driver = getOrCreateWebdriver()
         self.expected_landing_url = "https://qa1.wealthforge.org/IP/#/login/2eb2d7ff-1fa9-4f72-8dd5-e1527bf58cb3"
         self.expected_title = "WF: Investor Platform"
 

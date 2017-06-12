@@ -5,6 +5,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from .element import PageElement
 from .testpageutilities.waitforangular import waitForAngular
 from .basepage import BasePage
+from .testpageutilities import getOrCreateWebdriver
 
 class IPSummaryPage(BasePage):
     """QA Get Started page. I.e. https://qa1.wealthforge.org/IP/#/summary"""
@@ -17,8 +18,8 @@ class IPSummaryPage(BasePage):
     filesTab = PageElement(name='filesTab')
     invAmount = PageElement(id_='invAmnt')
 
-    def __init__(self, driver):
-        self.driver = driver
+    def __init__(self):
+        self.driver = getOrCreateWebdriver()
         self.expected_landing_url = "https://qa1.wealthforge.org/IP/#/summary"
         self.expected_title = "WF: Investor Platform"
 
