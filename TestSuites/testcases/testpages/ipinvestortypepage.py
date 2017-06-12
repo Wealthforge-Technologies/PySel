@@ -7,7 +7,7 @@ from .testpageutilities.waitforangular import waitForAngular
 from .basepage import BasePage
 from .testpageutilities import getOrCreateWebdriver
 
-class IPIPInvestorTypePagePage(BasePage):
+class IPInvestorTypePage(BasePage):
     """QA Get Started page. I.e. https://qa1.wealthforge.org/IP/#/summary"""
     btnInvTypeIndiv = PageElement(id_='divInvestorTypeIndividual')
     btnInvTypeEntity = PageElement(id_='divInvestorTypeEntity')

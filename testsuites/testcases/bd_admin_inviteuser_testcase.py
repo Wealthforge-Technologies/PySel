@@ -11,8 +11,6 @@ from .testpages.bdconfirmuser_success_page import BDConfirmUserSuccessPage
 from .testcaseutilities.testinfo import TestInfo
 from .testcaseutilities.gmailaccessor import get_new_bd_user_password_reset_url
 # from testutilities import getdriver
-=======
-
 from TestSuites.testcases.testpages import BDAdminTabPage
 from TestSuites.testcases.testpages import BDAdminTabUserPage
 from TestSuites.testcases.testpages import BDConfirmUserPage
@@ -22,7 +20,6 @@ from TestSuites.testcases.testpages import BDLoginPage
 from .testcaseutilities.gmailaccessor import get_new_bd_user_password_reset_url
 from .testcaseutilities.testinfo import TestInfo
 
->>>>>>> develop
 
 
 class TestBDAdmin(unittest.TestCase):

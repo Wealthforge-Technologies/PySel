@@ -1,13 +1,11 @@
 from selenium.webdriver.support.ui import WebDriverWait
-from selenium import webdriver
-from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from .element import PageElement
 from .testpageutilities.waitforangular import waitForAngular
 from .basepage import BasePage
 from .testpageutilities import getOrCreateWebdriver
 
-class IPIPInvestorTypePagePage(BasePage):
+class IPInvestorTypePage(BasePage):
     """QA Get Started page. I.e. https://qa1.wealthforge.org/IP/#/ind/registration"""
     btnBack = PageElement(id_='Back')
     btnContinue = PageElement(id_='btnContinue')
