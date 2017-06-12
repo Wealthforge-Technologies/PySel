@@ -45,3 +45,39 @@ class TestInfo:
         self.testinfo["NewBDUser.Email"] = "wealthforgedev1+"+str(quirk)+"@gmail.com"
         self.testinfo["NewBDUser.Role1"] = "Fingerprinted Person"
         self.testinfo["NewBDUser.Password"] = "Test123!"
+
+        self.testinfo["IP.email"] = "jgoldhamer+i@wealthforge.com"
+        self.testinfo["IP.password"] = "Testing123!"
+
+        self.testinfo["txtInvestorFirstName"] = "Joe"
+        self.testinfo["txtInvestorLastName"] = "Smith"
+        self.testinfo["txtInvestorDOB"] = "11161985"
+        self.testinfo["txtInvestorSSN"] = "734289123"
+        self.testinfo["txtInvestorAddress1"] = "14234 Happy Lane"
+        self.testinfo["txttxtInvestorAddress2"] = "Apt 3"
+        self.testinfo["txtInvestorCity"] = "Plano"
+        self.testinfo["ddlInvestorStateProvs"] = "Texas"
+        self.testinfo["txtInvestorPostalCode"] = "43234"
+        self.testinfo["txtInvestorPhone"] = "8642340945"
+        self.testinfo["txtInvestorEmail"] = "mglass+i@wealthforge.com"
+
+        self.testinfo["ddlInvestorEmploymentStatus"] = "Currently Employed"
+
+        self.testinfo["sq-10"] = "Capital Preservation – you seek to preserve capital and are willing to accept a lower rate of return in exchange."
+        self.testinfo["sq-20"] = "Less than 2 years"
+        self.testinfo["sq-30"] = "Conservative"
+        self.testinfo["sq-40"] = "Less than 2 years"
+        self.testinfo["sq-50"] = "None"
+        self.testinfo["sq-60"] = "Less than $250,000 USD"
+        self.testinfo["sq-70"] = "Greater than $250,000 USD"
+        self.testinfo["sq-80"] = "Greater than $250,000 USD"
+        self.testinfo["sq-90"] = "Greater than $500,000"
+        self.testinfo["sq-100"] = "Greater than $100,000"
+        self.testinfo["sq-110"] = "Less than 20%"
+        self.testinfo["sq-120"] = "Yes"
+        self.testinfo["sq-130"] = "Yes"
+        self.testinfo["invAmnt"] = "2000"
+        self.testinfo["ddlAccountTypes"] = "Checking"
+
+
+

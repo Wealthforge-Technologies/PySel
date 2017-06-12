@@ -1,17 +1,17 @@
 import unittest
+
 from selenium import webdriver
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
-from .testpages.bdloginpage import BDLoginPage
-from .testpages.bdhomepage import BDHomePage
-from .testpages.bdadmintab_page import BDAdminTabPage
-from .testpages.bdadmintab_user_page import BDAdminTabUserPage
-from .testpages.bdconfirmuser_page import BDConfirmUserPage
-from .testpages.bdconfirmuser_success_page import BDConfirmUserSuccessPage
-from .testcaseutilities.testinfo import TestInfo
+
+from TestSuites.testcases.testpages import BDAdminTabPage
+from TestSuites.testcases.testpages import BDAdminTabUserPage
+from TestSuites.testcases.testpages import BDConfirmUserPage
+from TestSuites.testcases.testpages import BDConfirmUserSuccessPage
+from TestSuites.testcases.testpages import BDHomePage
+from TestSuites.testcases.testpages import BDLoginPage
 from .testcaseutilities.gmailaccessor import get_new_bd_user_password_reset_url
+from .testcaseutilities.testinfo import TestInfo
+
 
 class TestBDAdmin(unittest.TestCase):
 
