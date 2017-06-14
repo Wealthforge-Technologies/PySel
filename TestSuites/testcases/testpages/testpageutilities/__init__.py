@@ -10,5 +10,7 @@ def getOrCreateWebdriver():
         desired_capabilities=DesiredCapabilities.CHROME)
     return DRIVER
 
+
 def closeDriver():
+    # getOrCreateWebdriver().close()
     DRIVER.close()

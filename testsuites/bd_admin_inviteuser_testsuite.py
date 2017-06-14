@@ -1,7 +1,7 @@
 import unittest
-from testcases import bd_admin_inviteuser_testcase
-from testcases import bd_admin_testcase
-from testcases import bd_login_testcase
+from testcases.BDCases import bd_admin_inviteuser_testcase
+from testcases.BDCases import bd_admin_testcase
+from testcases.BDCases import bd_login_testcase
 from testcases import close_driver_spec
 
 

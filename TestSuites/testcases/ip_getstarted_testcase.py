@@ -12,7 +12,7 @@ class TestLogin(unittest.TestCase):
     def test_getstarted(self):
 
         ip_getstarted_page = IPGetStarted()
-        # ip_getstarted_page.is_expected_landing_url()
+        ip_getstarted_page.is_expected_landing_url()
         ip_getstarted_page.btnStart.click()
 
 
