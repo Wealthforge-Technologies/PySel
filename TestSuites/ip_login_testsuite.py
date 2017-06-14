@@ -1,15 +1,18 @@
 import unittest
-from testcases import ip_login_testcase
-from testcases import ip_getstarted_testcase
+
 from testcases import close_driver_spec
-from testcases import ip_summary_testcase
-from testcases import ip_investor_type_individual_testcase
-from testcases import ip_investor_registration_testcase
-from testcases import ip_employstatus_testcase
-from testcases import ip_investor_accredidation_testcase
-from testcases import ip_investor_suitability_testcase
-from testcases import ip_document_upload_testcase
-from testcases import ip_payment_type_testcase
+from testcases.IPCases import ip_login_testcase
+from testcases.IPCases import ip_getstarted_testcase
+from testcases.IPCases import ip_summary_testcase
+from testcases.IPCases import ip_investor_type_individual_testcase
+from testcases.IPCases import ip_investor_registration_testcase
+from testcases.IPCases import ip_employstatus_testcase
+from testcases.IPCases import ip_investor_accredidation_testcase
+from testcases.IPCases import ip_investor_suitability_testcase
+from testcases.IPCases import ip_document_upload_testcase
+from testcases.IPCases import ip_payment_type_testcase
+
+
 def main():
 
     loader = unittest.TestLoader()
