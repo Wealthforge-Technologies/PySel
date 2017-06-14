@@ -16,19 +16,23 @@ class BDAdminTabUserPage(BasePage):
     submitButton = PageElement(xpath="//button[contains(@ng-click,'submit()')]")
     rolesRepeater = PageElement(xpath="//li[contains(@ng-repeat,'roles')]")
 
-
     def __init__(self):
-        self.driver = getOrCreateWebdriver()
-        self.expected_title = "WF: Broker Dealer"
-        roles_repeater = []
+        BasePage.__init__(self,
+                          url='',
+                          title='WF: Broker Dealer')
 
-    def is_expected_title(self):
-        try:
-            wait = WebDriverWait(self.driver, 5).until(
-                EC.title_contains(self.expected_title))
-        finally:
-            assert self.expected_title in self.driver.title
-        waitForAngular(self.driver)
+    # def __init__(self):
+    #     self.driver = getOrCreateWebdriver()
+    #     self.expected_title = "WF: Broker Dealer"
+    #     roles_repeater = []
+
+    # def is_expected_title(self):
+    #     try:
+    #         wait = WebDriverWait(self.driver, 5).until(
+    #             EC.title_contains(self.expected_title))
+    #     finally:
+    #         assert self.expected_title in self.driver.title
+    #     waitForAngular(self.driver)
 
     # def is_expected_landing_url(self):
     #     """Verifies that the hardcoded text "WF: Login" appears in page title"""

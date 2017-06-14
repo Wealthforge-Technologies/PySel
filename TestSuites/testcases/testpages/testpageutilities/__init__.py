@@ -6,9 +6,9 @@ DRIVER = None
 def getOrCreateWebdriver():
     global DRIVER
     DRIVER = DRIVER or webdriver.Remote(
-        command_executor=Settings.seleniumAddress,
-        desired_capabilities=Settings.browser)
-    DRIVER.set_window_size(Settings.windowSize[0], Settings.windowSize[1])
+        command_executor=Settings.SELENIUMADDRESS,
+        desired_capabilities=Settings.BROWSER)
+    DRIVER.set_window_size(Settings.WINDOWSIZE[0], Settings.WINDOWSIZE[1])
     return DRIVER
 
 

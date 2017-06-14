@@ -7,7 +7,6 @@ from ..testpageutilities import getOrCreateWebdriver
 
 
 class IPEmploymentStatusPage(BasePage):
-    """QA Get Started page. I.e. https://qa1.wealthforge.org/IP/#/ind/registration"""
     btnBack = PageElement(id_='Back')
     btnContinue = PageElement(id_='btnContinue')
     employStatus = PageElement(id_='ddlInvestorEmploymentStatus')

@@ -11,13 +11,8 @@ class TestInfo:
         pass
 
     def load_defaults(self):
-        quirk = randint(100000, 999999)
-        self.testinfo["environment"] = "qa1.wealthforge.org"
-        self.testinfo["CCO.email"] = "oquelland@wealthforge.com"
-        self.testinfo["CCO.password"] = "Test123!"
-        self.testinfo["BD.WealthForge Securities.Display Name"] = "WealthForge Securities"
 
-        self.testissinfo["displayNameInput"] = "TestISS+"+str(quirk)
+        self.testissinfo["displayNameInput"] = "TestISS+"+str(randint(100000, 999999))
         self.testissinfo["address1Input"] = "Test Avenue 123"
         self.testissinfo["address2Input"] = "PO 222"
         self.testissinfo["cityInput"] = "TestCity"
@@ -37,12 +32,20 @@ class TestInfo:
         self.testissinfo["issBankSelect"] = "Atlantic Capital Bank"
         self.testissinfo["taxInput"] = "12-3456789"
 
+
+
+        # self.testinfo["environment"] = "qa1.wealthforge.org"
+        self.testinfo["CCO.email"] = "oquelland@wealthforge.com"
+        self.testinfo["CCO.password"] = "Test123!"
+        self.testinfo["BD.WealthForge Securities.Display Name"] = "WealthForge Securities"
+
+
         self.testinfo["testissinfo"] = self.testissinfo
 
         self.testinfo["NewBDUser.First Name"] = "F" + str(randint(1,999))
         self.testinfo["NewBDUser.Last Name"] = "L" + str(randint(1,999))
         self.testinfo["NewBDUser.Full Name"] = self.testinfo["NewBDUser.First Name"] + " " + self.testinfo["NewBDUser.Last Name"]
-        self.testinfo["NewBDUser.Email"] = "wealthforgedev1+"+str(quirk)+"@gmail.com"
+        self.testinfo["NewBDUser.Email"] = "wealthforgedev1+"+str(randint(100000, 999999))+"@gmail.com"
         self.testinfo["NewBDUser.Role1"] = "Fingerprinted Person"
         self.testinfo["NewBDUser.Password"] = "Test123!"
 

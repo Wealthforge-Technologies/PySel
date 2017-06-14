@@ -18,10 +18,16 @@ class BDGeneralPage(BasePage):
     # TODO: Privacy Statement
     logout = PageElement(css=("[ng-click*=logout()]"))
 
+
     def __init__(self):
-        self.driver = getOrCreateWebdriver()
-        self.expected_landing_url = "https://qa1.wealthforge.org/BD/#/rad"
-        self.expected_title = "WF: Broker Dealer"
+        BasePage.__init__(self,
+                          url='',
+                          title='')
+
+
+    # def __init__(self):
+    #     self.driver = getOrCreateWebdriver()
+    #     self.expected_title = "WF: Broker Dealer"
 
     def loadPagination(self):
         pass

@@ -10,7 +10,6 @@ from selenium.webdriver.common.action_chains import ActionChains
 from ..testpageutilities import getOrCreateWebdriver
 
 
-
 class BDAdminTabIssPage(BasePage):
     # https://qa1.wealthforge.org/BD/#/rad
     elements = {}
@@ -38,11 +37,10 @@ class BDAdminTabIssPage(BasePage):
     brandingDetails = PageElement(xpath="//div[contains(@ng-if, 'ORG_TYPE_ISS')]")
 
 
-
     def __init__(self):
-        self.driver = getOrCreateWebdriver()
-        waitForAngular(self.driver)
-        self.actions = ActionChains(self.driver)
+        BasePage.__init__(self,
+                          url='', #no defined useful url
+                          title='') #no defined useful title
 
 
     #WARNING: issjson must match order and length of elementlist
@@ -50,7 +48,6 @@ class BDAdminTabIssPage(BasePage):
         waitForAngular(self.driver)
         assert len(self.elements) == len(issjson)
         for key, value in issjson.items():
-            #self.actions.move_to_element(self.driver.find_element_by_id(key))
             elem = self.driver.find_element_by_id(key)
             self.driver.execute_script("arguments[0].scrollIntoView();", elem)
             wait = WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located((By.ID, key)))

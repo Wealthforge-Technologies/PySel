@@ -1,17 +1,20 @@
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 
 
-
 ####################
 # BROWSER SETTINGS #
 ####################
 
-browser = DesiredCapabilities.CHROME
+BROWSER = DesiredCapabilities.CHROME
 
 # used by driver.set_window_size(300, 500)
-windowSize = [1300, 1000]
+WINDOWSIZE = [1300, 1000]
 
-seleniumAddress = 'http://127.0.0.1:4445/wd/hub'
+SELENIUMADDRESS = 'http://127.0.0.1:4445/wd/hub'
+
+
+
+
 
 
 
@@ -20,3 +23,12 @@ seleniumAddress = 'http://127.0.0.1:4445/wd/hub'
 ###################
 
 #TODO: add stuff here
+
+
+
+
+########################
+# ENVIRONMENT SETTINGS #
+########################
+
+ENVIRONMENT = 'https://qa1.wealthforge.org'

@@ -6,10 +6,13 @@ from ..testpageutilities import getOrCreateWebdriver
 
 
 class BDConfirmUserPage(BasePage):
-    # https://qa1.wealthforge.org/BD/#/rad
     password = PageElement(id_='username')
     confirm = PageElement(id_='password')
     submit_button = PageElement(id_='btnSetPassword')
+
+
+    #TODO: CHANGE TO USE NEW BASEPAGE ABSTRACTION
+
 
     def __init__(self, expected_reset_url):
         self.driver = getOrCreateWebdriver()

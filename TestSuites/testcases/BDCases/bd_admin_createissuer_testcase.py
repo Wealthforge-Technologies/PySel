@@ -25,7 +25,7 @@ class TestBDAdminCreateIssuer(unittest.TestCase):
         # bd_home_page.menuDashboardAdmin.click()
         #
         bd_admintab_page = BDAdminTabPage()
-        bd_admintab_page.is_expected_landing_url()
+        # bd_admintab_page.is_expected_landing_url()
         bd_admintab_page.load_treenodes()
 
         # click on dots
