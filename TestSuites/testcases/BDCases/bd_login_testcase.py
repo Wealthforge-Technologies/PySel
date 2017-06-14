@@ -1,8 +1,8 @@
 import unittest
 
-from TestSuites.testcases.testpages.BDPages.bdloginpage import BDLoginPage
+from ..testpages.BDPages.bdloginpage import BDLoginPage
 from ..testcaseutilities.testinfo import TestInfo
-from ..testpages.testpageutilities import closeDriver
+
 
 class TestLogin(unittest.TestCase):
     def setUp(self):
@@ -15,7 +15,6 @@ class TestLogin(unittest.TestCase):
         bd_login_page.land()
         bd_login_page.is_expected_landing_url()
         bd_login_page.login(self.lookup.testinfo["CCO.email"],self.lookup.testinfo["CCO.password"])
-        closeDriver()
 
 
 

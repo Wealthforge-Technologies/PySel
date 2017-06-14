@@ -8,5 +8,5 @@ class CloseDriver(unittest.TestCase):
     def test_close(self):
         closeDriver()
 
-# if __name__ == "__main__":
-#     unittest.main()
+if __name__ == "__main__":
+    unittest.main()

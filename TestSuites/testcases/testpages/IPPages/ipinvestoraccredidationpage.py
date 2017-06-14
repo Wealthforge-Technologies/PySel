@@ -7,7 +7,6 @@ from ..testpageutilities import getOrCreateWebdriver
 
 
 class IPInvestorAccredidationPage(BasePage):
-    """QA Get Started page. I.e. https://qa1.wealthforge.org/IP/#/ind/registration"""
     btnBack = PageElement(id_='Back')
     btnContinue = PageElement(id_='btnContinue')
     btnNetWorth = PageElement(id_='divTypeNet_Worth')
@@ -15,28 +14,34 @@ class IPInvestorAccredidationPage(BasePage):
     btnNotAccred = PageElement(id_='divTypeNotAccredited')
 
     def __init__(self):
-        self.driver = getOrCreateWebdriver()
-        self.expected_landing_url = "https://qa1.wealthforge.org/IP/#/ind/registration"
-        self.expected_title = "WF: Investor Platform"
-
-    def is_expected_title(self):
-        """Verifies that the hardcoded text "WF: Investor Platform" appears in page title"""
-        try:
-            wait = WebDriverWait(self.driver, 5).until(
-                EC.title_contains(self.expected_title))
-        finally:
-            assert self.expected_title in self.driver.title
-        waitForAngular(self.driver)
+        BasePage.__init__(self,
+                          url='/IP/#/ind/registration', #TODO: this is individual only with the "ind"
+                          title='WF: Investor Platform')
 
 
-    def is_expected_landing_url(self):
-        """Verifies that the hardcoded text "WF: Investor Platform" appears in page title"""
-        try:
-            wait = WebDriverWait(self.driver, 5).until(
-                lambda wait: self.driver.current_url == self.expected_landing_url)
-        finally:
-            assert self.expected_landing_url in self.driver.current_url
-        waitForAngular(self.driver)
+    # def __init__(self):
+    #     self.driver = getOrCreateWebdriver()
+    #     self.expected_landing_url = "https://qa1.wealthforge.org/IP/#/ind/registration"
+    #     self.expected_title = "WF: Investor Platform"
+    #
+    # def is_expected_title(self):
+    #     """Verifies that the hardcoded text "WF: Investor Platform" appears in page title"""
+    #     try:
+    #         wait = WebDriverWait(self.driver, 5).until(
+    #             EC.title_contains(self.expected_title))
+    #     finally:
+    #         assert self.expected_title in self.driver.title
+    #     waitForAngular(self.driver)
+    #
+    #
+    # def is_expected_landing_url(self):
+    #     """Verifies that the hardcoded text "WF: Investor Platform" appears in page title"""
+    #     try:
+    #         wait = WebDriverWait(self.driver, 5).until(
+    #             lambda wait: self.driver.current_url == self.expected_landing_url)
+    #     finally:
+    #         assert self.expected_landing_url in self.driver.current_url
+    #     waitForAngular(self.driver)
 
     def enter_info(self, net, income, notAcc):
         assert self.btnNetWorth is not None

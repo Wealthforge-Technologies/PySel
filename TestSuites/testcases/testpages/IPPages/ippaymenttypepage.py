@@ -22,31 +22,34 @@ class IPPaymentTypePage(BasePage):
     ACHAcctNum = PageElement(xpath='//button[contains(@ ng-model="account.ACHAccountNumber"())]')
     ACHAcctNumConf = PageElement(xpath='//button[contains(@ng-model="account.ACHAccountNumberConfirm"())]')
 
-
-
     def __init__(self):
-        self.driver = getOrCreateWebdriver()
-        self.expected_landing_url = "https://qa1.wealthforge.org/IP/#/payment"
-        self.expected_title = "WF: Investor Platform"
+        BasePage.__init__(self,
+                          url='/IP/#/payment',
+                          title='WF: Investor Platform')
 
-    def is_expected_title(self):
-        """Verifies that the hardcoded text "WF: Investor Platform" appears in page title"""
-        try:
-            wait = WebDriverWait(self.driver, 5).until(
-                EC.title_contains(self.expected_title))
-        finally:
-            assert self.expected_title in self.driver.title
-        waitForAngular(self.driver)
-
-
-    def is_expected_landing_url(self):
-        """Verifies that the hardcoded text "WF: Investor Platform" appears in page title"""
-        try:
-            wait = WebDriverWait(self.driver, 5).until(
-                lambda wait: self.driver.current_url == self.expected_landing_url)
-        finally:
-            assert self.expected_landing_url in self.driver.current_url
-        waitForAngular(self.driver)
+    # def __init__(self):
+    #     self.driver = getOrCreateWebdriver()
+    #     self.expected_landing_url = "https://qa1.wealthforge.org/IP/#/payment"
+    #     self.expected_title = "WF: Investor Platform"
+    #
+    # def is_expected_title(self):
+    #     """Verifies that the hardcoded text "WF: Investor Platform" appears in page title"""
+    #     try:
+    #         wait = WebDriverWait(self.driver, 5).until(
+    #             EC.title_contains(self.expected_title))
+    #     finally:
+    #         assert self.expected_title in self.driver.title
+    #     waitForAngular(self.driver)
+    #
+    #
+    # def is_expected_landing_url(self):
+    #     """Verifies that the hardcoded text "WF: Investor Platform" appears in page title"""
+    #     try:
+    #         wait = WebDriverWait(self.driver, 5).until(
+    #             lambda wait: self.driver.current_url == self.expected_landing_url)
+    #     finally:
+    #         assert self.expected_landing_url in self.driver.current_url
+    #     waitForAngular(self.driver)
 
     def enter_info(self, ach, check, wire, ira, exchange):
         assert self.btnACH is not None
