@@ -13,7 +13,11 @@ class TestLogin(unittest.TestCase):
 
         docusign = IPDocusignPage()
 
-        time.sleep(5)
+        time.sleep(10)
+
+        docusign.switchToIframe()
+        time.sleep(1)
+        docusign.ifr()
 
         docusign.chkboxDisclosure.click()
         time.sleep(1)

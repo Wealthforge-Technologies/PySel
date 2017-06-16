@@ -1,7 +1,7 @@
 import unittest
-
 from ..testpages.IPPages.ippaymenttypepage import IPPaymentTypePage
 from ..testcaseutilities.testinfo import TestInfo
+from ..testpages.IPPages.ipgeneralpage import IPGeneral
 
 
 class TestPaymentTypePage(unittest.TestCase):
@@ -11,15 +11,12 @@ class TestPaymentTypePage(unittest.TestCase):
 
     def test_login(self):
 
-        ip_payment_type_page = IPPaymentTypePage()
-        ip_payment_type_page.is_expected_landing_url()
-        ip_payment_type_page.divACH.click()
+        pay = IPPaymentTypePage()
+        pay.is_expected_landing_url()
 
-        ip_payment_type_page.regInfo(self.lookup.testinfo["sq-10"])
+        pay.selectCheck()
 
-        ip_payment_type_page.btnContinue.click()
-
-
+        IPGeneral().clickContinue()
 
 
 if __name__ == "__main__":

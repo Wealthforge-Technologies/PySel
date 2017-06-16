@@ -12,12 +12,12 @@ from testcases.IPCases import ip_investor_accredidation_testcase
 from testcases.IPCases import ip_investor_suitability_testcase
 from testcases.IPCases import ip_document_upload_testcase
 from testcases.IPCases import ip_payment_type_testcase
+from testcases.IPCases import ip_docusign_testcase
+
 
 def main():
-
     loader = unittest.TestLoader()
     suite = unittest.TestSuite()
-
 
     suite.addTests([loader.loadTestsFromModule(set_window_size),
                     loader.loadTestsFromModule(ip_login_testcase),
@@ -30,8 +30,8 @@ def main():
                     loader.loadTestsFromModule(ip_investor_suitability_testcase),
                     loader.loadTestsFromModule(ip_document_upload_testcase),
                     loader.loadTestsFromModule(ip_payment_type_testcase),
-
-                    loader.loadTestsFromModule(close_driver_spec),
+                    loader.loadTestsFromModule(ip_docusign_testcase),
+                    loader.loadTestsFromModule(close_driver_spec)
                     ])
 
     runner = unittest.TextTestRunner(verbosity=3)

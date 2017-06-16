@@ -17,3 +17,8 @@ class IPDocusignPage(BasePage):
                           url='/IP/#/document/upload',
                           title='WF: Investor Platform')
 
+    def switchToIframe(self):
+        self.driver.switch_to.frame(self.iframe)
+
+    def ifr(self):
+        print(self.driver.find_element_by_xpath('html/body').get_attribute('value'))
