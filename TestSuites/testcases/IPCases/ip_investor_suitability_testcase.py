@@ -2,7 +2,7 @@ import unittest
 
 from ..testpages.IPPages.ipinvestorsuitabilitypage import IPInvestorSuitabilityPage
 from ..testcaseutilities.testinfo import TestInfo
-
+from ..testpages.IPPages.ipgeneralpage import IPGeneral
 
 class TestIPInvestorSuitability(unittest.TestCase):
     def setUp(self):
@@ -11,9 +11,9 @@ class TestIPInvestorSuitability(unittest.TestCase):
 
     def test_login(self):
 
-        ip_investor_suitability_page = IPInvestorSuitabilityPage()
-        ip_investor_suitability_page.is_expected_landing_url()
-        ip_investor_suitability_page.regInfo(self.lookup.testinfo["sq-10"],
+        suitability = IPInvestorSuitabilityPage()
+        suitability.is_expected_landing_url()
+        suitability.enter_info(self.lookup.testinfo["sq-10"],
                                              self.lookup.testinfo["sq-20"],
                                              self.lookup.testinfo["sq-30"],
                                              self.lookup.testinfo["sq-40"],
@@ -25,13 +25,13 @@ class TestIPInvestorSuitability(unittest.TestCase):
                                              self.lookup.testinfo["sq-100"],
                                              self.lookup.testinfo["sq-110"],
                                              self.lookup.testinfo["sq-120"],
-                                             self.lookup.testinfo["sq-130"])
+                                             self.lookup.testinfo["sq-130"]
+                               )
 
-        ip_investor_suitability_page.regInfo(self.lookup.testinfo["invAmnt"])
+        suitability.invest(self.lookup.testinfo["invAmnt"])
 
-        ip_investor_suitability_page.investAmount.click()
+        IPGeneral().clickContinue()
 
-        ip_investor_suitability_page.btnContinue.click()
 
 
 if __name__ == "__main__":

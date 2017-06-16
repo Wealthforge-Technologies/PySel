@@ -49,23 +49,28 @@ class TestInfo:
         self.testinfo["NewBDUser.Role1"] = "Fingerprinted Person"
         self.testinfo["NewBDUser.Password"] = "Test123!"
 
-        self.testinfo["IP.email"] = "jgoldhamer+i@wealthforge.com"
+        self.testinfo["IP.email"] = "jgoldhamer+i4@wealthforge.com"
         self.testinfo["IP.password"] = "Testing123!"
 
         self.testinfo["txtInvestorFirstName"] = "Joe"
         self.testinfo["txtInvestorLastName"] = "Smith"
-        self.testinfo["txtInvestorDOB"] = "11161985"
-        self.testinfo["txtInvestorSSN"] = "734289123"
+        self.testinfo["txtInvestorDOB"] = "11/16/1985"
+        self.testinfo["txtInvestorSSN"] = "734-28-9123"
         self.testinfo["txtInvestorAddress1"] = "14234 Happy Lane"
         self.testinfo["txttxtInvestorAddress2"] = "Apt 3"
         self.testinfo["txtInvestorCity"] = "Plano"
         self.testinfo["ddlInvestorStateProvs"] = "Texas"
         self.testinfo["txtInvestorPostalCode"] = "43234"
-        self.testinfo["txtInvestorPhone"] = "8642340945"
+        self.testinfo["txtInvestorPhone"] = "(864) 234-0945"
         self.testinfo["txtInvestorEmail"] = "mglass+i@wealthforge.com"
 
-        self.testinfo["ddlInvestorEmploymentStatus"] = "Currently Employed"
+        # Employment Status Page
+        self.testinfo["Employment Status"] = "Currently Employed"
+        self.testinfo["otherOpport"] = True
+        self.testinfo["rbFINRA"] = True
+        self.testinfo["CRD Number"] = "344545667"
 
+        # Suitability Page
         self.testinfo["sq-10"] = "Capital Preservation – you seek to preserve capital and are willing to accept a lower rate of return in exchange."
         self.testinfo["sq-20"] = "Less than 2 years"
         self.testinfo["sq-30"] = "Conservative"

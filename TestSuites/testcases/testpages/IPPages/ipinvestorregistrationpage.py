@@ -5,12 +5,11 @@ from ..testpageutilities.waitforangular import waitForAngular
 from ..basepage import BasePage
 from ..testpageutilities import getOrCreateWebdriver
 import testutilities.Settings
+from selenium.webdriver.support.ui import Select
 
 
 class IPInvestorTypePage(BasePage):
     """QA Get Started page. I.e. https://qa1.wealthforge.org/IP/#/ind/registration"""
-    btnBack = PageElement(id_='Back')
-    btnContinue = PageElement(id_='btnContinue')
     firstName = PageElement(id_='txtInvestorFirstName')
     lastName = PageElement(id_='txtInvestorLastName')
     dateOfBirth = PageElement(id_='txtInvestorDOB')
@@ -18,7 +17,7 @@ class IPInvestorTypePage(BasePage):
     address1 = PageElement(id_='txtInvestorAddress1')
     address2 = PageElement(id_='txtInvestorAddress2')
     city = PageElement(id_='txtInvestorCity')
-    state = PageElement(id_='ddlInvestorStateProvs')
+    state = PageElement(xpath='//*[@id="ddlInvestorStateProvs"]/select')
     zipCode = PageElement(id_='txtInvestorPostalCode')
     phoneNumber = PageElement(id_='txtInvestorPhone')
     email = PageElement(id_='txtInvestorEmail')
@@ -26,33 +25,10 @@ class IPInvestorTypePage(BasePage):
 
     def __init__(self):
         BasePage.__init__(self,
-                          url='/IP/#/registration',
+                          url='/IP/#/ind/registration',
                           title='WF: Investor Platform')
 
 
-    # def __init__(self):
-    #     self.driver = getOrCreateWebdriver()
-    #     self.expected_landing_url = Settings.ENVIRONMENT + "/IP/#/ind/registration"
-    #     self.expected_title = "WF: Investor Platform"
-    #
-    # def is_expected_title(self):
-    #     """Verifies that the hardcoded text "WF: Investor Platform" appears in page title"""
-    #     try:
-    #         wait = WebDriverWait(self.driver, 5).until(
-    #             EC.title_contains(self.expected_title))
-    #     finally:
-    #         assert self.expected_title in self.driver.title
-    #     waitForAngular(self.driver)
-    #
-    #
-    # def is_expected_landing_url(self):
-    #     """Verifies that the hardcoded text "WF: Investor Platform" appears in page title"""
-    #     try:
-    #         wait = WebDriverWait(self.driver, 5).until(
-    #             lambda wait: self.driver.current_url == self.expected_landing_url)
-    #     finally:
-    #         assert self.expected_landing_url in self.driver.current_url
-    #     waitForAngular(self.driver)
 
     def enter_info(self, first, last, dob, ssn, address, addr2, city, state, zip, phone, email):
         assert self.firstName is not None
@@ -70,22 +46,29 @@ class IPInvestorTypePage(BasePage):
         assert self.socialSec is not None
         self.socialSec.send_keys(ssn)
         assert ssn in self.socialSec.get_attribute("value")
+        # print(self.socialSec.get_attribute("value"))
+        # print(ssn)
+        # if(self.socialSec.get_attribute("value") == ssn):
+        #     print('equ')
 
-        assert self.address is not None
-        self.address.send_keys(address)
-        assert address in self.address.get_attribute("value")
 
-        assert self.addressTwo is not None
-        self.addressTwo.send_keys(addr2)
-        assert addr2 in self.addressTwo.get_attribute("value")
+
+        assert self.address1 is not None
+        self.address1.send_keys(address)
+        assert address in self.address1.get_attribute("value")
+
+        assert self.address2 is not None
+        self.address2.send_keys(addr2)
+        assert addr2 in self.address2.get_attribute("value")
 
         assert self.city is not None
         self.city.send_keys(city)
         assert city in self.city.get_attribute("value")
 
         assert self.state is not None
-        self.state.send_keys(state)
-        assert state in self.state.get_attribute("value")
+        Select(self.state).select_by_visible_text(state)
+        # self.state.send_keys(state)
+        assert state in Select(self.state).all_selected_options[0].get_attribute("textContent")
 
         assert self.zipCode is not None
         self.zipCode.send_keys(zip)
@@ -99,54 +82,7 @@ class IPInvestorTypePage(BasePage):
         self.email.send_keys(email)
         assert email in self.email.get_attribute("value")
 
-    def land(self):
-        self.driver.get(self.expected_landing_url)
 
-
-        def clickContinue(self):
-            self.btnContinue.click()
-            waitForAngular(self.driver)
-
-        def clickFirst(self):
-            self.txtInvestorFirstName.click()
-            waitForAngular(self.driver)
-
-        def clickLast(self):
-            self.txtInvestorLastName.click()
-            waitForAngular(self.driver)
-
-        def clickDOB(self):
-            self.txtInvestorDOB.click()
-            waitForAngular(self.driver)
-
-        def clickSSN(self):
-            self.txtInvestorSSN.click()
-            waitForAngular(self.driver)
-
-        def clickAddress1(self):
-            self.txtInvestorAddress1.click()
-            waitForAngular(self.driver)
-
-        def clickAddress2(self):
-            self.txtInvestorAddress2.click()
-            waitForAngular(self.driver)
-
-        def clickCity(self):
-            self.txtInvestorCity.click()
-            waitForAngular(self.driver)
-
-        def clickState(self):
-            self.ddlInvestorStateProvs.click()
-            waitForAngular(self.driver)
-
-        def clickZip(self):
-            self.txtInvestorPostalCode.click()
-            waitForAngular(self.driver)
-
-        def clickPhone(self):
-            self.txtInvestorPhone.click()
-            waitForAngular(self.driver)
-
-        def clickEmail(self):
-            self.txtInvestorEmail.click()
-            waitForAngular(self.driver)
+    def clickContinue(self):
+        self.btnContinue.click()
+        waitForAngular(self.driver)

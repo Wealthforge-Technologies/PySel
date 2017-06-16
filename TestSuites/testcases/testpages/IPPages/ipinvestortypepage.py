@@ -13,12 +13,10 @@ class IPInvestorTypePage(BasePage):
     btnInvTypeEntity = PageElement(id_='divInvestorTypeEntity')
     btnInvTypeMarried = PageElement(id_='divInvestorTypeMarried')
     btnInvTypeRepre = PageElement(id_='divInvestorTypeRepresentative')
-    btnBack = PageElement(id_='Back')
-    btnContinue = PageElement(id_='btnContinue')
 
     def __init__(self):
         BasePage.__init__(self,
-                          url='/IP/#/document/query',
+                          url='/IP/#/query',
                           title='WF: Investor Platform')
 
 

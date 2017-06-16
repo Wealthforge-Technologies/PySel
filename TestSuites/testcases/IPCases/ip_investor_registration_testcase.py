@@ -2,6 +2,7 @@ import unittest
 
 from ..testpages.IPPages.ipinvestorregistrationpage import IPInvestorTypePage
 from ..testcaseutilities.testinfo import TestInfo
+from ..testpages.IPPages.ipgeneralpage import IPGeneral
 
 
 class TestIPInvestorRegistration(unittest.TestCase):
@@ -24,6 +25,7 @@ class TestIPInvestorRegistration(unittest.TestCase):
                                               self.lookup.testinfo["txtInvestorPhone"],
                                               self.lookup.testinfo["txtInvestorEmail"])
 
+        IPGeneral().clickContinue()
 
 if __name__ == "__main__":
     unittest.main()

@@ -7,8 +7,6 @@ from ..testpageutilities import getOrCreateWebdriver
 
 class IPSummaryPage(BasePage):
     """QA Get Started page. I.e. https://qa1.wealthforge.org/IP/#/summary"""
-    btnBack = PageElement(id_='btnBack')
-    btnContinue = PageElement(id_='btnContinue')
     btnInvestAmount = PageElement(id_='investAmount')
     btnQuickContinue = PageElement(id_='btnQuickContinue')
     header = PageElement(id_='hHeadLine')

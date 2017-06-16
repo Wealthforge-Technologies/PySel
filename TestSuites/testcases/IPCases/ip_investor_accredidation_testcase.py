@@ -2,7 +2,7 @@ import unittest
 
 from ..testpages.IPPages.ipinvestoraccredidationpage import IPInvestorAccredidationPage
 from ..testcaseutilities.testinfo import TestInfo
-
+from ..testpages.IPPages.ipgeneralpage import IPGeneral
 
 class TestIPInvestorAccredidation(unittest.TestCase):
     def setUp(self):
@@ -10,12 +10,12 @@ class TestIPInvestorAccredidation(unittest.TestCase):
         self.lookup.load_defaults()
 
     def test_login(self):
-        ip_investor_accredidation_page = IPInvestorAccredidationPage()
-        ip_investor_accredidation_page.is_expected_landing_url()
+        accr = IPInvestorAccredidationPage()
+        accr.is_expected_landing_url()
 
-        ip_investor_accredidation_page.divTypeNet_Worth.click()
-        ip_investor_accredidation_page.btnContinue.click()
+        accr.btnNetWorth.click()
 
+        IPGeneral().clickContinue()
 
 if __name__ == "__main__":
     unittest.main()

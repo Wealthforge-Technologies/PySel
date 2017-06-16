@@ -2,7 +2,7 @@ import unittest
 
 from ..testpages.IPPages.ipsummarypage import IPSummaryPage
 from ..testcaseutilities.testinfo import TestInfo
-
+from ..testpages.IPPages.ipgeneralpage import IPGeneral
 
 class TestIPSummary(unittest.TestCase):
     def setUp(self):
@@ -13,7 +13,8 @@ class TestIPSummary(unittest.TestCase):
 
         ip_summary_page = IPSummaryPage()
         ip_summary_page.is_expected_landing_url()
-        ip_summary_page.btnContinue.click()
+
+        IPGeneral().clickContinue()
 
 
 if __name__ == "__main__":

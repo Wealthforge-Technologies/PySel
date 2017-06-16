@@ -1,47 +1,17 @@
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
 from ..element import PageElement
 from ..testpageutilities.waitforangular import waitForAngular
 from ..basepage import BasePage
-from ..testpageutilities import getOrCreateWebdriver
 
 
 class IPInvestorAccredidationPage(BasePage):
-    btnBack = PageElement(id_='Back')
-    btnContinue = PageElement(id_='btnContinue')
     btnNetWorth = PageElement(id_='divTypeNet_Worth')
     btnIncome = PageElement(id_='divTypeIncome')
     btnNotAccred = PageElement(id_='divTypeNotAccredited')
 
     def __init__(self):
         BasePage.__init__(self,
-                          url='/IP/#/ind/registration', #TODO: this is individual only with the "ind"
+                          url='/IP/#/accreditation',
                           title='WF: Investor Platform')
-
-
-    # def __init__(self):
-    #     self.driver = getOrCreateWebdriver()
-    #     self.expected_landing_url = "https://qa1.wealthforge.org/IP/#/ind/registration"
-    #     self.expected_title = "WF: Investor Platform"
-    #
-    # def is_expected_title(self):
-    #     """Verifies that the hardcoded text "WF: Investor Platform" appears in page title"""
-    #     try:
-    #         wait = WebDriverWait(self.driver, 5).until(
-    #             EC.title_contains(self.expected_title))
-    #     finally:
-    #         assert self.expected_title in self.driver.title
-    #     waitForAngular(self.driver)
-    #
-    #
-    # def is_expected_landing_url(self):
-    #     """Verifies that the hardcoded text "WF: Investor Platform" appears in page title"""
-    #     try:
-    #         wait = WebDriverWait(self.driver, 5).until(
-    #             lambda wait: self.driver.current_url == self.expected_landing_url)
-    #     finally:
-    #         assert self.expected_landing_url in self.driver.current_url
-    #     waitForAngular(self.driver)
 
     def enter_info(self, net, income, notAcc):
         assert self.btnNetWorth is not None

@@ -7,8 +7,6 @@ from ..testpageutilities import getOrCreateWebdriver
 
 class IPInvestorSuitabilityPage(BasePage):
     """QA Get Started page. I.e. https://qa1.wealthforge.org/IP/#/ind/registration"""
-    btnBack = PageElement(id_='Back')
-    btnContinue = PageElement(id_='btnContinue')
     primInvObj = PageElement(id_='sq-10')
     relInvExp = PageElement(id_='sq-20')
     wilAccptRisk = PageElement(id_='sq-30')
@@ -30,31 +28,7 @@ class IPInvestorSuitabilityPage(BasePage):
                           url='/IP/#/suitability',
                           title='WF: Investor Platform')
 
-    # def __init__(self):
-    #     self.driver = getOrCreateWebdriver()
-    #     self.expected_landing_url = "https://qa1.wealthforge.org/IP/#/ind/registration"
-    #     self.expected_title = "WF: Investor Platform"
-    #
-    # def is_expected_title(self):
-    #     """Verifies that the hardcoded text "WF: Investor Platform" appears in page title"""
-    #     try:
-    #         wait = WebDriverWait(self.driver, 5).until(
-    #             EC.title_contains(self.expected_title))
-    #     finally:
-    #         assert self.expected_title in self.driver.title
-    #     waitForAngular(self.driver)
-    #
-    #
-    # def is_expected_landing_url(self):
-    #     """Verifies that the hardcoded text "WF: Investor Platform" appears in page title"""
-    #     try:
-    #         wait = WebDriverWait(self.driver, 5).until(
-    #             lambda wait: self.driver.current_url == self.expected_landing_url)
-    #     finally:
-    #         assert self.expected_landing_url in self.driver.current_url
-    #     waitForAngular(self.driver)
-
-    def enter_info(self, q1, q2, q3, q4, q5, q6, q7, q8, q9, q10, q11, q12, q13, invAmt):
+    def enter_info(self, q1, q2, q3, q4, q5, q6, q7, q8, q9, q10, q11, q12, q13):
         assert self.primInvObj is not None
         self.primInvObj.send_keys(q1)
         assert q1 in self.primInvObj.get_attribute("value")
@@ -107,16 +81,12 @@ class IPInvestorSuitabilityPage(BasePage):
         self.iHaveConduct.send_keys(q13)
         assert q13 in self.iHaveConduct.get_attribute("value")
 
+
+    def invest(self, amount):
         assert self.invAmount is not None
-        self.invAmount.send_keys(invAmt)
-        assert invAmt in self.invAmount.get_attribute("value")
+        self.invAmount.send_keys(amount)
+        #TODO: check the text below the field
 
-
-    def land(self):
-        self.driver.get(self.expected_landing_url)
-
-
-        def clickContinue(self):
-            self.btnContinue.click()
-            waitForAngular(self.driver)
-
+        assert self.btnInvAmt is not None
+        self.btnInvAmt.click()
+        waitForAngular(self.driver)
