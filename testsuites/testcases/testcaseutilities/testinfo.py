@@ -77,7 +77,28 @@ class TestInfo:
         self.testinfo["sq-120"] = "Yes"
         self.testinfo["sq-130"] = "Yes"
         self.testinfo["invAmnt"] = "2000"
+
         self.testinfo["ddlAccountTypes"] = "Checking"
+        self.testinfo["ACHAcctName"] = "Joe Smith"
+        self.testinfo["ACHRoutNum"] = "449398156"
+        self.testinfo["ACHRoutNumConf"] = "449398156"
+        self.testinfo["ACHAcctNum"] = "4471325151914572"
+        self.testinfo["ACHAcctNumConf"] = "4471325151914572"
+
+        self.testinfo["ddlEntityTypes"] = "Trust"
+        self.testinfo["txtInvestorName"] = "Jeff Stephens"
+        self.testinfo["txtInvestorSignatoryName"] = "Ollie Jacobs"]
+        self.testinfo["txtInvestorSignatoryTitle"] = "awasu"
+        self.testinfo["txtInvestorEIN"] = "53-6576854"
+
+        self.testinfo["txtSpouseFirstName"] = "Breanna"
+        self.testinfo["txtSpouseLastName"] = "Erickson"
+        self.testinfo["txtSpouseDOB"] = "05/22/1983"
+        self.testinfo["txtSpouseSSN"] = "344-92-8743"
+        self.testinfo["txtSpousePhone"] = "(799)169-4865"
+        self.testinfo["txtSpouseEmail"] = "mglass+i5@wealthforge.com"
+        self.testinfo["txtSpouseEmailConfirm"] = "mglass+i5@wealthforge.com"
+
 
 
 

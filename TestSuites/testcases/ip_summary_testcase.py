@@ -30,7 +30,7 @@ class TestIPSummary(unittest.TestCase):
 
         ip_summary_page = IPSummaryPage(self.driver)
         ip_summary_page.is_expected_landing_url()
-        ip_summary_page.btnContinue.click()
+        ip_summary_page.clickContinue()
 
     def tearDown(self):
         self.driver.close()

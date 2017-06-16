@@ -49,7 +49,7 @@ class IPPaymentTypePage(BasePage):
             assert self.expected_landing_url in self.driver.current_url
         waitForAngular(self.driver)
 
-    def enter_info(self, ach, check, wire, ira, exchange):
+    def enter_info(self, ach, check, wire, ira, exchange, acctNme, acctTyp, acctRout, acctRoutConf, acctNum, acctNumConf):
         assert self.btnACH is not None
         self.btnACH.send_keys(ach)
         assert ach in self.btnACH.get_attribute("value")
@@ -70,9 +70,29 @@ class IPPaymentTypePage(BasePage):
         self.btnExchange.send_keys(exchange)
         assert exchange in self.btnExchange.get_attribute("value")
 
+        assert self.acctName is not None
+        self.acctName.sendKeys(acctNme)
+        assert acctNme in self.acctName.get_attribute("value")
+
         assert self.acctTypes is not None
         self.acctTypes.sendKeys(acctTyp)
         assert acctTyp in self.acctTypes.get_attribute("value")
+
+        assert self.acctRouting is not None
+        self.acctRouting.sendKeys(acctRout)
+        assert acctRout in self.acctRouting.get_attribute("value")
+
+        assert self.acctRoutingConf is not None
+        self.acctRoutingConf.sendKeys(acctRoutConf)
+        assert acctRoutConf in self.acctRoutingConf.get_attribute("value")
+
+        assert self.acctNumber is not None
+        self.acctNumber.sendKeys(acctNum)
+        assert acctNum in self.acctNumber.get_attribute("value")
+
+        assert self.acctNumberConf is not None
+        self.acctNumberConf.sendKeys(acctNumConf)
+        assert acctNumConf in self.acctNumberConf.get_attribute("value")
 
 
     def land(self):

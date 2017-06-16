@@ -109,11 +109,11 @@ class IPInvestorSuitabilityPage(BasePage):
         assert invAmt in self.invAmount.get_attribute("value")
 
 
-    def land(self):
-        self.driver.get(self.expected_landing_url)
-
-
         def clickContinue(self):
             self.btnContinue.click()
+            waitForAngular(self.driver)
+
+        def clickUpdateAmt(self):
+            self.investAmount.click()
             waitForAngular(self.driver)
 

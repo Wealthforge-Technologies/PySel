@@ -6,19 +6,17 @@ from .element import PageElement
 from .testpageutilities.waitforangular import waitForAngular
 from .basepage import BasePage
 
-class IPIPInvestorTypePagePage(BasePage):
-    """QA Get Started page. I.e. https://qa1.wealthforge.org/IP/#/summary"""
-    btnInvTypeIndiv = PageElement(id_='divInvestorTypeIndividual')
-    btnInvTypeEntity = PageElement(id_='divInvestorTypeEntity')
-    btnInvTypeMarried = PageElement(id_='divInvestorTypeMarried')
-    btnInvTypeRepre = PageElement(id_='divInvestorTypeRepresentative')
+class IPInvestorConfirmationPage(BasePage):
+    """QA Get Started page. I.e. https://qa1.wealthforge.org/IP/#/payment"""
+    chkBoxAffirmCC = PageElement(id_='chkAffirmCreditCheck')
+    chkBoxAffirmTC = PageElement(id_='chkAffirmTermsAndConditions')
     btnBack = PageElement(id_='Back')
     btnContinue = PageElement(id_='btnContinue')
-    entityType = PageElement(id_='ddlEntityTypes')
+
 
     def __init__(self, driver):
         self.driver = driver
-        self.expected_landing_url = "https://qa1.wealthforge.org/IP/#/summary"
+        self.expected_landing_url = "https://qa1.wealthforge.org/IP/#/payment"
         self.expected_title = "WF: Investor Platform"
 
     def is_expected_title(self):
@@ -40,32 +38,13 @@ class IPIPInvestorTypePagePage(BasePage):
             assert self.expected_landing_url in self.driver.current_url
         waitForAngular(self.driver)
 
+
     def land(self):
         self.driver.get(self.expected_landing_url)
 
-    def clickIndividual(self):
-        self.divInvestorTypeIndividual.click()
-        waitForAngular(self.driver)
 
-    def clickEntity(self):
-        self.divInvestorTypeEntity.click()
-        waitForAngular(self.driver)
+        def clickContinue(self):
+            self.btnContinue.click()
+            waitForAngular(self.driver)
 
-    def clickMarried(self):
-        self.divInvestorTypeMarried.click()
-
-    def clickRepresentative(self):
-        self.divInvestorTypeRepresentative.click()
-
-    def clickContinue(self):
-        self.btnContinue.click()
-        waitForAngular(self.driver)
-
-    def clickBack(self):
-        self.Back.click()
-        waitForAngular(self.driver)
-
-    def click.entityType(self):
-        self.entType.click()
-        waitForAngular(self.driver)
 
