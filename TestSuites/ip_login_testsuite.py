@@ -13,7 +13,7 @@ from testcases.IPCases import ip_investor_suitability_testcase
 from testcases.IPCases import ip_document_upload_testcase
 from testcases.IPCases import ip_payment_type_testcase
 from testcases.IPCases import ip_docusign_testcase
-
+from testcases.IPCases import ip_investor_confirmation_testcase
 
 def main():
     loader = unittest.TestLoader()
@@ -31,6 +31,7 @@ def main():
                     loader.loadTestsFromModule(ip_document_upload_testcase),
                     loader.loadTestsFromModule(ip_payment_type_testcase),
                     loader.loadTestsFromModule(ip_docusign_testcase),
+                    loader.loadTestsFromModule(ip_investor_confirmation_testcase),
                     loader.loadTestsFromModule(close_driver_spec)
                     ])
 

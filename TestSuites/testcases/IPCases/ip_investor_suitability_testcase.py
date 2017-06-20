@@ -4,6 +4,7 @@ from ..testpages.IPPages.ipinvestorsuitabilitypage import IPInvestorSuitabilityP
 from ..testcaseutilities.testinfo import TestInfo
 from ..testpages.IPPages.ipgeneralpage import IPGeneral
 
+
 class TestIPInvestorSuitability(unittest.TestCase):
     def setUp(self):
         self.lookup = TestInfo()

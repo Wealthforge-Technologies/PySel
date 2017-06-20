@@ -2,6 +2,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.by import By
 from .testpageutilities.waitforangular import waitForAngular
+from testutilities import Settings
 
 # class BasePageElement(object):
 #     """Base page class that is initialized on every page object class."""
@@ -74,7 +75,8 @@ class PageElement(object):
 
     def find(self, context):
         try:
-            waitForAngular(context)
+            if Settings.ISANGULAR:
+                waitForAngular(context)
             return context.find_element(*self.locator)
         except NoSuchElementException:
             return None

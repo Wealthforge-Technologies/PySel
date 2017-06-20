@@ -32,3 +32,14 @@ SELENIUMADDRESS = 'http://127.0.0.1:4445/wd/hub'
 ########################
 
 ENVIRONMENT = 'https://qa1.wealthforge.org'
+
+
+
+
+
+#######################
+# CHANGEABLE SETTINGS #
+#######################
+
+# If this is not set to false on a page that is not angular, the element.find() will break on the waitForAngular
+ISANGULAR = True
