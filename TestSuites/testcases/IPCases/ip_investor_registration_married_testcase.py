@@ -3,8 +3,8 @@ import unittest
 from selenium import webdriver
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 
-from TestSuites.testcases.testpages import IPMarriedInvestorRegistrationPage
-from .testcaseutilities.testinfo import TestInfo
+from ..testpages.IPPages.ipmarriedinvestorregistrationpage import IPMarriedInvestorRegistrationPage
+from ..testcaseutilities.testinfo import TestInfo
 
 
 class TestIPMarriedInvestorRegistration(unittest.TestCase):
@@ -26,7 +26,7 @@ class TestIPMarriedInvestorRegistration(unittest.TestCase):
                                               self.lookup.testinfo["ddlInvestorStateProvs"],
                                               self.lookup.testinfo["txtInvestorPostalCode"],
                                               self.lookup.testinfo["txtInvestorPhone"],
-                                              self.lookup.testinfo["txtInvestorEmail"]
+                                              self.lookup.testinfo["txtInvestorEmail"],
                                               self.lookup.testinfo["txtSpouseFirstName"],
                                               self.lookup.testinfo["txtSpouseLastName"],
                                               self.lookup.testinfo["txtSpouseDOB"],
@@ -35,7 +35,7 @@ class TestIPMarriedInvestorRegistration(unittest.TestCase):
                                               self.lookup.testinfo["txtSpouseEmail"],
                                               self.lookup.testinfo["txtSpouseEmailConfirm"])
 
-        ip_investor_registration_married_page.clickContinue()
+        IPGeneral().clickContinue()
 
 if __name__ == "__main__":
     unittest.main()

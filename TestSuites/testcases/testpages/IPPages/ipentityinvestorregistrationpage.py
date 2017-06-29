@@ -6,7 +6,7 @@ from .element import PageElement
 from .testpageutilities.waitforangular import waitForAngular
 from .basepage import BasePage
 
-class IPEntityInvestorTypePage(BasePage):
+class IPEntityInvestorRegistrationPage(BasePage):
     btnBack = PageElement(id_='Back')
     btnContinue = PageElement(id_='btnContinue')
     entityName = PageElement(id_='txtInvestorName')
@@ -22,7 +22,7 @@ class IPEntityInvestorTypePage(BasePage):
     phoneNumber = PageElement(id_='txtInvestorPhone')
     email = PageElement(id_='txtInvestorEmail')
 
-    def enter_info(self, entName, sigName, sigTitle, ein,  ssn, address, addr2, city, state, zip, phone, email, entName, sigName, sigTitle, ein):
+    def enter_info(self, entName, sigName, sigTitle, ein,  ssn, address, addr2, city, state, zip, phone, email):
         assert self.entityName is not None
         self.entityName.send_keys(entName)
         assert entName in self.entityName.get_attribute("value")

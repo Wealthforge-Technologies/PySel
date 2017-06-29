@@ -57,7 +57,7 @@ class TestInfo:
         self.testinfo["txtInvestorDOB"] = "11/16/1985"
         self.testinfo["txtInvestorSSN"] = "734-28-9123"
         self.testinfo["txtInvestorAddress1"] = "14234 Happy Lane"
-        self.testinfo["txttxtInvestorAddress2"] = "Apt 3"
+        self.testinfo["txtInvestorAddress2"] = "Apt 3"
         self.testinfo["txtInvestorCity"] = "Plano"
         self.testinfo["ddlInvestorStateProvs"] = "Texas"
         self.testinfo["txtInvestorPostalCode"] = "43234"
@@ -87,5 +87,28 @@ class TestInfo:
         self.testinfo["invAmnt"] = "2000"
         self.testinfo["ddlAccountTypes"] = "Checking"
 
+        #Entity Registration Page
+        self.testinfo["ddlEntityTypes"] = "Trust"
+        self.testinfo["txtInvestorName"] = "Jeff Stephens"
+        self.testinfo["txtInvestorSignatoryName"] = "Ollie Jacobs"
+        self.testinfo["txtInvestorSignatoryTitle"] = "awasu"
+        self.testinfo["txtInvestorEIN"] = "53-6576854"
+
+        #Married Registration Page
+        self.testinfo["txtSpouseFirstName"] = "Breanna"
+        self.testinfo["txtSpouseLastName"] = "Erickson"
+        self.testinfo["txtSpouseDOB"] = "05/22/1983"
+        self.testinfo["txtSpouseSSN"] = "344-92-8743"
+        self.testinfo["txtSpousePhone"] = "(799)169-4865"
+        self.testinfo["txtSpouseEmail"] = "mglass+i5@wealthforge.com"
+        self.testinfo["txtSpouseEmailConfirm"] = "mglass+i5@wealthforge.com"
+
+        #Getting to Know You Page
+        self.testinfo["address"] = "446 Ojogo Pike"
+        self.testinfo["addressCont"] = "PO Box 23"
+        self.testinfo["city"] = "Anderson"
+        self.testinfo["stateDrop"] = "South Carolina"
+        self.testinfo["zip"] = "79798"
+        self.testinfo["phone"] = "(452) 312-5764"
 
 

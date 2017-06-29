@@ -2,9 +2,9 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
-from .element import PageElement
-from .testpageutilities.waitforangular import waitForAngular
-from .basepage import BasePage
+from ..element import PageElement
+from ..testpageutilities.waitforangular import waitForAngular
+from ..basepage import BasePage
 
 class IPMarriedInvestorRegistrationPage(BasePage):
     btnBack = PageElement(id_='Back')

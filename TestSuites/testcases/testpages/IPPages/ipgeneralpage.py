@@ -4,8 +4,9 @@ from ..basepage import BasePage
 
 class IPGeneral(BasePage):
     btnContinue = PageElement(id_='btnContinue')
-    btnBack = PageElement(id_='') #TODO:
-    btnLogout = PageElement(id_='')
+    btnBack = PageElement(id_='btnBack') #TODO:
+    btnLogout = PageElement(id_='linkLogout')
+
 
 
     def __init__(self):

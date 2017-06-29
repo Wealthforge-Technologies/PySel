@@ -20,33 +20,6 @@ class IPInvestorTypePage(BasePage):
                           title='WF: Investor Platform')
 
 
-    # def __init__(self):
-    #     self.driver = getOrCreateWebdriver()
-    #     self.expected_landing_url = "https://qa1.wealthforge.org/IP/#/query"
-    #     self.expected_title = "WF: Investor Platform"
-    #
-    # def is_expected_title(self):
-    #     """Verifies that the hardcoded text "WF: Investor Platform" appears in page title"""
-    #     try:
-    #         wait = WebDriverWait(self.driver, 5).until(
-    #             EC.title_contains(self.expected_title))
-    #     finally:
-    #         assert self.expected_title in self.driver.title
-    #     waitForAngular(self.driver)
-    #
-    #
-    # def is_expected_landing_url(self):
-    #     """Verifies that the hardcoded text "WF: Investor Platform" appears in page title"""
-    #     try:
-    #         wait = WebDriverWait(self.driver, 5).until(
-    #             lambda wait: self.driver.current_url == self.expected_landing_url)
-    #     finally:
-    #         assert self.expected_landing_url in self.driver.current_url
-    #     waitForAngular(self.driver)
-    #
-    # def land(self):
-    #     self.driver.get(self.expected_landing_url)
-
     def clickIndividual(self):
         self.divInvestorTypeIndividual.click()
         waitForAngular(self.driver)
@@ -67,5 +40,9 @@ class IPInvestorTypePage(BasePage):
 
     def clickBack(self):
         self.Back.click()
+        waitForAngular(self.driver)
+
+    def clickEntityType(self):
+        self.ddlEntityTypes.click()
         waitForAngular(self.driver)
 
