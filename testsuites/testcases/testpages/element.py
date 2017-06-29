@@ -3,24 +3,10 @@ from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.by import By
 from .testpageutilities.waitforangular import waitForAngular
 from testutilities import Settings
+import time
+from selenium.webdriver.remote.webelement import WebElement
+from selenium.webdriver.remote.command import Command
 
-# class BasePageElement(object):
-#     """Base page class that is initialized on every page object class."""
-#
-#     def __set__(self, obj, value):
-#         """Sets the text to the value supplied"""
-#         driver = obj.driver
-#         WebDriverWait(driver, 100).until(
-#             lambda driver: driver.find_element_by_name(self.locator))
-#         driver.find_element_by_name(self.locator).send_keys(value)
-#
-#     def __get__(self, obj, owner):
-#         """Gets the text of the specified object"""
-#         driver = obj.driver
-#         WebDriverWait(driver, 100).until(
-#             lambda driver: driver.find_element_by_name(self.locator))
-#         element = driver.find_element_by_name(self.locator)
-#         return element.get_attribute("value")
 
 _LOCATOR_MAP = {'css': By.CSS_SELECTOR,
                 'id_': By.ID,
@@ -31,6 +17,53 @@ _LOCATOR_MAP = {'css': By.CSS_SELECTOR,
                 'tag_name': By.TAG_NAME,
                 'class_name': By.CLASS_NAME,
                 }
+
+
+# def WebElement_click(self):
+#     """Clicks the element."""
+#     print("my click")
+#     time.sleep(Settings.SPEED)
+#     self._execute(Command.CLICK_ELEMENT)
+#
+# WebElement.click = WebElement_click
+#
+#
+# def WebElement_send_keys(self, keys):
+#     """Clicks the element."""
+#     print("my send_keys")
+#     time.sleep(Settings.SPEED)
+#     WebElement.send_keys(self, keys)
+#
+# WebElement.send_keys = WebElement_send_keys
+
+
+# from selenium.webdriver.remote.webelement import WebElement as WBExt
+#
+# class newWB(object):
+#     def __init__(self):
+#         self._click = WBExt.click(self)
+#
+#     @classmethod
+#     def new_click(self):
+#         print('new click')
+#         return self._click
+#
+#
+# WebElement = newWB
+
+class ExtWebElement(WebElement):
+
+    def clickw(self):
+        print('custom click')
+        time.sleep(Settings.SPEED)
+        # WebElement.click(self)
+        self.click()
+
+    def send_keysw(self, *value):
+        print('custom send_keys')
+        time.sleep(Settings.SPEED)
+        # WebElement.click(self)
+        self.send_keys(*value)
 
 
 class PageElement(object):
@@ -77,6 +110,10 @@ class PageElement(object):
         try:
             if Settings.ISANGULAR:
                 waitForAngular(context)
+
+            # f = context.find_element(*self.locator)
+            # return MyWebElem(f)
+
             return context.find_element(*self.locator)
         except NoSuchElementException:
             return None
@@ -91,7 +128,10 @@ class PageElement(object):
         if not context:
             context = instance.driver
 
-        return self.find(context)
+        # return self.find(context)
+        f = self.find(context)
+        f.__class__ = ExtWebElement
+        return f
 
     def __set__(self, instance, value):
         if self.has_context:
@@ -102,3 +142,14 @@ class PageElement(object):
             raise ValueError("Can't set value, element not found")
         elem.send_keys(value)
         assert elem.get_attribute("value") == value
+
+    # def click(self):
+    #     print('custom clicking')
+    #     self.click()
+
+
+    # not currently working
+    # def assertFound(self):
+    #     if self is None:
+    #         print('Element Not Found!')
+

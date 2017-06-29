@@ -1,39 +1,42 @@
-from selenium.webdriver.support.ui import WebDriverWait
 from ..element import PageElement
-from ..testpageutilities.waitforangular import waitForAngular
-from selenium.webdriver.support import expected_conditions as EC
 from ..basepage import BasePage
-from ..testpageutilities import getOrCreateWebdriver
+from selenium.webdriver.common.keys import Keys
 
 
 class BDGeneralPage(BasePage):
-    # https://qa1.wealthforge.org/BD/#/rad
-    filter = PageElement(id_='search')
+    filterField = PageElement(id_='search')
+    itemsPerPage = PageElement(css='[ng-model="pageSize"]')
     hamburger = PageElement(id_='appDrawerToggle')
     currentUser = PageElement(xpath='//*[@id="bs-example-navbar-collapse-1"]/div/username/span/strong')
     dots = PageElement(css='#bs-example-navbar-collapse-1 > ul > li > a')
     support = PageElement(xpath='//*[@id="bs-example-navbar-collapse-1"]/ul/li/ul/li[1]/a')
+    logoutButton = PageElement(css='[ng-click="logout()"]')
+    nextPageButton = PageElement(css='ng-click="setCurrent(pagination.current + 1)"')
     # TODO: Back to home page
     # TODO: Terms of Use
     # TODO: Privacy Statement
-    logout = PageElement(css=("[ng-click*=logout()]"))
-
 
     def __init__(self):
-        BasePage.__init__(self,
-                          url='',
-                          title='')
+        BasePage.__init__(self)
 
+    def getNumbPages(self):
+        return self.driver.execute_script('return document.querySelectorAll(\'[ng-click*="setCurrent(pageNumber)"]\').length')
 
-    # def __init__(self):
-    #     self.driver = getOrCreateWebdriver()
-    #     self.expected_title = "WF: Broker Dealer"
+    def setItemsPerPage(self, n):
+        self.itemsPerPage.clear()
+        self.itemsPerPage.send_keys(str(n))
 
-    def loadPagination(self):
-        pass
-        backOnePage = PageElement(css='icon ion-android-arrow-back')
-        forwardOnePage = PageElement(css='icon ion-android-arrow-forward')
+    def clickNextPage(self):
+        self.nextPageButton.send_keys(Keys.NULL)
+        self.nextPageButton.click()
 
-        numbPages = PageElement(css=("[ng-click*=logout()]"))[-1].__getattribute__("value")
+    def logout(self):
+        self.dots.click()
+        self.logoutButton.click()
 
+    def filter(self, txt):
+        self.filterField.send_keys(txt)
 
+    # def getCurrentUser(self):
+    #     assert self.currentUser is not None, 'Could not find Element!'
+    #     return self.currentUser.get_attribute("textContent").lstrip()

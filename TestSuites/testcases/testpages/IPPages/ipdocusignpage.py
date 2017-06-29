@@ -1,5 +1,4 @@
 from ..element import PageElement
-from ..testpageutilities.waitforangular import waitForAngular
 from ..basepage import BasePage
 
 class IPDocusignPage(BasePage):

@@ -5,6 +5,7 @@ from ..testcaseutilities.testinfo import TestInfo
 
 
 class TestLogin(unittest.TestCase):
+
     def setUp(self):
         self.lookup = TestInfo()
         self.lookup.load_defaults()
@@ -14,7 +15,9 @@ class TestLogin(unittest.TestCase):
 
         bd_login_page.land()
         bd_login_page.is_expected_landing_url()
-        bd_login_page.login(self.lookup.testinfo["CCO.email"],self.lookup.testinfo["CCO.password"])
+
+        bd_login_page.login(self.lookup.testinfo["CCO.email"],
+                            self.lookup.testinfo["CCO.password"])
 
 
 

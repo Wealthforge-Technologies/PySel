@@ -1,8 +1,5 @@
-from selenium.webdriver.support.ui import WebDriverWait
 from ..element import PageElement
-from ..testpageutilities.waitforangular import waitForAngular
 from ..basepage import BasePage
-from ..testpageutilities import getOrCreateWebdriver
 
 
 class BDHomePage(BasePage):
@@ -18,30 +15,3 @@ class BDHomePage(BasePage):
         BasePage.__init__(self,
                           url='/BD/#/',
                           title='WF: Broker Dealer')
-
-
-    # def __init__(self):
-    #     self.driver = getOrCreateWebdriver()
-    #     self.expected_landing_url = "/BD/#/"
-    #     self.expected_title = "WF: Broker Dealer"
-
-    # def is_expected_title(self):
-    #     try:
-    #         wait = WebDriverWait(self.driver, 5).until(
-    #             EC.title_contains(self.expected_title))
-    #     finally:
-    #         assert self.expected_title in self.driver.title
-    #     waitForAngular(self.driver)
-    #
-    # def is_expected_landing_url(self):
-    #     try:
-    #         wait = WebDriverWait(self.driver, 5).until(
-    #             lambda wait: self.driver.current_url == self.expected_landing_url)
-    #     finally:
-    #         assert self.expected_landing_url in self.driver.current_url
-    #     waitForAngular(self.driver)
-    #
-    #
-    # def land(self):
-    #     self.driver.get(self.expected_landing_url)
-    #     waitForAngular(self.driver)

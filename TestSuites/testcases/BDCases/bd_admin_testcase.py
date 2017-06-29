@@ -14,6 +14,7 @@ class TestBDAdmin(unittest.TestCase):
 
         bd_home_page = BDHomePage()
         bd_home_page.is_expected_landing_url()
+
         bd_home_page.menuDashboardAdmin.click()
 
 

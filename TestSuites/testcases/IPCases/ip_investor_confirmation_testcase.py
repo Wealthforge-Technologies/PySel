@@ -7,6 +7,7 @@ from ..testpages.IPPages.ipgeneralpage import IPGeneral
 
 
 class IPInvestorConfirmationCase(unittest.TestCase):
+
     def setUp(self):
         self.lookup = TestInfo()
         self.lookup.load_defaults()

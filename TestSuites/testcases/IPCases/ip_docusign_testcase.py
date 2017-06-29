@@ -6,6 +6,7 @@ from ..testpages.IPPages.ipdocusignpage import IPDocusignPage
 from testutilities import Settings
 
 class TestLogin(unittest.TestCase):
+
     def setUp(self):
         self.lookup = TestInfo()
         self.lookup.load_defaults()
@@ -39,7 +40,7 @@ class TestLogin(unittest.TestCase):
 
 
         docusign.btnFinish.click()
-        time.sleep(1)
+        time.sleep(3)
 
 
         Settings.ISANGULAR = True

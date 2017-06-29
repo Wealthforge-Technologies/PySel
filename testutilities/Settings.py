@@ -22,9 +22,13 @@ SELENIUMADDRESS = 'http://127.0.0.1:4445/wd/hub'
 # TIMING SETTINGS #
 ###################
 
-#TODO: add stuff here
 
+SPEED_DEFAULT = 0
+SPEED_FAST = 0.1
+SPEED_HUMAN = 0.5
+SPEED_HUMAN_SLOW = 1.0
 
+SPEED = SPEED_HUMAN_SLOW
 
 
 ########################

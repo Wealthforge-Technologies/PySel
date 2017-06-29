@@ -1,24 +1,12 @@
 import unittest
-from selenium import webdriver
-from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
-from ..testpages.BDPages.bdloginpage import BDLoginPage
-from ..testpages.BDPages.bdhomepage import BDHomePage
+
 from ..testpages.BDPages.bdloginpage import BDLoginPage
 from ..testpages.BDPages.bdadmintab_page import BDAdminTabPage
 from ..testpages.BDPages.bdadmintab_user_page import BDAdminTabUserPage
 from ..testpages.BDPages.bdconfirmuser_page import BDConfirmUserPage
 from ..testpages.BDPages.bdconfirmuser_success_page import BDConfirmUserSuccessPage
-from ..testcaseutilities.testinfo import TestInfo
-from ..testcaseutilities.gmailaccessor import get_new_bd_user_password_reset_url
-from TestSuites.testcases.BD.testpages import BDAdminTabPage
-from TestSuites.testcases.testpages import BDAdminTabUserPage
-from TestSuites.testcases.testpages import BDConfirmUserPage
-from TestSuites.testcases.testpages import BDConfirmUserSuccessPage
-from TestSuites.testcases.testpages import BDHomePage
-from TestSuites.testcases.testpages import BDLoginPage
 from ..testcaseutilities.gmailaccessor import get_new_bd_user_password_reset_url
 from ..testcaseutilities.testinfo import TestInfo
-
 
 
 class TestBDInviteUser(unittest.TestCase):
@@ -26,7 +14,6 @@ class TestBDInviteUser(unittest.TestCase):
     def setUp(self):
         self.lookup = TestInfo()
         self.lookup.load_defaults()
-
 
     def test_bd_invite_cco(self):
         bd_admintab_page = BDAdminTabPage()

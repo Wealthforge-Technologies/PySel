@@ -18,10 +18,10 @@ class BasePage(object):
             print('ERROR: URL not defined, can\'t check expected URL')
         else:
             try:
-                wait = WebDriverWait(self.driver, 2).until(
+                wait = WebDriverWait(self.driver, 1).until(
                     lambda wait: self.url in self.driver.current_url)
             finally:
-                assert self.url in self.driver.current_url, 'URLs do not match!'
+                assert self.url in self.driver.current_url, 'URLs do not match!\nExpected '+self.driver.current_url+' == '+str(self.url)
             waitForAngular(self.driver)
 
     def is_expected_title(self):
@@ -41,3 +41,4 @@ class BasePage(object):
             print('ERROR: Can\'t go to page: No URL Set')
         else:
             self.driver.get(self.url)
+

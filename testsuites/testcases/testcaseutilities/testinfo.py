@@ -5,6 +5,7 @@ class TestInfo:
     def __init__(self):
         self.testinfo = {}
         self.testissinfo = {}
+        self.testbankinfo = {}
 
     #TODO write the json object reader to use outside data in the test cases
     def load_json(self):
@@ -32,7 +33,18 @@ class TestInfo:
         self.testissinfo["issBankSelect"] = "Atlantic Capital Bank"
         self.testissinfo["taxInput"] = "12-3456789"
 
-
+        self.testbankinfo["inputBankName"] = "PySel Bank"+str(randint(100000, 999999))
+        self.testbankinfo["inputDestinationRoutingNum"] = ""+str(randint(0, 999999999)).zfill(9) # must be 9 digits
+        self.testbankinfo["inputOriginName"] = "PySel Origin Name"
+        self.testbankinfo["inputOriginRoutingNum"] = ""+str(randint(0, 999999999)).zfill(9)  # must be 9 digits
+        self.testbankinfo["inputCompany"] = ""+str(randint(0, 9))
+        self.testbankinfo["inputClass"] = "WEB"  # Dropdown
+        self.testbankinfo["inputAddress"] = "343 PySel Ave."
+        self.testbankinfo["inputAddressCont"] = "Apt. 2071"
+        self.testbankinfo["inputCity"] = ""
+        self.testbankinfo["inputState"] = "Kentucky"  # Dropdown
+        self.testbankinfo["inputZip"] = "15625"
+        self.testbankinfo["inputPhone"] = "(154) 480-4416"
 
         # self.testinfo["environment"] = "qa1.wealthforge.org"
         self.testinfo["CCO.email"] = "oquelland@wealthforge.com"
@@ -84,7 +96,7 @@ class TestInfo:
         self.testinfo["sq-110"] = "Less than 20%"
         self.testinfo["sq-120"] = "Yes"
         self.testinfo["sq-130"] = "Yes"
-        self.testinfo["invAmnt"] = "2000"
+        self.testinfo["invAmnt"] = str(randint(100,999999))
         self.testinfo["ddlAccountTypes"] = "Checking"
 
 
