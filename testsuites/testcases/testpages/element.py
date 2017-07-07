@@ -119,9 +119,12 @@ class PageElement(object):
             return None
 
     def __get__(self, instance, owner, context=None):
+        # print('get: ' + str(self.__dict__['locator'][1]))  # prints the locator of the element TODO: add to verbose logging
+        # print(str(type(instance)))
+        # print(str(type(owner)))
+        # print(str(type(context)))
         if not instance:
             return None
-
         if not context and self.has_context:
             return lambda ctx: self.__get__(instance, owner, context=ctx)
 
@@ -142,6 +145,9 @@ class PageElement(object):
             raise ValueError("Can't set value, element not found")
         elem.send_keys(value)
         assert elem.get_attribute("value") == value
+
+    def activate(self):
+        pass
 
     # def click(self):
     #     print('custom clicking')

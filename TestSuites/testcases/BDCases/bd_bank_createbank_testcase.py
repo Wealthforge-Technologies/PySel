@@ -21,11 +21,14 @@ class TestBDAdmin(unittest.TestCase):
         bank = BDBankTabPage()
 
         bank.createBankBtn.click()
+        # bank.bankFormElements['inputBankName'].click()
+
+
 
         bank.fill_elements(self.lookup.testbankinfo)
 
-        while True:
-            pass
+        bank.clickSave()
+
 
 
 if __name__ == "__main__":

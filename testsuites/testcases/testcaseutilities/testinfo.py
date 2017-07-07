@@ -41,7 +41,7 @@ class TestInfo:
         self.testbankinfo["inputClass"] = "WEB"  # Dropdown
         self.testbankinfo["inputAddress"] = "343 PySel Ave."
         self.testbankinfo["inputAddressCont"] = "Apt. 2071"
-        self.testbankinfo["inputCity"] = ""
+        self.testbankinfo["inputCity"] = "Selenium City"
         self.testbankinfo["inputState"] = "Kentucky"  # Dropdown
         self.testbankinfo["inputZip"] = "15625"
         self.testbankinfo["inputPhone"] = "(154) 480-4416"
