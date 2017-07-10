@@ -1,5 +1,6 @@
 from ..element import PageElement
 from ..basepage import BasePage
+from ..testpageutilities.waitforangular import waitForAngular
 
 
 class BDHomePage(BasePage):
@@ -15,3 +16,11 @@ class BDHomePage(BasePage):
         BasePage.__init__(self,
                           url='/BD/#/',
                           title='WF: Broker Dealer')
+
+    def clickAdminTab(self):
+        waitForAngular(self.driver)
+        self.menuDashboardAdmin.click()
+
+    def clickOfferingTab(self):
+        waitForAngular(self.driver)
+        self.menuDashboardOffering.click()
