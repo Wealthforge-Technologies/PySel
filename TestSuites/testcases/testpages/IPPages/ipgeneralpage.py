@@ -24,3 +24,11 @@ class IPGeneral(BasePage):
         self.btnLogout.click()
         waitForAngular(self.driver)
 
+    def scrollToContinue(self):
+        waitForAngular(self.driver)
+        self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+
+        #self.driver.execute_script("arguments[0].scrollIntoView();", self.btnContinue)
+        #waitForAngular(self.driver)
+
+

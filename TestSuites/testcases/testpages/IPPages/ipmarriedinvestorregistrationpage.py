@@ -5,6 +5,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from ..element import PageElement
 from ..testpageutilities.waitforangular import waitForAngular
 from ..basepage import BasePage
+from selenium.webdriver.support.ui import Select
 
 class IPMarriedInvestorRegistrationPage(BasePage):
     btnBack = PageElement(id_='Back')
@@ -27,7 +28,6 @@ class IPMarriedInvestorRegistrationPage(BasePage):
     spousePhone = PageElement(id_="txtSpousePhone")
     spouseEmail = PageElement(id_="txtSpouseEmail")
     spouseEmailConf = PageElement(id_="txtSpouseEmailConfirm")
-
 
     def enter_info(self, first, last, dob, ssn, address, addr2, city, state, zip, phone, email, spouseFN, spouseLN, spouseDOB, spouseSSN, spousePhone, spouseEmail, spouseEmailConf):
         assert self.firstName is not None
@@ -59,9 +59,9 @@ class IPMarriedInvestorRegistrationPage(BasePage):
         assert city in self.city.get_attribute("value")
 
         assert self.state is not None
-        Select(self.state).select_by_visible_test(state)
+        Select(self.state).select_by_visible_text(state)
         #self.state.send_keys(state)
-        assert state in self.state.get_attribute("value")
+        assert state in self.state.get_attribute("value").all_selected_options[0].get_attribute("textContent")
 
         assert self.zipCode is not None
         self.zipCode.send_keys(zip)

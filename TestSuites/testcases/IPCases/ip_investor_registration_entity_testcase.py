@@ -16,7 +16,7 @@ class IPEntityInvestorRegistration(unittest.TestCase):
 
         ip_investor_registration_entity_page = IPEntityInvestorRegistrationPage()
         ip_investor_registration_entity_page.is_expected_landing_url()
-        ip_investor_registration_entity_page.regInfo(self.lookup.testinfo["txtInvestorName"],
+        ip_investor_registration_entity_page.enter_info(self.lookup.testinfo["txtInvestorName"],
                                                      self.lookup.testinfo["txtInvestorSignatoryName"],
                                                      self.lookup.testinfo["txtInvestorSignatoryTitle"],
                                                      self.lookup.testinfo["txtInvestorEIN"],

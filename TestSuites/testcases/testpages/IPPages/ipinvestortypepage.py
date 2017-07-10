@@ -6,6 +6,8 @@ from ..element import PageElement
 from ..testpageutilities.waitforangular import waitForAngular
 from ..basepage import BasePage
 from ..testpageutilities import getOrCreateWebdriver
+from selenium.webdriver.common.keys import Keys
+
 
 class IPInvestorTypePage(BasePage):
     """QA Get Started page. I.e. https://qa1.wealthforge.org/IP/#/summary"""
@@ -13,11 +15,18 @@ class IPInvestorTypePage(BasePage):
     btnInvTypeEntity = PageElement(id_='divInvestorTypeEntity')
     btnInvTypeMarried = PageElement(id_='divInvestorTypeMarried')
     btnInvTypeRepre = PageElement(id_='divInvestorTypeRepresentative')
+    entityType = PageElement(id_='ddlEntityTypes')
 
     def __init__(self):
         BasePage.__init__(self,
                           url='/IP/#/query',
                           title='WF: Investor Platform')
+
+
+    def enter_info(self, entType):
+        assert self.entityType is not None
+        self.entityType.send_keys(entType)
+        assert entType in self.entityType.get_attribute("value")
 
 
     def clickIndividual(self):
@@ -34,15 +43,5 @@ class IPInvestorTypePage(BasePage):
     def clickRepresentative(self):
         self.divInvestorTypeRepresentative.click()
 
-    def clickContinue(self):
-        self.btnContinue.click()
-        waitForAngular(self.driver)
 
-    def clickBack(self):
-        self.Back.click()
-        waitForAngular(self.driver)
-
-    def clickEntityType(self):
-        self.ddlEntityTypes.click()
-        waitForAngular(self.driver)
 

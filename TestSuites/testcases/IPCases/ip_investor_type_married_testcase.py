@@ -8,18 +8,18 @@ from ..testcaseutilities.testinfo import TestInfo
 from ..testpages.IPPages.ipgeneralpage import IPGeneral
 
 
-class TestIPInvestorEntity(unittest.TestCase):
+class TestIPInvestorMarried(unittest.TestCase):
     def setUp(self):
         self.lookup = TestInfo()
         self.lookup.load_defaults()
 
-    def test_login(self):
-        ip_investor_type_entity_new = IPInvestorTypePage(self.driver)
-        ip_investor_type_entity_new.is_expected_landing_url()
-        ip_investor_type_entity_new.divInvestorTypeEntity.click()
+    def test_married(self):
+        ip_investor_type_married = IPInvestorTypePage()
+        ip_investor_type_married.is_expected_landing_url()
+        ip_investor_type_married.btnInvTypeMarried.click()
 
-        ip_investor_type_entity_new.ddlEntityTypes.click()
-        ip_investor_type_entity_new.clickContinue()
+        IPGeneral().clickContinue()
+
 
 
 if __name__ == "__main__":

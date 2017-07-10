@@ -2,9 +2,9 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
-from .element import PageElement
-from .testpageutilities.waitforangular import waitForAngular
-from .basepage import BasePage
+from ..element import PageElement
+from ..testpageutilities.waitforangular import waitForAngular
+from ..basepage import BasePage
 
 class IPEntityInvestorRegistrationPage(BasePage):
     btnBack = PageElement(id_='Back')
@@ -58,7 +58,7 @@ class IPEntityInvestorRegistrationPage(BasePage):
         assert self.state is not None
         Select(self.state).select_by_visible_test(state)
         #self.state.send_keys(state)
-        assert state in self.state.get_attribute("value")
+        assert state in self.state.get_attribute("value").all_selected_options[0].get_attribute("textContent")
 
         assert self.zipCode is not None
         self.zipCode.send_keys(zip)

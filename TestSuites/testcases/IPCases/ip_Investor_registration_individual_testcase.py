@@ -14,7 +14,7 @@ class TestIPIndividualInvestorRegistration(unittest.TestCase):
 
     def test_login(self):
 
-        ip_investor_registration_individual_page = IPIndividualInvestorRegistrationPage(self.driver)
+        ip_investor_registration_individual_page = IPIndividualInvestorRegistrationPage()
         ip_investor_registration_individual_page.is_expected_landing_url()
         ip_investor_registration_individual_page.regInfo(self.lookup.testinfo["txtInvestorFirstName"],
                                                          self.lookup.testinfo["txtInvestorLastName"],
