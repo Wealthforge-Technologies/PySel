@@ -10,14 +10,12 @@ class TestIPInvestorEntity(unittest.TestCase):
         self.lookup = TestInfo()
         self.lookup.load_defaults()
 
-    def test_entitytype(self):
-        ip_investor_type_entity_new = IPInvestorTypePage()
-        ip_investor_type_entity_new.is_expected_landing_url()
-        ip_investor_type_entity_new.clickEntity()
+    def test_entitytypemissing(self):
+        ip_investor_type_entity_missingtype = IPInvestorTypePage()
+        ip_investor_type_entity_missingtype.is_expected_landing_url()
+        ip_investor_type_entity_missingtype.clickEntity()
 
-        ip_investor_type_entity_new.clickNewEntity()
-
-        ip_investor_type_entity_new.enter_info(self.lookup.testinfo["ddlEntityTypes"])
+        ip_investor_type_entity_missingtype.clickNewEntity()
 
         IPGeneral().scrollToContinue()
         IPGeneral().clickContinue()

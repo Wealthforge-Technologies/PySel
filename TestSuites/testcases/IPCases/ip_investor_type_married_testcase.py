@@ -16,7 +16,7 @@ class TestIPInvestorMarried(unittest.TestCase):
     def test_married(self):
         ip_investor_type_married = IPInvestorTypePage()
         ip_investor_type_married.is_expected_landing_url()
-        ip_investor_type_married.btnInvTypeMarried.click()
+        ip_investor_type_married.clickMarried()
 
         IPGeneral().clickContinue()
 

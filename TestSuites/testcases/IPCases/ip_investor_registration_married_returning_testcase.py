@@ -15,9 +15,9 @@ class TestIPMarriedInvestorRegistration(unittest.TestCase):
 
     def test_login(self):
 
-        ip_investor_registration_married_page = IPMarriedInvestorRegistrationPage()
-        ip_investor_registration_married_page.is_expected_landing_url()
-        ip_investor_registration_married_page.enter_info(self.lookup.testinfo["txtInvestorFirstName"],
+        ip_investor_registration_married_returning_page = IPMarriedInvestorRegistrationPage()
+        ip_investor_registration_married_returning_page.is_expected_landing_url()
+        ip_investor_registration_married_returning_page.verify_info(self.lookup.testinfo["txtInvestorFirstName"],
                                               self.lookup.testinfo["txtInvestorLastName"],
                                               self.lookup.testinfo["txtInvestorDOB"],
                                               self.lookup.testinfo["txtInvestorSSN"],
@@ -36,7 +36,7 @@ class TestIPMarriedInvestorRegistration(unittest.TestCase):
                                               self.lookup.testinfo["txtSpouseEmail"],
                                               self.lookup.testinfo["txtSpouseEmailConfirm"])
 
-        ip_investor_registration_married_page.chkBoxMarriedPII.click()
+        ip_investor_registration_married_returning_page.chkBoxMarriedPII.click()
 
         IPGeneral().clickContinue()
 

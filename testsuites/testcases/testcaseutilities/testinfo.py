@@ -51,6 +51,8 @@ class TestInfo:
 
         self.testinfo["IP.email"] = "jgoldhamer+i4@wealthforge.com"
         self.testinfo["IP.password"] = "Testing123!"
+        self.testinfo["IP.emailWrong"] = "mglass+z1@wealthforge.com"
+        self.testinfo["IP.passwordWrong"] = "Trap1234"
 
         self.testinfo["txtInvestorFirstName"] = "Joe"
         self.testinfo["txtInvestorLastName"] = "Smith"
@@ -69,6 +71,8 @@ class TestInfo:
         self.testinfo["otherOpport"] = True
         self.testinfo["rbFINRA"] = True
         self.testinfo["CRD Number"] = "344545667"
+        self.testinfo["SpouseCRDNum"] = "3445479802"
+        self.testinfo["rbSpouseFINRA"] = False
 
         # Suitability Page
         self.testinfo["sq-10"] = "Capital Preservation – you seek to preserve capital and are willing to accept a lower rate of return in exchange."
@@ -110,5 +114,20 @@ class TestInfo:
         self.testinfo["stateDrop"] = "South Carolina"
         self.testinfo["zip"] = "79798"
         self.testinfo["phone"] = "(452) 312-5764"
+
+        #Create An Account Page
+        self.testinfo["fname"] = "Bryan"
+        self.testinfo["lname"] = "Christensen"
+        self.testinfo["email"] = "mglass+f"+str(randint(100000, 999999))+"@wealthforge.com"
+        self.testinfo["confemail"] = "mglass+f"+str(randint(100000, 999999))+"@wealthforge.com"
+
+        #Set Your New Password Page
+        self.testinfo["username"] = "Test1234"
+        self.testinfo["password2"] = "Test1234"
+
+        #Investment Minimum Not Met
+        self.testinfo["invAmnt"] = "200"
+
+
 
 

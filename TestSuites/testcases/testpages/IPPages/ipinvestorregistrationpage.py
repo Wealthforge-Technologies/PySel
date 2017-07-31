@@ -82,6 +82,41 @@ class IPInvestorTypePage(BasePage):
         self.email.send_keys(email)
         assert email in self.email.get_attribute("value")
 
+    #Verify Registration for Returning Individual Investor
+    def verify_info(self, first, last, dob, ssn, address, addr2, city, state, zip, phone, email):
+        assert self.firstName is not None
+        assert first in self.firstName.get_attribute("value")
+
+        assert self.lastName is not None
+        assert last in self.lastName.get_attribute("value")
+
+        assert self.dateOfBirth is not None
+        assert dob in self.dateOfBirth.get_attribute("value")
+
+        assert self.socialSec is not None
+        assert ssn in self.socialSec.get_attribute("value")
+
+        assert self.address1 is not None
+        assert address in self.address1.get_attribute("value")
+
+        assert self.address2 is not None
+        assert addr2 in self.address2.get_attribute("value")
+
+        assert self.city is not None
+        assert city in self.city.get_attribute("value")
+
+        assert self.state is not None
+        # self.state.send_keys(state)
+        assert state in Select(self.state).all_selected_options[0].get_attribute("textContent")
+
+        assert self.zipCode is not None
+        assert zip in self.zipCode.get_attribute("value")
+
+        assert self.phoneNumber is not None
+        assert phone in self.phoneNumber.get_attribute("value")
+
+        assert self.email is not None
+        assert email in self.email.get_attribute("value")
 
     def clickContinue(self):
         self.btnContinue.click()

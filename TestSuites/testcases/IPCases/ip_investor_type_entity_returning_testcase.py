@@ -5,19 +5,17 @@ from ..testcaseutilities.testinfo import TestInfo
 from ..testpages.IPPages.ipgeneralpage import IPGeneral
 
 
-class TestIPInvestorEntity(unittest.TestCase):
+class TestIPInvestorEntityReturning(unittest.TestCase):
     def setUp(self):
         self.lookup = TestInfo()
         self.lookup.load_defaults()
 
     def test_entitytype(self):
-        ip_investor_type_entity_new = IPInvestorTypePage()
-        ip_investor_type_entity_new.is_expected_landing_url()
-        ip_investor_type_entity_new.clickEntity()
+        ip_investor_type_entity_returning = IPInvestorTypePage()
+        ip_investor_type_entity_returning.is_expected_landing_url()
+        ip_investor_type_entity_returning.clickEntity()
 
-        ip_investor_type_entity_new.clickNewEntity()
-
-        ip_investor_type_entity_new.enter_info(self.lookup.testinfo["ddlEntityTypes"])
+        ip_investor_type_entity_returning.clickReturnEntityByName(self.lookup.testinfo["txtInvestorName"])
 
         IPGeneral().scrollToContinue()
         IPGeneral().clickContinue()

@@ -7,16 +7,16 @@ from ..testpages.IPPages.ipentityinvestorregistrationpage import IPEntityInvesto
 from ..testcaseutilities.testinfo import TestInfo
 from ..testpages.IPPages.ipgeneralpage import IPGeneral
 
-class IPEntityInvestorRegistration(unittest.TestCase):
+class IPReturningEntityInvestorRegistration(unittest.TestCase):
     def setUp(self):
         self.lookup = TestInfo()
         self.lookup.load_defaults()
 
     def test_login(self):
 
-        ip_investor_registration_entity_page = IPEntityInvestorRegistrationPage()
-        ip_investor_registration_entity_page.is_expected_landing_url()
-        ip_investor_registration_entity_page.enter_info(self.lookup.testinfo["txtInvestorName"],
+        ip_investor_registration_entity_returning_page = IPEntityInvestorRegistrationPage()
+        ip_investor_registration_entity_returning_page.is_expected_landing_url()
+        ip_investor_registration_entity_returning_page.verify_info(self.lookup.testinfo["txtInvestorName"],
                                                      self.lookup.testinfo["txtInvestorSignatoryName"],
                                                      self.lookup.testinfo["txtInvestorSignatoryTitle"],
                                                      self.lookup.testinfo["txtInvestorEIN"],

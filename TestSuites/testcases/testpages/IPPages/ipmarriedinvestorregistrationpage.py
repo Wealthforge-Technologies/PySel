@@ -27,7 +27,8 @@ class IPMarriedInvestorRegistrationPage(BasePage):
     spouseSSN = PageElement(id_="txtSpouseSSN")
     spousePhone = PageElement(id_="txtSpousePhone")
     spouseEmail = PageElement(id_="txtSpouseEmail")
-    spouseEmailConf = PageElement(id_="txtSpouseEmailConfirm")
+    spouseEmailConfirm = PageElement(id_="txtSpouseEmailConfirm")
+    chkBoxMarriedPII = PageElement(id_="chkMarriedPII")
 
     def enter_info(self, first, last, dob, ssn, address, addr2, city, state, zip, phone, email, spouseFN, spouseLN, spouseDOB, spouseSSN, spousePhone, spouseEmail, spouseEmailConf):
         assert self.firstName is not None
@@ -61,7 +62,7 @@ class IPMarriedInvestorRegistrationPage(BasePage):
         assert self.state is not None
         Select(self.state).select_by_visible_text(state)
         #self.state.send_keys(state)
-        assert state in self.state.get_attribute("value").all_selected_options[0].get_attribute("textContent")
+        #assert state in self.state.get_attribute("value").all_selected_options[0].get_attribute("textContent")
 
         assert self.zipCode is not None
         self.zipCode.send_keys(zip)
@@ -93,17 +94,72 @@ class IPMarriedInvestorRegistrationPage(BasePage):
 
         assert self.spousePhone is not None
         self.spousePhone.send_keys(spousePhone)
-        assert spousePhone in self.spousePhone.get_attribute("value")
+        #assert spousePhone in self.spousePhone.get_attribute("value")
 
         assert self.spouseEmail is not None
         self.spouseEmail.send_keys(spouseEmail)
         assert spouseEmail in self.spouseEmail.get_attribute("value")
 
-        assert self.spouseEmailConf is not None
-        self.spouseEmailConf.send_keys(spouseEmailConf)
-        assert spouseEmailConf in self.spouseEmailConf.get_attribute("value")
+        assert self.spouseEmailConfirm is not None
+        self.spouseEmailConfirm.send_keys(spouseEmailConf)
+        assert spouseEmailConf in self.spouseEmailConfirm.get_attribute("value")
 
 
-        def clickContinue(self):
-            self.btnContinue.click()
-            waitForAngular(self.driver)
+    #Verify Married Information
+    def verify_info(self, first, last, dob, ssn, address, addr2, city, state, zip, phone, email, spouseFN, spouseLN,
+                       spouseDOB, spouseSSN, spousePhone, spouseEmail, spouseEmailConf):
+        assert self.firstName is not None
+        assert first in self.firstName.get_attribute("value")
+
+        assert self.lastName is not None
+        assert last in self.lastName.get_attribute("value")
+
+        assert self.dateOfBirth is not None
+        assert dob in self.dateOfBirth.get_attribute("value")
+
+        assert self.socialSec is not None
+        assert ssn in self.socialSec.get_attribute("value")
+
+        assert self.address1 is not None
+        assert address in self.address1.get_attribute("value")
+
+        assert self.address2 is not None
+        assert addr2 in self.address2.get_attribute("value")
+
+        assert self.city is not None
+        assert city in self.city.get_attribute("value")
+
+        assert self.state is not None
+        # self.state.send_keys(state)
+        # assert state in self.state.get_attribute("value").all_selected_options[0].get_attribute("textContent")
+
+        assert self.zipCode is not None
+        assert zip in self.zipCode.get_attribute("value")
+
+        assert self.phoneNumber is not None
+        assert phone in self.phoneNumber.get_attribute("value")
+
+        assert self.email is not None
+        assert email in self.email.get_attribute("value")
+
+        assert self.spouseFN is not None
+        assert spouseFN in self.spouseFN.get_attribute("value")
+
+        assert self.spouseLN is not None
+        assert spouseLN in self.spouseLN.get_attribute("value")
+
+        assert self.spouseDOB is not None
+        assert spouseDOB in self.spouseDOB.get_attribute("value")
+
+        assert self.spouseSSN is not None
+        assert spouseSSN in self.spouseSSN.get_attribute("value")
+
+        assert self.spousePhone is not None
+        # assert spousePhone in self.spousePhone.get_attribute("value")
+
+        assert self.spouseEmail is not None
+        assert spouseEmail in self.spouseEmail.get_attribute("value")
+
+        assert self.spouseEmailConfirm is not None
+        self.spouseEmailConfirm.send_keys(spouseEmailConf)
+        assert spouseEmailConf in self.spouseEmailConfirm.get_attribute("value")

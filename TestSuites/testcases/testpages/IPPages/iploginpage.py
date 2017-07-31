@@ -57,3 +57,6 @@ class IPLoginPage(BasePage):
 
         self.btnLogin.click()
         waitForAngular(self.driver)
+
+        self.btnSignUp.click()
+        waitForAngular(self.driver)
