@@ -16,8 +16,6 @@ def main():
                     loader.loadTestsFromModule(close_driver_spec),
                     ])
 
-    # suite.addTests([loade
-
     runner = unittest.TextTestRunner(verbosity=3)
     result = runner.run(suite)
 

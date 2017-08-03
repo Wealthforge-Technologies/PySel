@@ -18,9 +18,10 @@ class BDHomePage(BasePage):
                           title='WF: Broker Dealer')
 
     def clickAdminTab(self):
-        waitForAngular(self.driver)
+        # waitForAngular(self.driver)
         self.menuDashboardAdmin.click()
 
     def clickOfferingTab(self):
         waitForAngular(self.driver)
         self.menuDashboardOffering.click()
+        waitForAngular(self.driver)

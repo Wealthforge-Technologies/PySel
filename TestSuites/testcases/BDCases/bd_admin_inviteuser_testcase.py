@@ -16,7 +16,9 @@ class TestBDInviteUser(unittest.TestCase):
         self.lookup.load_defaults()
 
     def test_bd_invite_cco(self):
+
         bd_admintab_page = BDAdminTabPage()
+        bd_admintab_page.clickAdmin()
         bd_admintab_page.is_expected_landing_url()
         bd_admintab_page.load_treenodes()
 
@@ -44,7 +46,8 @@ class TestBDInviteUser(unittest.TestCase):
         bd_admintab_user_page.roles_should_contain(self.lookup.testinfo["NewBDUser.Role1"])
 
         # print(get_new_bd_user_password_reset_url(self.lookup.testinfo["environment"]))
-        bdconfirmuser_page = BDConfirmUserPage(get_new_bd_user_password_reset_url(self.lookup.testinfo["environment"], self.lookup.testinfo["NewBDUser.Email"]))
+        bdconfirmuser_page = BDConfirmUserPage(get_new_bd_user_password_reset_url(self.lookup.testinfo["NewBDUser.Email"]))
+        print('GOTO: ',bdconfirmuser_page.url)
         bdconfirmuser_page.land()
         bdconfirmuser_page.enter_password(self.lookup.testinfo["NewBDUser.Password"])
         bdconfirmuser_page.submit()

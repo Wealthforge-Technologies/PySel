@@ -11,33 +11,38 @@ class BDConfirmUserPage(BasePage):
     submit_button = PageElement(id_='btnSetPassword')
 
 
-    #TODO: CHANGE TO USE NEW BASEPAGE ABSTRACTION
-
-
     def __init__(self, expected_reset_url):
-        self.driver = getOrCreateWebdriver()
-        self.expected_title = "WF: Login"
-        self.expected_landing_url = expected_reset_url
+        BasePage.__init__(self,
+                          url=expected_reset_url,
+                          title='WF: Broker Dealer')
+        # self.expected_reset_url = expected_reset_url
 
-    def is_expected_title(self):
-        try:
-            wait = WebDriverWait(self.driver, 5).until(
-                EC.title_contains(self.expected_title))
-        finally:
-            assert self.expected_title in self.driver.title
-        waitForAngular(self.driver)
 
-    def is_expected_landing_url(self):
-        try:
-            wait = WebDriverWait(self.driver, 5).until(
-                lambda wait: self.driver.current_url == self.expected_landing_url)
-        finally:
-            assert self.expected_landing_url in self.driver.current_url
-        waitForAngular(self.driver)
 
-    def land(self):
-        self.driver.get(self.expected_landing_url)
-        waitForAngular(self.driver)
+    # def __init__(self, expected_reset_url):
+    #     self.driver = getOrCreateWebdriver()
+    #     self.expected_title = "WF: Login"
+    #     self.expected_landing_url = expected_reset_url
+
+    # def is_expected_title(self):
+    #     try:
+    #         wait = WebDriverWait(self.driver, 5).until(
+    #             EC.title_contains(self.expected_title))
+    #     finally:
+    #         assert self.expected_title in self.driver.title
+    #     waitForAngular(self.driver)
+    #
+    # def is_expected_landing_url(self):
+    #     try:
+    #         wait = WebDriverWait(self.driver, 5).until(
+    #             lambda wait: self.driver.current_url == self.expected_landing_url)
+    #     finally:
+    #         assert self.expected_landing_url in self.driver.current_url
+    #     waitForAngular(self.driver)
+    #
+    # def land(self):
+    #     # self.driver.get(self.expected_reset_url)
+    #     waitForAngular(self.driver)
 
     def enter_password(self, newpassword):
         assert self.password is not None

@@ -6,12 +6,38 @@ class TestInfo:
         self.testinfo = {}
         self.testissinfo = {}
         self.testbankinfo = {}
+        self.testOfferInfo = {}
+
+        self.testTermInfoDefaults = {}
+        self.testTermInfoOther = {}
 
     #TODO write the json object reader to use outside data in the test cases
     def load_json(self):
         pass
 
     def load_defaults(self):
+
+        self.testOfferInfo["offeringTitle"] = "Test Offer+"+str(randint(100000, 999999))
+        self.testOfferInfo["regTypeDropdown"] = "RegC"
+        self.testOfferInfo["dateStart"] = ""  # this is not dynamic, it will always select the year before
+        self.testOfferInfo["dateEnd"] = ""  # this is not dynamic, it will always select the year after
+        self.testOfferInfo["minOfferRaise"] = "2,000,000"
+        self.testOfferInfo["maxOfferRaise"] = "5,000,000"
+
+        self.testTermInfoDefaults["termType"] = "Debenture"
+        self.testTermInfoDefaults["classTitle"] = "Class Title 123"
+        self.testTermInfoDefaults["minInvestment"] = "100.33"
+        self.testTermInfoDefaults["minTermRaise"] = "1,000,000"
+        self.testTermInfoDefaults["maxTermRaise"] = "4,000,000"
+        self.testTermInfoDefaults["price"] = "24.35"
+        self.testTermInfoDefaults["notesIssued"] = "4567"
+        self.testTermInfoDefaults["paymentTypes"] = 0b11110
+
+
+        self.testTermInfoOther["interestRate"] = "7.65"
+        self.testTermInfoOther["maturityMonths"] = "45"
+        self.testTermInfoOther["paymentFreqDropdown"] = "Monthly" # Dropdown Options: Monthly, Quarterly, Semi-annually, Annually, Cumulative
+        self.testTermInfoOther["conversionRatio"] = "3.45"
 
         self.testissinfo["displayNameInput"] = "TestISS+"+str(randint(100000, 999999))
         self.testissinfo["address1Input"] = "Test Avenue 123"

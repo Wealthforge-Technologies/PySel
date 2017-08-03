@@ -29,7 +29,6 @@ class BDBankTabPage(BasePage):
         "inputPhone": PageElement(id_='inputPhone')
     }
 
-
     def __init__(self):
         BasePage.__init__(self,
                           url='/BD/#/banks',

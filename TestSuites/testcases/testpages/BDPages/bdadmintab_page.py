@@ -7,6 +7,7 @@ class BDAdminTabPage(BasePage):
     search = PageElement(id_='search')
     hamburger = PageElement(id_='appDrawerToggle')
     dots = PageElement(css='#bs-example-navbar-collapse-1 > ul > li > a')
+    menuDashboardAdmin = PageElement(id_='menuDashboardAdmin')
 
     def __init__(self):
         BasePage.__init__(self,
@@ -14,6 +15,13 @@ class BDAdminTabPage(BasePage):
                           title='WF: Broker Dealer')
         self.treespace = {}
 
+    #TEMPORARY since BDHomePage is acting weird and opening a new window
+    def clickAdmin(self):
+
+        # self.hamburger.click()
+        waitForAngular(self.driver)
+        self.menuDashboardAdmin.click()
+        waitForAngular(self.driver)
 
     #This function populates the treespace variable.
     #The treespace variable is a dictionary where the keys are the display names of the 'nodes' in

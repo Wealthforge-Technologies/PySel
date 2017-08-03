@@ -32,29 +32,18 @@ class BDOfferingTabInfo(BasePage):
     # situational fields based on termType
     interestRate = PageElement(css='[ng-model="offering.terms.interestRate"]')
     maturityMonths = PageElement(css='[ng-model="offering.terms.maturity"]')
-    paymentFreqDropdown= PageElement(css='[name="paymentFrequency"]') #Dropdown
+    paymentFreqDropdown = PageElement(css='[name="paymentFrequency"]')  # Dropdown
+    conversionRatio = PageElement(css='ng-model="offering.terms.discount"')
 
     # Payment Types
     paymentTypesRadio = PageElement(css='[ng-model="offering.metadata.paymentOptions[type.code]"]')  # all of the radio buttons
 
-    # Calendar Buttons
-    activeCalendar = PageElement(css='.dtp-time div:not(.hidden)')
-    prevYear = PageElement(css='.dtp-select-year-before')
-    nextYear = PageElement(css='.dtp-select-year-after')
-    calendarOk = PageElement(css='.dtp-btn-ok')
-
-
     continueButton = PageElement(css='ng-click="saveOffering()"')
-
-
-
 
     def __init__(self):
         BasePage.__init__(self,
                           url='', #no defined useful url
                           title='') #no defined useful title
-
-
 
     def setRegType(self, type):
         regTypeElem = self.offeringFormElements['regTypeDropdown'].__get__(self, None, self.driver)
@@ -64,28 +53,30 @@ class BDOfferingTabInfo(BasePage):
             Select(regTypeElem).select_by_visible_text('Regulation D Exemption 506(c)')
 
 
-    #TODO: make this not always do the same thing
+    #TODO: make this dynamic to select any date (difficult)
     # There are several calendars loaded but hidden in the DOM. This finds the active one
     def setDates(self):
         dateStart = self.offeringFormElements['dateStart'].__get__(self, None, self.driver)
         dateEnd = self.offeringFormElements['dateEnd'].__get__(self, None, self.driver)
 
-
         dateStart.click()
-
-        # Calendar Buttons
-        activeCalendar = self.driver.find_element_by_css_selector('.dtp-time div:not(.hidden)')
+        activeCalendar = self.driver.find_element_by_css_selector("div[id^='dtp_']:not(.hidden)")
         prevYear = activeCalendar.find_element_by_css_selector('.dtp-select-year-before')
-        nextYear = activeCalendar.find_element_by_css_selector('.dtp-select-year-after')
         okButton = activeCalendar.find_element_by_css_selector('.dtp-btn-ok')
 
         prevYear.click()
         okButton.click()
 
+        dateEnd.click()
+        activeCalendar = self.driver.find_element_by_css_selector("div[id^='dtp_']:not(.hidden)")
+        nextYear = activeCalendar.find_element_by_css_selector('.dtp-select-year-after')
+        okButton = activeCalendar.find_element_by_css_selector('.dtp-btn-ok')
+
+        nextYear.click()
+        okButton.click()
 
 
-
-    def fill_elements(self,json):
+    def fill_offering_fields(self,json):
         waitForAngular(self.driver)
         assert len(self.offeringFormElements) == len(json)
         for key, value in json.items():
@@ -96,32 +87,73 @@ class BDOfferingTabInfo(BasePage):
             if key in ["regTypeDropdown","inputState"]:
                 self.setRegType(json['regTypeDropdown'])
 
-            #Dropdowns
-            elif key in ["____","____"]:
-                Select(elem).select_by_visible_text(value)
-                print ("...key:" + key + "\n...expected:" + value + "\n...value:" + Select(elem).all_selected_options[0].get_attribute("value"))
-                assert value in Select(elem).all_selected_options[0].get_attribute("textContent")
+            elif key in ["dateStart","dateEnd"]:
+                pass
+
             else:
                 elem.send_keys(value)
                 print ("...key:" + key + "\n...expected:" + value + "\n...value:" + elem.get_attribute("value"))
-                assert value in elem.get_attribute("value")
+                # assert value in elem.get_attribute("value")
+        self.setDates()
 
-    # def verify_elements(self, json):
-    #     waitForAngular(self.driver)
-    #     assert len(self.offeringFormElements) == len(json)
-    #     print ("\n...Checking Offering Data...\n\n")
-    #     for key, value in json.items():
-    #         elem = self.offeringFormElements[key].__get__(self, None, self.driver)  # JOHNNY IS A HACKER
-    #         self.driver.execute_script("arguments[0].scrollIntoView();", elem)
-    #         if key in ["inputClass","inputState"]:
-    #             print ("...key:" + key + "\n...expected:" + value + "\n...value:" + Select(elem).all_selected_options[0].get_attribute("value"))
-    #             assert value in Select(elem).all_selected_options[0].get_attribute("textContent")
-    #         else:
-    #             print ("...key:" + key + "\n...expected:" + value + "\n...value:" + elem.get_attribute("value"))
-    #             assert value in elem.get_attribute("value")
+    def fill_term_fields(self, defaultJson, otherJson):
+
+        # Default Fields on all Term Types:
+        waitForAngular(self.driver)
+        for key, value in defaultJson.items():
+            if key is not 'paymentTypes':
+
+                elem = self.termFormElements[key].__get__(self, None, self.driver)  # JOHNNY IS A HACKER
+                self.driver.execute_script("arguments[0].scrollIntoView();", elem)
+
+
+                #Dropdowns
+                if key in ["termType"]:
+                    Select(elem).select_by_visible_text(value)
+                    print ("...key:" + key + "\n...expected:" + value + "\n...value:" + Select(elem).all_selected_options[0].get_attribute("value"))
+                    assert value in Select(elem).all_selected_options[0].get_attribute("textContent")
+                else:
+                    elem.send_keys(value)
+                    print ("...key:" + key + "\n...expected:" + value + "\n...value:" + elem.get_attribute("value"))
+                    assert value in elem.get_attribute("value")
+            else:
+                self.fill_payment_types(defaultJson['paymentTypes'])
+
+
+
+        # Other fields, some are there when you select certain Term Types
+        if defaultJson['termType'] is 'Debenture':
+            self.interestRate.sendKeys(otherJson['interestRate'])
+            self.maturityMonths.sendKeys(otherJson['maturityMonths'])
+            Select(self.paymentFreqDropdown).select_by_visible_text(otherJson['paymentFreqDropdown'])
+        elif defaultJson['termType'] is 'Common':
+            pass  # no extra fields for Common
+        elif defaultJson['termType'] is 'Preferred':
+            self.interestRate.sendKeys(otherJson['interestRate'])  # The text says Preferred Return but the type is interestRate
+        elif defaultJson['termType'] is 'Convertible Note':
+            self.interestRate.sendKeys(otherJson['interestRate'])
+            self.conversionRatio.sendKeys(otherJson['conversionRatio'])
+            self.maturityMonths.sendKeys(otherJson['maturityMonths'])
+            Select(self.paymentFreqDropdown).select_by_visible_text(otherJson['paymentFreqDropdown'])
+        elif defaultJson['termType'] is 'Interests':
+            self.interestRate.sendKeys(otherJson['interestRate'])
+            Select(self.paymentFreqDropdown).select_by_visible_text(otherJson['paymentFreqDropdown'])
+        elif defaultJson['termType'] is 'Shares':
+            pass  # no extra fields for Shares
+
+    def fill_payment_types(self, bits):
+        '''
+        Clicks the appropriate payment options
+        :param bits: bitwise representation of the payment options
+        '''
+        paymentTypes = self.driver.find_elements_by_css_selector('[ng-model="offering.metadata.paymentOptions[type.code]"]')
+        self.driver.execute_script("arguments[0].scrollIntoView();", paymentTypes[0])
+
+        for x in range(bits.bit_length()):
+            paymentTypes[x].click()
+
 
     def submit(self):
-        assert self.continueButton is not None
         self.continueButton.click()
         waitForAngular(self.driver)
 

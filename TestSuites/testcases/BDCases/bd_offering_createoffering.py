@@ -4,7 +4,7 @@ from ..testpages.BDPages.bdofferingtab_page import BDOfferingTabPage
 from ..testpages.BDPages.bdofferingtab_info import BDOfferingTabInfo
 from ..testpages.BDPages.bdhomepage import BDHomePage
 from ..testcaseutilities.testinfo import TestInfo
-
+import time
 
 class TestBDOfferingCreateOffering(unittest.TestCase):
 
@@ -15,22 +15,20 @@ class TestBDOfferingCreateOffering(unittest.TestCase):
     def test_bd_offering_create_offering(self):
 
         BDHomePage().clickOfferingTab()
-
+        time.sleep(3)
 
 
         offeringPage = BDOfferingTabPage()
         offeringPage.load_treenodes()
 
-        # click on dots
-        # assert offeringPage.treespace[self.lookup.testinfo["BD.WealthForge Securities.Display Name"]] is not None
-        offeringPage.treespace[self.lookup.testinfo['John ISS']][1].click()
-
-        #click on create offering
-        offeringPage.treespace[self.lookup.testinfo["John ISS"]][2][1].click()
+        offeringPage.clickCreateOfferingByOrgId(offeringPage.getOrgIdByName('John ISS'))
 
         #====
-        BDOfferingTabInfo().setDates()
-
+        BDOfferingTabInfo().fill_offering_fields(self.lookup.testOfferInfo)
+        BDOfferingTabInfo().fill_term_fields(self.lookup.testTermInfoDefaults, self.lookup.testTermInfoOther)
+        BDOfferingTabInfo().submit()
+        while True:
+            pass
         #===
         # bd_admintab_iss_page = BDAdminTabIssPage()
         # bd_admintab_iss_page.fill_elements(self.lookup.testinfo["testissinfo"])

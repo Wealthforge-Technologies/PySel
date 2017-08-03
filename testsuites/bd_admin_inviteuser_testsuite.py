@@ -11,7 +11,7 @@ def main():
 
     suite.addTests([loader.loadTestsFromModule(set_window_size),
                     loader.loadTestsFromModule(bd_login_testcase),
-                    loader.loadTestsFromModule(bd_admin_testcase),
+                    # loader.loadTestsFromModule(bd_admin_testcase),
                     loader.loadTestsFromModule(bd_admin_inviteuser_testcase),
                     loader.loadTestsFromModule(close_driver_spec),
                     ])

@@ -18,6 +18,18 @@ SELENIUMADDRESS = 'http://127.0.0.1:4445/wd/hub'
 
 
 
+
+####################
+# LOGGING SETTINGS #
+####################
+
+MAX_VERBOSE = 10
+MED_VERBOSE = 5
+NOT_VERBOSE = 0
+
+VERBOSITY = NOT_VERBOSE
+
+
 ###################
 # TIMING SETTINGS #
 ###################

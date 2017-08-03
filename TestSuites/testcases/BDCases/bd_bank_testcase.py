@@ -1,10 +1,5 @@
 import unittest
-from selenium import webdriver
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
-from ..testpages.BDPages.bdloginpage import BDLoginPage
+
 from ..testpages.BDPages.bdhomepage import BDHomePage
 from ..testcaseutilities.testinfo import TestInfo
 
