@@ -4,8 +4,9 @@ from ..basepage import BasePage
 
 class IPGeneral(BasePage):
     btnContinue = PageElement(id_='btnContinue')
-    btnBack = PageElement(id_='') #TODO:
-    btnLogout = PageElement(id_='')
+    btnBack = PageElement(id_='btnBack') #TODO:
+    btnLogout = PageElement(id_='linkLogout')
+
 
 
     def __init__(self):
@@ -22,4 +23,12 @@ class IPGeneral(BasePage):
     def logout(self):
         self.btnLogout.click()
         waitForAngular(self.driver)
+
+    def scrollToContinue(self):
+        waitForAngular(self.driver)
+        self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+
+        #self.driver.execute_script("arguments[0].scrollIntoView();", self.btnContinue)
+        #waitForAngular(self.driver)
+
 

@@ -6,6 +6,8 @@ from ..element import PageElement
 from ..testpageutilities.waitforangular import waitForAngular
 from ..basepage import BasePage
 from ..testpageutilities import getOrCreateWebdriver
+from selenium.webdriver.common.keys import Keys
+
 
 class IPInvestorTypePage(BasePage):
     """QA Get Started page. I.e. https://qa1.wealthforge.org/IP/#/summary"""
@@ -13,6 +15,8 @@ class IPInvestorTypePage(BasePage):
     btnInvTypeEntity = PageElement(id_='divInvestorTypeEntity')
     btnInvTypeMarried = PageElement(id_='divInvestorTypeMarried')
     btnInvTypeRepre = PageElement(id_='divInvestorTypeRepresentative')
+    entityType = PageElement(id_='ddlEntityTypes')
+    newEntity = PageElement(id_='divNewInvestor')
 
     def __init__(self):
         BasePage.__init__(self,
@@ -20,52 +24,41 @@ class IPInvestorTypePage(BasePage):
                           title='WF: Investor Platform')
 
 
-    # def __init__(self):
-    #     self.driver = getOrCreateWebdriver()
-    #     self.expected_landing_url = "https://qa1.wealthforge.org/IP/#/query"
-    #     self.expected_title = "WF: Investor Platform"
-    #
-    # def is_expected_title(self):
-    #     """Verifies that the hardcoded text "WF: Investor Platform" appears in page title"""
-    #     try:
-    #         wait = WebDriverWait(self.driver, 5).until(
-    #             EC.title_contains(self.expected_title))
-    #     finally:
-    #         assert self.expected_title in self.driver.title
-    #     waitForAngular(self.driver)
-    #
-    #
-    # def is_expected_landing_url(self):
-    #     """Verifies that the hardcoded text "WF: Investor Platform" appears in page title"""
-    #     try:
-    #         wait = WebDriverWait(self.driver, 5).until(
-    #             lambda wait: self.driver.current_url == self.expected_landing_url)
-    #     finally:
-    #         assert self.expected_landing_url in self.driver.current_url
-    #     waitForAngular(self.driver)
-    #
-    # def land(self):
-    #     self.driver.get(self.expected_landing_url)
+    def enter_info(self, entType):
+        assert self.entityType is not None
+        self.entityType.send_keys(entType)
+        # assert entType in self.entityType.get_attribute("value")
+
+    def clickNewEntity(self):
+        self.newEntity.click()
+        waitForAngular(self.driver)
 
     def clickIndividual(self):
-        self.divInvestorTypeIndividual.click()
+        self.btnInvTypeIndiv.click()
         waitForAngular(self.driver)
 
     def clickEntity(self):
-        self.divInvestorTypeEntity.click()
+        self.btnInvTypeEntity.click()
         waitForAngular(self.driver)
 
     def clickMarried(self):
-        self.divInvestorTypeMarried.click()
+        self.btnInvTypeMarried.click()
 
     def clickRepresentative(self):
-        self.divInvestorTypeRepresentative.click()
+        self.btnInvTypeRepre.click()
 
-    def clickContinue(self):
-        self.btnContinue.click()
+    def clickReturnEntity(self):
+        entityBox = self.driver.find_element_by_css_selector('[ng-if="type.code == query.investorType && showNew"]')
+        entities = entityBox.find_elements_by_css_selector('[id^="divInv"]')
+        entities[0].click()
         waitForAngular(self.driver)
 
-    def clickBack(self):
-        self.Back.click()
+    def clickReturnEntityByName(self, entName):
+        '''
+        clicks a returning entity given the name. Selects the first of multiple entries.
+        :param entName: 
+        '''
+        entities = self.driver.find_elements_by_id("divInv" + entName.replace(" ", "_"))
+        entities[0].click()
         waitForAngular(self.driver)
 

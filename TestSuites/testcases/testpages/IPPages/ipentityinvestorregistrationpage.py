@@ -2,11 +2,12 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
-from .element import PageElement
-from .testpageutilities.waitforangular import waitForAngular
-from .basepage import BasePage
+from ..element import PageElement
+from ..testpageutilities.waitforangular import waitForAngular
+from ..basepage import BasePage
+from selenium.webdriver.support.ui import Select
 
-class IPEntityInvestorTypePage(BasePage):
+class IPEntityInvestorRegistrationPage(BasePage):
     btnBack = PageElement(id_='Back')
     btnContinue = PageElement(id_='btnContinue')
     entityName = PageElement(id_='txtInvestorName')
@@ -22,7 +23,9 @@ class IPEntityInvestorTypePage(BasePage):
     phoneNumber = PageElement(id_='txtInvestorPhone')
     email = PageElement(id_='txtInvestorEmail')
 
-    def enter_info(self, entName, sigName, sigTitle, ein,  ssn, address, addr2, city, state, zip, phone, email, entName, sigName, sigTitle, ein):
+    #Enter info for entities
+    # TODO: Manage other entity types
+    def enter_info(self, entName, sigName, sigTitle, ein,  ssn, address, addr2, city, state, zip, phone, email):
         assert self.entityName is not None
         self.entityName.send_keys(entName)
         assert entName in self.entityName.get_attribute("value")
@@ -56,9 +59,9 @@ class IPEntityInvestorTypePage(BasePage):
         assert city in self.city.get_attribute("value")
 
         assert self.state is not None
-        Select(self.state).select_by_visible_test(state)
+        Select(self.state).select_by_visible_text(state)
         #self.state.send_keys(state)
-        assert state in self.state.get_attribute("value")
+        #assert state in self.state.get_attribute("value").all_selected_options[0].get_attribute("textContent")
 
         assert self.zipCode is not None
         self.zipCode.send_keys(zip)
@@ -72,7 +75,46 @@ class IPEntityInvestorTypePage(BasePage):
         self.email.send_keys(email)
         assert email in self.email.get_attribute("value")
 
+    #Returning User - Verify Info Entered
+    #TODO: Manage other entity types
+    def verify_info(self, entName, sigName, sigTitle, ein, ssn, address, addr2, city, state, zip, phone, email):
+        assert self.entityName is not None
+        assert entName in self.entityName.get_attribute("value")
 
-        def clickContinue(self):
-            self.btnContinue.click()
-            waitForAngular(self.driver)
+        assert self.signatoryName is not None
+        assert sigName in self.signatoryName.get_attribute("value")
+
+        assert self.signatoryTitle is not None
+        assert sigTitle in self.signatoryTitle.get_attribute("value")
+
+        assert self.investorEIN is not None
+        assert ein in self.investorEIN.get_attribute("value")
+
+        assert self.socialSec is not None
+        assert ssn in self.socialSec.get_attribute("value")
+
+        assert self.address1 is not None
+        assert address in self.address1.get_attribute("value")
+
+        assert self.address2 is not None
+        assert addr2 in self.address2.get_attribute("value")
+
+        assert self.city is not None
+        assert city in self.city.get_attribute("value")
+
+        assert self.state is not None
+        # self.state.send_keys(state)
+        # assert state in self.state.get_attribute("value").all_selected_options[0].get_attribute("textContent")
+
+        assert self.zipCode is not None
+        assert zip in self.zipCode.get_attribute("value")
+
+        assert self.phoneNumber is not None
+        assert phone in self.phoneNumber.get_attribute("value")
+
+        assert self.email is not None
+        assert email in self.email.get_attribute("value")
+
+    def clickContinue(self):
+        self.btnContinue.click()
+        waitForAngular(self.driver)

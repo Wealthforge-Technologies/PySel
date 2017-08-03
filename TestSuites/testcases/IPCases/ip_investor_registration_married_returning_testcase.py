@@ -3,8 +3,9 @@ import unittest
 from selenium import webdriver
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 
-from TestSuites.testcases.testpages import IPMarriedInvestorRegistrationPage
-from .testcaseutilities.testinfo import TestInfo
+from ..testpages.IPPages.ipmarriedinvestorregistrationpage import IPMarriedInvestorRegistrationPage
+from ..testcaseutilities.testinfo import TestInfo
+from ..testpages.IPPages.ipgeneralpage import IPGeneral
 
 
 class TestIPMarriedInvestorRegistration(unittest.TestCase):
@@ -14,19 +15,19 @@ class TestIPMarriedInvestorRegistration(unittest.TestCase):
 
     def test_login(self):
 
-        ip_investor_registration_married_page = IPMarriedInvestorRegistrationPage(self.driver)
-        ip_investor_registration_married_page.is_expected_landing_url()
-        ip_investor_registration_married_page.regInfo(self.lookup.testinfo["txtInvestorFirstName"],
+        ip_investor_registration_married_returning_page = IPMarriedInvestorRegistrationPage()
+        ip_investor_registration_married_returning_page.is_expected_landing_url()
+        ip_investor_registration_married_returning_page.verify_info(self.lookup.testinfo["txtInvestorFirstName"],
                                               self.lookup.testinfo["txtInvestorLastName"],
                                               self.lookup.testinfo["txtInvestorDOB"],
                                               self.lookup.testinfo["txtInvestorSSN"],
                                               self.lookup.testinfo["txtInvestorAddress1"],
-                                              self.lookup.testinfo["txttxtInvestorAddress2"],
+                                              self.lookup.testinfo["txtInvestorAddress2"],
                                               self.lookup.testinfo["txtInvestorCity"],
                                               self.lookup.testinfo["ddlInvestorStateProvs"],
                                               self.lookup.testinfo["txtInvestorPostalCode"],
                                               self.lookup.testinfo["txtInvestorPhone"],
-                                              self.lookup.testinfo["txtInvestorEmail"]
+                                              self.lookup.testinfo["txtInvestorEmail"],
                                               self.lookup.testinfo["txtSpouseFirstName"],
                                               self.lookup.testinfo["txtSpouseLastName"],
                                               self.lookup.testinfo["txtSpouseDOB"],
@@ -35,7 +36,9 @@ class TestIPMarriedInvestorRegistration(unittest.TestCase):
                                               self.lookup.testinfo["txtSpouseEmail"],
                                               self.lookup.testinfo["txtSpouseEmailConfirm"])
 
-        ip_investor_registration_married_page.clickContinue()
+        ip_investor_registration_married_returning_page.chkBoxMarriedPII.click()
+
+        IPGeneral().clickContinue()
 
 if __name__ == "__main__":
     unittest.main()

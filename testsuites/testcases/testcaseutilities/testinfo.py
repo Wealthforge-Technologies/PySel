@@ -89,13 +89,15 @@ class TestInfo:
 
         self.testinfo["IP.email"] = "jgoldhamer+i4@wealthforge.com"
         self.testinfo["IP.password"] = "Testing123!"
+        self.testinfo["IP.emailWrong"] = "mglass+z1@wealthforge.com"
+        self.testinfo["IP.passwordWrong"] = "Trap1234"
 
         self.testinfo["txtInvestorFirstName"] = "Joe"
         self.testinfo["txtInvestorLastName"] = "Smith"
         self.testinfo["txtInvestorDOB"] = "11/16/1985"
         self.testinfo["txtInvestorSSN"] = "734-28-9123"
         self.testinfo["txtInvestorAddress1"] = "14234 Happy Lane"
-        self.testinfo["txttxtInvestorAddress2"] = "Apt 3"
+        self.testinfo["txtInvestorAddress2"] = "Apt 3"
         self.testinfo["txtInvestorCity"] = "Plano"
         self.testinfo["ddlInvestorStateProvs"] = "Texas"
         self.testinfo["txtInvestorPostalCode"] = "43234"
@@ -107,6 +109,8 @@ class TestInfo:
         self.testinfo["otherOpport"] = True
         self.testinfo["rbFINRA"] = True
         self.testinfo["CRD Number"] = "344545667"
+        self.testinfo["SpouseCRDNum"] = "3445479802"
+        self.testinfo["rbSpouseFINRA"] = False
 
         # Suitability Page
         self.testinfo["sq-10"] = "Capital Preservation – you seek to preserve capital and are willing to accept a lower rate of return in exchange."
@@ -124,6 +128,44 @@ class TestInfo:
         self.testinfo["sq-130"] = "Yes"
         self.testinfo["invAmnt"] = str(randint(100,999999))
         self.testinfo["ddlAccountTypes"] = "Checking"
+
+        #Entity Registration Page
+        self.testinfo["ddlEntityTypes"] = "Trust"
+        self.testinfo["txtInvestorName"] = "Jeff Stephens"
+        self.testinfo["txtInvestorSignatoryName"] = "Ollie Jacobs"
+        self.testinfo["txtInvestorSignatoryTitle"] = "awasu"
+        self.testinfo["txtInvestorEIN"] = "53-6576854"
+
+        #Married Registration Page
+        self.testinfo["txtSpouseFirstName"] = "Breanna"
+        self.testinfo["txtSpouseLastName"] = "Erickson"
+        self.testinfo["txtSpouseDOB"] = "05/22/1983"
+        self.testinfo["txtSpouseSSN"] = "344-92-8743"
+        self.testinfo["txtSpousePhone"] = "(799)169-4865"
+        self.testinfo["txtSpouseEmail"] = "mglass+i5@wealthforge.com"
+        self.testinfo["txtSpouseEmailConfirm"] = "mglass+i5@wealthforge.com"
+
+        #Getting to Know You Page
+        self.testinfo["address"] = "446 Ojogo Pike"
+        self.testinfo["addressCont"] = "PO Box 23"
+        self.testinfo["city"] = "Anderson"
+        self.testinfo["stateDrop"] = "South Carolina"
+        self.testinfo["zip"] = "79798"
+        self.testinfo["phone"] = "(452) 312-5764"
+
+        #Create An Account Page
+        self.testinfo["fname"] = "Bryan"
+        self.testinfo["lname"] = "Christensen"
+        self.testinfo["email"] = "mglass+f"+str(randint(100000, 999999))+"@wealthforge.com"
+        self.testinfo["confemail"] = "mglass+f"+str(randint(100000, 999999))+"@wealthforge.com"
+
+        #Set Your New Password Page
+        self.testinfo["username"] = "Test1234"
+        self.testinfo["password2"] = "Test1234"
+
+        #Investment Minimum Not Met
+        self.testinfo["invAmnt"] = "200"
+
 
 
 

@@ -6,8 +6,8 @@ from testcases.IPCases import ip_login_testcase
 from testcases.IPCases import ip_getstarted_testcase
 from testcases.IPCases import ip_summary_testcase
 from testcases.IPCases import ip_investor_type_individual_testcase
-from testcases.IPCases import ip_investor_registration_testcase
-from testcases.IPCases import ip_employstatus_testcase
+from testcases.IPCases import ip_investor_registration_individual_returning_testcase
+from testcases.IPCases import ip_employstatus_returning_testcase
 from testcases.IPCases import ip_investor_accredidation_testcase
 from testcases.IPCases import ip_investor_suitability_testcase
 from testcases.IPCases import ip_document_upload_testcase
@@ -25,8 +25,8 @@ def main():
                     loader.loadTestsFromModule(ip_getstarted_testcase),
                     loader.loadTestsFromModule(ip_summary_testcase),
                     loader.loadTestsFromModule(ip_investor_type_individual_testcase),
-                    loader.loadTestsFromModule(ip_investor_registration_testcase),
-                    loader.loadTestsFromModule(ip_employstatus_testcase),
+                    loader.loadTestsFromModule(ip_investor_registration_individual_returning_testcase),
+                    loader.loadTestsFromModule(ip_employstatus_returning_testcase),
                     loader.loadTestsFromModule(ip_investor_accredidation_testcase),
                     loader.loadTestsFromModule(ip_investor_suitability_testcase),
                     loader.loadTestsFromModule(ip_document_upload_testcase),

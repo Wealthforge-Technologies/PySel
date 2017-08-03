@@ -15,6 +15,8 @@ from testcases.IPCases import ip_payment_type_testcase
 from testcases.IPCases import ip_docusign_testcase
 from testcases.IPCases import ip_investor_confirmation_testcase
 from testcases.IPCases import ip_investor_congratulations_testcase
+from testcases.IPCases import ip_logout_testcase
+from testcases.IPCases import ip_getstarted_resume_testcase
 
 def main():
     loader = unittest.TestLoader()
@@ -26,6 +28,10 @@ def main():
                     loader.loadTestsFromModule(ip_summary_testcase),
                     loader.loadTestsFromModule(ip_investor_type_individual_testcase),
                     loader.loadTestsFromModule(ip_investor_registration_testcase),
+                    loader.loadTestsFromModule(ip_employstatus_testcase),
+                    loader.loadTestsFromModule(ip_logout_testcase),
+                    loader.loadTestsFromModule(ip_login_testcase),
+                    loader.loadTestsFromModule(ip_getstarted_resume_testcase),
                     loader.loadTestsFromModule(ip_employstatus_testcase),
                     loader.loadTestsFromModule(ip_investor_accredidation_testcase),
                     loader.loadTestsFromModule(ip_investor_suitability_testcase),
