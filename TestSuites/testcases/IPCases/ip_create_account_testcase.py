@@ -3,13 +3,12 @@ import unittest
 from selenium import webdriver
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 
-from ..testpages.IPPages.ipentityinvestorregistrationpage import IPCreateAnAccountPage
+from ..testpages.IPPages.ipcreateanaccountpage import IPCreateAnAccountPage
 from ..testcaseutilities.testinfo import TestInfo
 
 class IPCreateAnAccount(unittest.TestCase):
     def setUp(self):
         self.lookup = TestInfo()
-        self.lookup.load_defaults()
 
     def test_login(self):
 
@@ -20,9 +19,11 @@ class IPCreateAnAccount(unittest.TestCase):
                                                      self.lookup.testinfo["email"],
                                                      self.lookup.testinfo["confemail"])
 
-        ip_investor_create_account_page().btnCreateAcct()
+        ip_investor_create_account_page.btnCreateAcct.click()
 
-        ip_investor_create_account_page().btnReturnToLogin()
+
+
+        # ip_investor_create_account_page.btnReturnToLogin()
 
 if __name__ == "__main__":
     unittest.main()

@@ -8,7 +8,6 @@ from ..testpages.IPPages.ipgeneralpage import IPGeneral
 class TestIPInvestorEntityReturning(unittest.TestCase):
     def setUp(self):
         self.lookup = TestInfo()
-        self.lookup.load_defaults()
 
     def test_entitytype(self):
         ip_investor_type_entity_returning = IPInvestorTypePage()

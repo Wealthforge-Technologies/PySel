@@ -1,18 +1,24 @@
 from random import randint
 
 class TestInfo:
+    randman = str(randint(100000, 999999))
+    testinfo = {}
+    testissinfo = {}
+    testbankinfo = {}
+    testOfferInfo = {}
+
+    testTermInfoDefaults = {}
+    testTermInfoOther = {}
 
     def __init__(self):
-        self.testinfo = {}
-        self.testissinfo = {}
-        self.testbankinfo = {}
-        self.testOfferInfo = {}
+        self.rand = str(randint(100000, 999999))
 
-        self.testTermInfoDefaults = {}
-        self.testTermInfoOther = {}
 
     #TODO write the json object reader to use outside data in the test cases
     def load_json(self):
+        #load json file
+        # what to do about random vars?
+        # go through and find where to pull randoms from a string like <RAND6>
         pass
 
     def load_defaults(self):
@@ -154,14 +160,14 @@ class TestInfo:
         self.testinfo["phone"] = "(452) 312-5764"
 
         #Create An Account Page
-        self.testinfo["fname"] = "Bryan"
-        self.testinfo["lname"] = "Christensen"
-        self.testinfo["email"] = "mglass+f"+str(randint(100000, 999999))+"@wealthforge.com"
-        self.testinfo["confemail"] = "mglass+f"+str(randint(100000, 999999))+"@wealthforge.com"
+        self.testinfo["fname"] = "Nuguy"
+        self.testinfo["lname"] = "Jones"
+        self.testinfo["email"] = "wealthforgedev1+"+str(randint(100000, 999999))+"@gmail.com"
+        self.testinfo["confemail"] = self.testinfo["email"]
 
         #Set Your New Password Page
-        self.testinfo["username"] = "Test1234"
-        self.testinfo["password2"] = "Test1234"
+        self.testinfo["username"] = "Test1234!"
+        self.testinfo["password2"] = "Test1234!"
 
         #Investment Minimum Not Met
         self.testinfo["invAmnt"] = "200"

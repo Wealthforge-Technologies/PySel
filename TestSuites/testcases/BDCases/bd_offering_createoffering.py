@@ -10,7 +10,6 @@ class TestBDOfferingCreateOffering(unittest.TestCase):
 
     def setUp(self):
         self.lookup = TestInfo()
-        self.lookup.load_defaults()
 
     def test_bd_offering_create_offering(self):
 

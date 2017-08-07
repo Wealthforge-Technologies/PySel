@@ -15,7 +15,6 @@ class TestBDAdmin(unittest.TestCase):
 
     def setUp(self):
         self.lookup = TestInfo()
-        self.lookup.load_defaults()
 
     def test_bd_admin(self):
         bank = BDBankTabPage()

@@ -23,10 +23,10 @@ class IPLoginPage(BasePage):
         self.password.send_keys(password)
         assert password in self.password.get_attribute("value")
 
-        print(type(self.btnLogin))
 
         self.btnLogin.click()
         waitForAngular(self.driver)
 
+    def clickSignup(self):
         self.btnSignUp.click()
         waitForAngular(self.driver)

@@ -10,7 +10,6 @@ from .testcaseutilities.testinfo import TestInfo
 class TestIPIndividualInvestorRegistrationReturning(unittest.TestCase):
     def setUp(self):
         self.lookup = TestInfo()
-        self.lookup.load_defaults()
 
     def test_login(self):
         ip_investor_registration_individual_returning_page = IPInvestorRegistrationPage()

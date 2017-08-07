@@ -11,7 +11,6 @@ from ..testpages.IPPages.ipgeneralpage import IPGeneral
 class TestIPInvestorMarried(unittest.TestCase):
     def setUp(self):
         self.lookup = TestInfo()
-        self.lookup.load_defaults()
 
     def test_married(self):
         ip_investor_type_married = IPInvestorTypePage()

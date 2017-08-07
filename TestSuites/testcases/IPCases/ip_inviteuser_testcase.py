@@ -59,10 +59,5 @@ class TestBDInviteUser(unittest.TestCase):
         bd_login_page.login(self.lookup.testinfo["NewBDUser.Email"], self.lookup.testinfo["NewBDUser.Password"])
 
 
-        while True:
-            pass
-
-
-
 if __name__ == "__main__":
     unittest.main()

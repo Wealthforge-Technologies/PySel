@@ -19,6 +19,11 @@ class IPCreateAnAccountPage(BasePage):
                           title='WF: Investor Platform')
 
     def enter_info(self, first, last, email, confEmail):
+
+
+        print(email)
+
+
         assert self.firstName is not None
         self.firstName.send_keys(first)
         assert first in self.firstName.get_attribute("value")

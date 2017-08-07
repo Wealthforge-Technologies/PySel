@@ -10,7 +10,6 @@ class TestBDAdminCreateIssuer(unittest.TestCase):
 
     def setUp(self):
         self.lookup = TestInfo()
-        self.lookup.load_defaults()
 
     def test_bd_admin_create_issuer(self):
         # bd_login_page = BDLoginPage()

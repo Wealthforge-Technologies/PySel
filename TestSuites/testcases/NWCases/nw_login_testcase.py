@@ -12,7 +12,6 @@ from ..testpages.NWPages.nwhomepage import NWHomePage
 class TestNWLogin(unittest.TestCase):
     def setUp(self):
         self.lookup = TestInfo()
-        self.lookup.load_defaults()
 
     def test_nw_login(self):
 

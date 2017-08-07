@@ -6,7 +6,6 @@ from ..testpages.IPPages.ipgeneralpage import IPGeneral
 class TestDocumentUploadPage(unittest.TestCase):
     def setUp(self):
         self.lookup = TestInfo()
-        self.lookup.load_defaults()
 
     def test_login(self):
 

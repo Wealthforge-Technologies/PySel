@@ -9,7 +9,6 @@ class TestLogin(unittest.TestCase):
 
     def setUp(self):
         self.lookup = TestInfo()
-        self.lookup.load_defaults()
 
     def test_docusign_firsttime(self):
         Settings.ISANGULAR = False

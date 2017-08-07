@@ -7,7 +7,6 @@ from ..testcaseutilities.testinfo import TestInfo
 class IPInvestorCongratulations(unittest.TestCase):
     def setUp(self):
         self.lookup = TestInfo()
-        self.lookup.load_defaults()
 
     def test_login(self):
         ip_payment_type_page = IPInvestorCongratulationsPage()

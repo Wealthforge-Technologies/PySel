@@ -8,7 +8,6 @@ from ..testpages.IPPages.ipgeneralpage import IPGeneral
 class TestIPInvestorRegistration(unittest.TestCase):
     def setUp(self):
         self.lookup = TestInfo()
-        self.lookup.load_defaults()
 
     def test_login(self):
         ip_investor_registration_page = IPInvestorTypePage()

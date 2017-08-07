@@ -10,7 +10,6 @@ from .testcaseutilities.testinfo import TestInfo
 class TestIPGettingToKnowYou(unittest.TestCase):
     def setUp(self):
         self.lookup = TestInfo()
-        self.lookup.load_defaults()
 
     def test_login(self):
 
