@@ -3,9 +3,9 @@ import unittest
 from selenium import webdriver
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 
-from TestSuites.testcases.testpages import IPInvestorRegistrationPage
-from .testcaseutilities.testinfo import TestInfo
-
+from ..testpages.IPPages.investorregistrationpage import IPInvestorRegistrationPage
+from ..testcaseutilities.testinfo import TestInfo
+from ..testpages.IPPages.ipgeneralpage import IPGeneral
 
 class TestIPIndividualInvestorRegistrationReturning(unittest.TestCase):
     def setUp(self):
@@ -27,7 +27,7 @@ class TestIPIndividualInvestorRegistrationReturning(unittest.TestCase):
                                                          self.lookup.testinfo["txtInvestorPhone"],
                                                          self.lookup.testinfo["txtInvestorEmail"])
 
-        ip_investor_registration_individual_returning_page.clickContinue()
+        IPGeneral().clickContinue()
 
 if __name__ == "__main__":
     unittest.main()

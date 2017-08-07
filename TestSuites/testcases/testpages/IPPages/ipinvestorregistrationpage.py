@@ -8,7 +8,7 @@ import testutilities.Settings
 from selenium.webdriver.support.ui import Select
 
 
-class IPInvestorTypePage(BasePage):
+class IPInvestorRegistrationPage(BasePage):
     """QA Get Started page. I.e. https://qa1.wealthforge.org/IP/#/ind/registration"""
     firstName = PageElement(id_='txtInvestorFirstName')
     lastName = PageElement(id_='txtInvestorLastName')
@@ -117,7 +117,3 @@ class IPInvestorTypePage(BasePage):
 
         assert self.email is not None
         assert email in self.email.get_attribute("value")
-
-    def clickContinue(self):
-        self.btnContinue.click()
-        waitForAngular(self.driver)

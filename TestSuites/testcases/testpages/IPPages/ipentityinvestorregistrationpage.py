@@ -114,7 +114,3 @@ class IPEntityInvestorRegistrationPage(BasePage):
 
         assert self.email is not None
         assert email in self.email.get_attribute("value")
-
-    def clickContinue(self):
-        self.btnContinue.click()
-        waitForAngular(self.driver)

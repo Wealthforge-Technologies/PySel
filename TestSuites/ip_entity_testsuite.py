@@ -3,7 +3,7 @@ import unittest
 from testcases import set_window_size
 from testcases import close_driver_spec
 from testcases.IPCases import ip_login_testcase
-from testcases.IPCases import ip_getstarted_testcase
+from testcases.IPCases import ip_getstarted__testcase
 from testcases.IPCases import ip_summary_testcase
 from testcases.IPCases import ip_investor_type_entity_new_testcase
 from testcases.IPCases import ip_investor_registration_entity_testcase

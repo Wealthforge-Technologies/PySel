@@ -1,6 +1,6 @@
 import unittest
 
-from ..testpages.IPPages.ipinvestorregistrationpage import IPInvestorTypePage
+from ..testpages.IPPages.ipinvestorregistrationpage import IPInvestorRegistrationPage
 from ..testcaseutilities.testinfo import TestInfo
 from ..testpages.IPPages.ipgeneralpage import IPGeneral
 
@@ -11,7 +11,7 @@ class TestIPInvestorRegistration(unittest.TestCase):
         self.lookup.load_defaults()
 
     def test_login(self):
-        ip_investor_registration_page = IPInvestorTypePage()
+        ip_investor_registration_page = IPInvestorRegistrationPage()
         ip_investor_registration_page.is_expected_landing_url()
         # ip_investor_registration_page.enter_info(self.lookup.testinfo["txtInvestorFirstName"],
         #                                       self.lookup.testinfo["txtInvestorLastName"],
