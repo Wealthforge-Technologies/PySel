@@ -13,7 +13,7 @@ class GetStarted(unittest.TestCase):
         ip_getstarted_page = IPGetStarted()
         # ip_getstarted_page.is_expected_landing_url()
         # ip_getstarted_page.btnStart.click()
-        ip_getstarted_page.clickGetStarted()
+        ip_getstarted_page.clickStartOrStartOver()
 
 if __name__ == "__main__":
     unittest.main()

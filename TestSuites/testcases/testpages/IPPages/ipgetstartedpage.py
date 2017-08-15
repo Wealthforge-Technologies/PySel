@@ -31,3 +31,10 @@ class IPGetStarted(BasePage):
 
         self.btnStartOver.click()
         waitForAngular(self.driver)
+
+    #Will click either Get Started or Start Over depending on what shows up
+    def clickStartOrStartOver(self):
+        if self.btnStart is not None:
+            self.clickStartOver()
+        else:
+            self.clickGetStarted()

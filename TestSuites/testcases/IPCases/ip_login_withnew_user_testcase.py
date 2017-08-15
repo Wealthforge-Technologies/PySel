@@ -12,11 +12,11 @@ class TestLogin(unittest.TestCase):
     def test_login(self):
         ip_login_page = IPLoginPage()
 
-        ip_login_page.land()
         ip_login_page.is_expected_landing_url()
 
-        ip_login_page.login(self.lookup.testinfo["IP.email"],
-                            self.lookup.testinfo["IP.password"])
+        ip_login_page.login(self.lookup.testinfo["email"],
+                            self.lookup.testinfo["username"])
+        print(type(ip_login_page.btnLogin))
 
 
 if __name__ == "__main__":

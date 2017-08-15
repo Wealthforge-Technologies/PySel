@@ -41,5 +41,5 @@ def get_new_ip_user_password_reset_url(newUserEmail):
     for num in data[0].split():
         typ, data = mail.fetch(num, '(RFC822)')
 
-        match = re.search(r'(passwordReset).{85}', str(data[0][1]).replace('=\\r\\n',''))
+        match = re.search(r'(passwordReset).{81}', str(data[0][1]).replace('=\\r\\n','').replace('=3D', '='))
         return '/IP/#/' + match.group()

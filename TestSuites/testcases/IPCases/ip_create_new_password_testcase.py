@@ -22,7 +22,7 @@ class IPCreateNewPassword(unittest.TestCase):
 
         ip_investor_create_new_password_page.clickSave()
 
-        # ip_investor_create_new_password_page.btnReturnToLogin()
+        ip_investor_create_new_password_page.clickReturnLogin()
 
 if __name__ == "__main__":
     unittest.main()

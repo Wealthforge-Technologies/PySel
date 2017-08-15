@@ -7,6 +7,7 @@ class IPCreateNewPasswordPage(BasePage):
     password = PageElement(id_='username')
     confPassword = PageElement(id_='password2')
     btnSave = PageElement(css='[ng-click="resetPass()"]')
+    btnReturnToLogin = PageElement(css='[ng-click="returnLogin()"]')
 
     def __init__(self, confirmUrl):
         BasePage.__init__(self,
@@ -27,8 +28,7 @@ class IPCreateNewPasswordPage(BasePage):
         self.btnSave.click()
         waitForAngular(self.driver)
 
-        while True:
-            pass
-
-
-
+    def clickReturnLogin(self):
+        waitForAngular(self.driver)
+        self.btnReturnToLogin.click()
+        waitForAngular(self.driver)
