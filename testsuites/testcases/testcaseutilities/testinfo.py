@@ -172,6 +172,70 @@ class TestInfo:
         #Investment Minimum Not Met
         self.testinfo["invAmnt"] = "200"
 
+        #OE Investment Page
+        self.testinfo["offering"] = "John ISS Legal Name: Test Offer+856206 (506c)"
+        self.testinfo["investment.subscriptionDate"] = "08/20/2017"
+        self.testinfo["investType"] = "Individual"
+        self.testinfo["payType"] = "Wire"
+        self.testinfo["investment.payment.amount"] = "500"
+        self.testinfo["invSubType"] = "Broker Dealer"
+
+        #OE Investor Individual Page
+        self.testinfo["accreditType"] = "Net Worth"
+        self.testinfo["investor.individual.firstName"] = "Hambly"
+        self.testinfo["investor.individual.lastName"] = "Spinner"
+        self.testinfo["vault.individual.dateOfBirth"] = "03/12/1972"
+        self.testinfo["vault.individual.ssn"] = "098-34-7895"
+        self.testinfo["investor.individual.primaryPhone"] = "(234)345-7894"
+        self.testinfo["investor.individual.emailAddress"] = "qa_automation@wealthforge.com"
+        self.testinfo["investor.individual.address.street1"] = "75642 Whinging Way"
+        self.testinfo["investor.individual.address.city"] = "Richmond"
+        self.testinfo["stateProvence"] = "California"
+        self.testinfo["investor.individual.address.postalCode"] = "10121"
+
+        #OE Investor Entity Page
+        self.testinfo["investor.entity.name"] = "Run Around Shoes"
+        self.testinfo["investor.entity.signatoryName"] = "Sebastian Smith"
+        self.testinfo["investor.entity.signatoryTitle"] = "SSRAS"
+        self.testinfo["vault.entity.ein"] = "48-5475982"
+        self.testinfo["investor.entity.cik"] = "7349827492"
+        self.testinfo["investor.entity.address.street1"] = "3472 W. Broad Street"
+        self.testinfo["investor.entity.address.city"] = "Richmond"
+        self.testinfo["investor.entity.address.postalCode"] = "23233"
+        self.testinfo["investor.entity.primaryPhone"] = "(804) 454-8923"
+        self.testinfo["investor.entity.emailAddress"] = "qa_automation@wealthforge.com"
+
+        #OE Investor Married Page
+        self.testinfo["investor.spouse.firstName"] = "Samantha"
+        self.testinfo["investor.spouse.lastName"] = "Hambly"
+        self.testinfo["vault.spouse.dateOfBirth"] = "09/22/1971"
+        self.testinfo["vault.spouse.ssn"] = "087-23-4543"
+        self.testinfo["investor.spouse.primaryPhone"] = "(578) 457-9247"
+        self.testinfo["investor.spouse.emailAddress"] = "qa_automation@wealthforge.com"
+
+        #OE Suitability Page
+        self.testinfo["primInveObj"] = "Income"
+        self.testinfo["invExperience"] = "Between 5 and 10 years"
+        self.testinfo["risk"] = "Moderate"
+        self.testinfo["horizon"] = "Between 5 and 7 years"
+        self.testinfo["allocEquities"] = "Greater than $250,000 USD"
+        self.testinfo["allocBonds"] = "Less than $250,000 USD"
+        self.testinfo["allocRealEstate"] = "Greater than $250,000 USD"
+        self.testinfo["allocOther"] = "Greater than $250,000 USD"
+        self.testinfo["liquidity"] = "Between $250,000 and $500,000"
+        self.testinfo["annualExpenses"] = "Between $50,000 and $100,000"
+        self.testinfo["marginalTaxRt"] = "Between 20% and 30%"
+        self.testinfo["acceptRisk"] = "Yes"
+        self.testinfo["dueDiligence"] = "Yes"
+
+
+
+
+
+
+
+
+
 
 
 
