@@ -16,18 +16,15 @@ class IPGetStarted(BasePage):
                           title='WF: Investor Platform')
 
     def clickGetStarted(self):
-
         self.btnStart.click()
         waitForAngular(self.driver)
 
 
     def clickResume(self):
-
         self.btnResume.click()
         waitForAngular(self.driver)
 
 
     def clickStartOver(self):
-
         self.btnStartOver.click()
         waitForAngular(self.driver)

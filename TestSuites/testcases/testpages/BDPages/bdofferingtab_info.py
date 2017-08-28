@@ -33,12 +33,12 @@ class BDOfferingTabInfo(BasePage):
     interestRate = PageElement(css='[ng-model="offering.terms.interestRate"]')
     maturityMonths = PageElement(css='[ng-model="offering.terms.maturity"]')
     paymentFreqDropdown = PageElement(css='[name="paymentFrequency"]')  # Dropdown
-    conversionRatio = PageElement(css='ng-model="offering.terms.discount"')
+    conversionRatio = PageElement(css='[ng-model="offering.terms.discount"]')
 
     # Payment Types
     paymentTypesRadio = PageElement(css='[ng-model="offering.metadata.paymentOptions[type.code]"]')  # all of the radio buttons
 
-    continueButton = PageElement(css='ng-click="saveOffering()"')
+    continueButton = PageElement(css='[ng-click="saveOffering()"]')
 
     def __init__(self):
         BasePage.__init__(self,
@@ -92,7 +92,7 @@ class BDOfferingTabInfo(BasePage):
 
             else:
                 elem.send_keys(value)
-                print ("...key:" + key + "\n...expected:" + value + "\n...value:" + elem.get_attribute("value"))
+                # print ("...key:" + key + "\n...expected:" + value + "\n...value:" + elem.get_attribute("value"))
                 # assert value in elem.get_attribute("value")
         self.setDates()
 
@@ -110,36 +110,36 @@ class BDOfferingTabInfo(BasePage):
                 #Dropdowns
                 if key in ["termType"]:
                     Select(elem).select_by_visible_text(value)
-                    print ("...key:" + key + "\n...expected:" + value + "\n...value:" + Select(elem).all_selected_options[0].get_attribute("value"))
+                    # print ("...key:" + key + "\n...expected:" + value + "\n...value:" + Select(elem).all_selected_options[0].get_attribute("value"))
                     assert value in Select(elem).all_selected_options[0].get_attribute("textContent")
                 else:
                     elem.send_keys(value)
-                    print ("...key:" + key + "\n...expected:" + value + "\n...value:" + elem.get_attribute("value"))
+                    # print ("...key:" + key + "\n...expected:" + value + "\n...value:" + elem.get_attribute("value"))
                     assert value in elem.get_attribute("value")
-            else:
-                self.fill_payment_types(defaultJson['paymentTypes'])
 
 
 
         # Other fields, some are there when you select certain Term Types
         if defaultJson['termType'] is 'Debenture':
-            self.interestRate.sendKeys(otherJson['interestRate'])
-            self.maturityMonths.sendKeys(otherJson['maturityMonths'])
+            self.interestRate.send_keys(otherJson['interestRate'])
+            self.maturityMonths.send_keys(otherJson['maturityMonths'])
             Select(self.paymentFreqDropdown).select_by_visible_text(otherJson['paymentFreqDropdown'])
         elif defaultJson['termType'] is 'Common':
             pass  # no extra fields for Common
         elif defaultJson['termType'] is 'Preferred':
-            self.interestRate.sendKeys(otherJson['interestRate'])  # The text says Preferred Return but the type is interestRate
+            self.interestRate.send_keys(otherJson['interestRate'])  # The text says Preferred Return but the type is interestRate
         elif defaultJson['termType'] is 'Convertible Note':
-            self.interestRate.sendKeys(otherJson['interestRate'])
-            self.conversionRatio.sendKeys(otherJson['conversionRatio'])
-            self.maturityMonths.sendKeys(otherJson['maturityMonths'])
+            self.interestRate.send_keys(otherJson['interestRate'])
+            self.conversionRatio.send_keys(otherJson['conversionRatio'])
+            self.maturityMonths.send_keys(otherJson['maturityMonths'])
             Select(self.paymentFreqDropdown).select_by_visible_text(otherJson['paymentFreqDropdown'])
         elif defaultJson['termType'] is 'Interests':
-            self.interestRate.sendKeys(otherJson['interestRate'])
+            self.interestRate.send_keys(otherJson['interestRate'])
             Select(self.paymentFreqDropdown).select_by_visible_text(otherJson['paymentFreqDropdown'])
         elif defaultJson['termType'] is 'Shares':
             pass  # no extra fields for Shares
+
+        self.fill_payment_types(defaultJson['paymentTypes'])
 
     def fill_payment_types(self, bits):
         '''
@@ -150,8 +150,9 @@ class BDOfferingTabInfo(BasePage):
         self.driver.execute_script("arguments[0].scrollIntoView();", paymentTypes[0])
 
         for x in range(bits.bit_length()):
-            paymentTypes[x].click()
-
+            # print(pow(2, x) & bits)
+            if pow(2, x) & bits > 0:
+                paymentTypes[x].click()
 
     def submit(self):
         self.continueButton.click()

@@ -29,7 +29,7 @@ def main():
                     loader.loadTestsFromModule(ip_create_account_testcase),
 
                     loader.loadTestsFromModule(ip_create_new_password_testcase),
-                    # loader.loadTestsFromModule(ip_login_testcase),
+                    loader.loadTestsFromModule(ip_login_testcase),
                     # loader.loadTestsFromModule(ip_getstarted_testcase),
                     # loader.loadTestsFromModule(ip_summary_testcase),
                     # loader.loadTestsFromModule(ip_investor_type_individual_testcase),

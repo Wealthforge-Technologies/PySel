@@ -39,7 +39,10 @@ def get_new_ip_user_password_reset_url(newUserEmail):
     type1, data = mail.search(None, '(FROM "WealthForge Technologies" SUBJECT "Welcome to WealthForge Investing" TO "' + newUserEmail + '")')
     #TODO: add assert an email was found
     for num in data[0].split():
-        typ, data = mail.fetch(num, '(RFC822)')
 
-        match = re.search(r'(passwordReset).{85}', str(data[0][1]).replace('=\\r\\n',''))
+        typ, data = mail.fetch(num, '(RFC822)')
+        # The first replace() is to get rid of the \r\n
+        # The second replace() gets rid of a weird RFC822 thing where equal signs show as =3D (3D is ascii for =)
+        match = re.search(r'(passwordReset).{81}', str(data[0][1]).replace('=\\r\\n', '').replace('=3D', '='))
+        print('/IP/#/' + match.group())
         return '/IP/#/' + match.group()

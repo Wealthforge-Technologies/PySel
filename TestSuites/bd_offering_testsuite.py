@@ -14,6 +14,7 @@ def main():
                     loader.loadTestsFromModule(bd_login_testcase),
                     # loader.loadTestsFromModule(bd_offering_testcase), #opening another window?!?!
                     loader.loadTestsFromModule(bd_offering_createoffering),
+                    loader.loadTestsFromModule(bd_offering_createoffering),
                     loader.loadTestsFromModule(close_driver_spec),
                     ])
 

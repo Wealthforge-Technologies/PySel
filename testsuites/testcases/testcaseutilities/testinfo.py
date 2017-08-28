@@ -5,7 +5,9 @@ class TestInfo:
     testinfo = {}
     testissinfo = {}
     testbankinfo = {}
+
     testOfferInfo = {}
+    testOfferWorkflowInfo = {}
 
     testTermInfoDefaults = {}
     testTermInfoOther = {}
@@ -30,6 +32,11 @@ class TestInfo:
         self.testOfferInfo["minOfferRaise"] = "2,000,000"
         self.testOfferInfo["maxOfferRaise"] = "5,000,000"
 
+        self.testOfferWorkflowInfo["escrowAcctName"] = "Offering Escrow Acct Name"
+        self.testOfferWorkflowInfo["escrowAcctNumb"] = "43214786"
+        self.testOfferWorkflowInfo["escrowAcctBank"] = "Atlantic Capital Bank - 7" # todo: make dynamic
+
+
         self.testTermInfoDefaults["termType"] = "Debenture"
         self.testTermInfoDefaults["classTitle"] = "Class Title 123"
         self.testTermInfoDefaults["minInvestment"] = "100.33"
@@ -37,7 +44,11 @@ class TestInfo:
         self.testTermInfoDefaults["maxTermRaise"] = "4,000,000"
         self.testTermInfoDefaults["price"] = "24.35"
         self.testTermInfoDefaults["notesIssued"] = "4567"
-        self.testTermInfoDefaults["paymentTypes"] = 0b11110
+        self.testTermInfoDefaults["paymentTypes"] = 0b01011
+            # this paymentTypes works as follows:
+            # 10000 will select only 1031 Exchange
+            # 00011 will select ACH and Check
+
 
 
         self.testTermInfoOther["interestRate"] = "7.65"

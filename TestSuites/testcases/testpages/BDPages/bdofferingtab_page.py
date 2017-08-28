@@ -26,6 +26,9 @@ class BDOfferingTabPage(BasePage):
     #If you wanted to touch dots_option_2 you would do:
     #treespace["node_display_name"][2][1].click()
     def load_treenodes(self):
+        self.orgTree = {}
+        self.offTree = {}
+
         orgs = self.driver.find_elements_by_css_selector("div[ui-sref=\"diligence({parent: org.id, parentType: org.org_type})\"]")
         if S.VERBOSITY >=5: print('orgs #: ', orgs.__len__())
         startTime = time.time()
@@ -65,7 +68,7 @@ class BDOfferingTabPage(BasePage):
             self.offTree[offId] = {'offeringElem': off,
                                    'offeringName': offeringName,
                                    'dots': dots,
-                                   'offOptions : ': offOptions
+                                   'offOptions': offOptions
                                    }
 
         if S.VERBOSITY >= 5: print('Offering Tree loaded in ', time.time()-startTime, ' seconds')
@@ -110,7 +113,7 @@ class BDOfferingTabPage(BasePage):
         """
         result = None
         for off in self.offTree.items():
-            if off[1]['orgName'] == name:
+            if off[1]['offeringName'] == name:
                 result = off[0]
 
         assert result is not None, 'ERROR: OFFERING NOT FOUND IN OFFERING TREE: ' + name
@@ -118,6 +121,7 @@ class BDOfferingTabPage(BasePage):
 
     def clickOfferingWorkflowByOffId(self, id):
         # clicks context menu and then clicks the Offering Workflow option
+        print(self.offTree[id])
         self.offTree[id]['dots'].click()
         waitForAngular(self.driver)
         self.offTree[id]['offOptions'][0].click() #only one option right now
